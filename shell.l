@@ -32,31 +32,33 @@ void myunputc(int c) {
   /* Discard spaces and tabs */
 }
 
-"|" {
-    return PIPE;
-}
-">" {
-  return GREAT;
-}
-
-"<" {
-    return LESS;
-}
-
-"2>" {
-    return TWOGREAT;
-}
-
-">&" {
-    return GREATAMP;
+">>&" {
+    return GREATGREATAMP;
 }
 
 ">>" {
     return GREATGREAT;
 }
 
-">>&" {
-    return GREATGREATAMP;
+">&" {
+    return GREATAMP;
+}
+
+"2>" {
+    return TWOGREAT;
+}
+
+
+">" {
+  return GREAT;
+}
+
+"|" {
+    return PIPE;
+}
+
+"<" {
+    return LESS;
 }
 
 "&" {
