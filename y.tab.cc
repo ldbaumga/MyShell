@@ -131,7 +131,7 @@ extern int yydebug;
     TWOGREAT = 264,
     GREATAMP = 265,
     GREATGREAT = 266,
-    GREATGREATEAMP = 267,
+    GREATGREATAMP = 267,
     AMPERSAND = 268
   };
 #endif
@@ -145,7 +145,7 @@ extern int yydebug;
 #define TWOGREAT 264
 #define GREATAMP 265
 #define GREATGREAT 266
-#define GREATGREATEAMP 267
+#define GREATGREATAMP 267
 #define AMPERSAND 268
 
 /* Value type.  */
@@ -557,7 +557,7 @@ static const yytype_int8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "WORD", "NEWLINE", "NOTOKEN", "PIPE",
-  "GREAT", "LESS", "TWOGREAT", "GREATAMP", "GREATGREAT", "GREATGREATEAMP",
+  "GREAT", "LESS", "TWOGREAT", "GREATAMP", "GREATGREAT", "GREATGREATAMP",
   "AMPERSAND", "$accept", "goal", "commands", "command", "simple_command",
   "command_and_args", "argument_list", "argument", "command_word",
   "iomodifier_opt", YY_NULLPTR

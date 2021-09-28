@@ -68,7 +68,7 @@ extern int yydebug;
     TWOGREAT = 264,
     GREATAMP = 265,
     GREATGREAT = 266,
-    GREATGREATEAMP = 267,
+    GREATGREATAMP = 267,
     AMPERSAND = 268
   };
 #endif
@@ -82,7 +82,7 @@ extern int yydebug;
 #define TWOGREAT 264
 #define GREATAMP 265
 #define GREATGREAT 266
-#define GREATGREATEAMP 267
+#define GREATGREATAMP 267
 #define AMPERSAND 268
 
 /* Value type.  */
