@@ -489,16 +489,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  11
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   30
+#define YYLAST   36
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  14
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  11
+#define YYNNTS  10
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  24
+#define YYNRULES  22
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  35
+#define YYNSTATES  33
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   268
@@ -547,8 +547,8 @@ static const yytype_int8 yytranslate[] =
 static const yytype_int8 yyrline[] =
 {
        0,    46,    46,    50,    51,    55,    56,    57,    61,    62,
-      66,    70,    74,    78,    83,    88,    94,    98,   102,   106,
-     107,   111,   119,   120,   124
+      66,    70,    74,    78,    83,    88,    94,   106,   107,   111,
+     119,   120,   124
 };
 #endif
 
@@ -560,8 +560,8 @@ static const char *const yytname[] =
   "$end", "error", "$undefined", "WORD", "NEWLINE", "NOTOKEN", "PIPE",
   "GREAT", "LESS", "TWOGREAT", "GREATAMP", "GREATGREAT", "GREATGREATAMP",
   "AMPERSAND", "$accept", "goal", "command_list", "command_line",
-  "pipe_list", "io_modifier_list", "background_opt", "cmd_and_args",
-  "command_word", "arg_list", "argument", YY_NULLPTR
+  "pipe_list", "io_modifier_list", "cmd_and_args", "command_word",
+  "arg_list", "argument", YY_NULLPTR
 };
 #endif
 
@@ -591,8 +591,8 @@ static const yytype_int8 yypact[] =
 {
       11,     5,    -7,    -7,    13,     7,    -7,    -6,    -7,    14,
       -7,    -7,    -7,    15,    16,    17,    18,    19,    20,    21,
-       3,    -7,    14,    -7,    -7,    -7,    -7,    -7,    -7,    -7,
-      -7,    -7,    22,    -7,    -7
+      12,    -7,    14,    -7,    -7,    -7,    -7,    -7,    -7,    -7,
+      -7,    -7,    -7
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -600,24 +600,22 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,    21,     6,     0,     0,     4,    16,     9,    20,
+       0,     0,    19,     6,     0,     0,     4,    16,     9,    18,
        7,     1,     3,     0,     0,     0,     0,     0,     0,     0,
-      18,    24,    19,    23,     8,    10,    11,    12,    13,    14,
-      15,    17,     0,    22,     5
+       0,    22,    17,    21,     8,    10,    11,    12,    13,    14,
+      15,     5,    20
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -7,    -7,    -7,    23,    -7,    -7,    -7,    12,    -7,    -7,
-       8
+      -7,    -7,    -7,    22,    -7,    -7,    23,    -7,    -7,     3
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     4,     5,     6,     7,    20,    32,     8,     9,    22,
-      23
+      -1,     4,     5,     6,     7,    20,     8,     9,    22,    23
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -627,26 +625,26 @@ static const yytype_int8 yytable[] =
 {
       13,    14,    15,    16,    17,    18,    19,    -2,     1,    10,
        2,     3,     1,    11,     2,     3,    31,    21,     2,    25,
-      26,    27,    28,    29,    30,    24,    34,     0,    12,     0,
-      33
+      26,    27,    28,    29,    30,    32,     0,    12,     0,     0,
+       0,     0,     0,     0,     0,     0,    24
 };
 
 static const yytype_int8 yycheck[] =
 {
        6,     7,     8,     9,    10,    11,    12,     0,     1,     4,
-       3,     4,     1,     0,     3,     4,    13,     3,     3,     3,
-       3,     3,     3,     3,     3,    13,     4,    -1,     5,    -1,
-      22
+       3,     4,     1,     0,     3,     4,     4,     3,     3,     3,
+       3,     3,     3,     3,     3,    22,    -1,     5,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    13
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     1,     3,     4,    15,    16,    17,    18,    21,    22,
+       0,     1,     3,     4,    15,    16,    17,    18,    20,    21,
        4,     0,    17,     6,     7,     8,     9,    10,    11,    12,
-      19,     3,    23,    24,    21,     3,     3,     3,     3,     3,
-       3,    13,    20,    24,     4
+      19,     3,    22,    23,    20,     3,     3,     3,     3,     3,
+       3,     4,    23
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
@@ -654,15 +652,15 @@ static const yytype_int8 yyr1[] =
 {
        0,    14,    15,    16,    16,    17,    17,    17,    18,    18,
       19,    19,    19,    19,    19,    19,    19,    20,    20,    21,
-      21,    22,    23,    23,    24
+      22,    22,    23
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     1,     2,     1,     4,     1,     2,     3,     1,
-       2,     2,     2,     2,     2,     2,     0,     1,     0,     2,
-       1,     1,     2,     1,     1
+       0,     2,     1,     2,     1,     3,     1,     2,     3,     1,
+       2,     2,     2,     2,     2,     2,     0,     2,     1,     1,
+       2,     1,     1
 };
 
 
@@ -1360,7 +1358,7 @@ yyreduce:
   case 7:
 #line 57 "shell.y"
                  {yyerrok;}
-#line 1364 "y.tab.cc"
+#line 1362 "y.tab.cc"
     break;
 
   case 10:
@@ -1369,7 +1367,7 @@ yyreduce:
     printf("   Yacc: insert output \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
   }
-#line 1373 "y.tab.cc"
+#line 1371 "y.tab.cc"
     break;
 
   case 11:
@@ -1378,7 +1376,7 @@ yyreduce:
     printf("   Yacc: insert input \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Shell::_currentCommand._inFile = (yyvsp[0].cpp_string);
   }
-#line 1382 "y.tab.cc"
+#line 1380 "y.tab.cc"
     break;
 
   case 12:
@@ -1387,7 +1385,7 @@ yyreduce:
     printf("   Yacc: insert error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
   }
-#line 1391 "y.tab.cc"
+#line 1389 "y.tab.cc"
     break;
 
   case 13:
@@ -1397,7 +1395,7 @@ yyreduce:
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
   }
-#line 1401 "y.tab.cc"
+#line 1399 "y.tab.cc"
     break;
 
   case 14:
@@ -1405,9 +1403,9 @@ yyreduce:
                     {
     printf("   Yacc: insert output and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
-    //Shell::_currentCommand._append = true;
+    Shell::_currentCommand._append = true;
   }
-#line 1411 "y.tab.cc"
+#line 1409 "y.tab.cc"
     break;
 
   case 15:
@@ -1416,41 +1414,32 @@ yyreduce:
     printf("   Yacc: insert output and error and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
-    //Shell::_currentCommand._append = true;
+    Shell::_currentCommand._append = true;
   }
-#line 1422 "y.tab.cc"
+#line 1420 "y.tab.cc"
     break;
 
-  case 17:
-#line 98 "shell.y"
-            {
-    printf("   Yacc: backgorund true \n");
-    Shell::_currentCommand._background = true;
-  }
-#line 1431 "y.tab.cc"
-    break;
-
-  case 21:
+  case 19:
 #line 111 "shell.y"
        {
     printf("   Yacc: insert command \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );
   }
-#line 1441 "y.tab.cc"
+#line 1430 "y.tab.cc"
     break;
 
-  case 24:
+  case 22:
 #line 124 "shell.y"
         {
     printf("   Yacc: insert argument \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );\
   }
-#line 1450 "y.tab.cc"
+#line 1439 "y.tab.cc"
     break;
 
 
-#line 1454 "y.tab.cc"
+#line 1443 "y.tab.cc"
 
       default: break;
     }
