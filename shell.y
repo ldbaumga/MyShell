@@ -52,7 +52,10 @@ command_list:
   ;
 
 command_line:
-  pipe_list io_modifier_list background_opt NEWLINE
+  pipe_list io_modifier_list background_opt NEWLINE {
+    printf("   Yacc: Execute command\n");
+    Shell::_currentCommand.execute();
+  }
   | NEWLINE /*accepts empty cmd line*/
   | error NEWLINE{yyerrok;} /*error recovery*/
   ;
