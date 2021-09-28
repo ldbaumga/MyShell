@@ -44,10 +44,10 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 15 "shell.y"
+#line 14 "shell.y"
 
 #include <string>
-G
+
 #if __cplusplus > 199711L
 #define register      // Deprecated in C++11 so remove the keyword
 #endif
@@ -89,7 +89,7 @@ G
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 24 "shell.y"
+#line 23 "shell.y"
 
   char        *string_val;
   // Example of using a c++ type in yacc

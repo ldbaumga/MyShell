@@ -83,13 +83,13 @@ io_modifier_list:
   | GREATGREAT WORD {
     printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
     Shell::_currentCommand._outFile = $2;
-    Shell::_currentCommand._append = true;
+    //Shell::_currentCommand._append = true;
   }
   | GREATGREATAMP WORD {
     printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
-    Shell::_currentCommand._append = true;
+    //Shell::_currentCommand._append = true;
   }
   | /* can be empty */
   ;
