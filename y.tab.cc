@@ -1405,7 +1405,7 @@ yyreduce:
                     {
     printf("   Yacc: insert output and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
-    Shell::_currentCommand._append = true;
+    //Shell::_currentCommand._append = true;
   }
 #line 1411 "y.tab.cc"
     break;
@@ -1416,7 +1416,7 @@ yyreduce:
     printf("   Yacc: insert output and error and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
-    Shell::_currentCommand._append = true;
+    //Shell::_currentCommand._append = true;
   }
 #line 1422 "y.tab.cc"
     break;

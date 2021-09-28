@@ -52,7 +52,7 @@ command_list:
   ;
 
 command_line:
-  pipe_list io_modifier_list background_opt NEWLINE
+  pipe_list io_modifier_list NEWLINE
   | NEWLINE /*accepts empty cmd line*/
   | error NEWLINE{yyerrok;} /*error recovery*/
   ;
@@ -83,24 +83,24 @@ io_modifier_list:
   | GREATGREAT WORD {
     printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
     Shell::_currentCommand._outFile = $2;
-    //Shell::_currentCommand._append = true;
+    Shell::_currentCommand._append = true;
   }
   | GREATGREATAMP WORD {
     printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
-    //Shell::_currentCommand._append = true;
+    Shell::_currentCommand._append = true;
   }
   | /* can be empty */
   ;
 
-background_opt:
-  AMPERSAND {
-    printf("   Yacc: backgorund true \n");
-    Shell::_currentCommand._background = true;
-  }
-  | /* can be empty */
-  ;
+//background_opt:
+//  AMPERSAND {
+//    printf("   Yacc: backgorund true \n");
+//    Shell::_currentCommand._background = true;
+//  }
+//  | /* can be empty */
+//  ;
 
 cmd_and_args:
   command_word arg_list
