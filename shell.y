@@ -52,7 +52,7 @@ command_list:
   ;
 
 command_line:
-  pipe_list io_modifier_list NEWLINE
+  pipe_list io_modifier_list background_opt NEWLINE
   | NEWLINE /*accepts empty cmd line*/
   | error NEWLINE{yyerrok;} /*error recovery*/
   ;
@@ -94,17 +94,22 @@ io_modifier_list:
   | /* can be empty */
   ;
 
-//background_opt:
-//  AMPERSAND {
-//    printf("   Yacc: backgorund true \n");
-//    Shell::_currentCommand._background = true;
-//  }
-//  | /* can be empty */
-//  ;
+background_opt:
+  AMPERSAND {
+    printf("   Yacc: backgorund true \n");
+    Shell::_currentCommand._background = true;
+  }
+  | /* can be empty */
+  ;
 
 cmd_and_args:
   command_word arg_list
   | command_word
+  ;
+
+arg_list:
+  arg_list argument
+  | argument
   ;
 
 command_word:
@@ -113,11 +118,6 @@ command_word:
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( $1 );
   }
-  ;
-
-arg_list:
-  arg_list argument
-  | argument
   ;
 
 argument:
