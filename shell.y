@@ -97,7 +97,7 @@ io_modifier_list:
 
 background_opt:
   AMPERSAND {
-    printf("   Yacc: backgorund true \"%s\"\n", $2->c_str());
+    printf("   Yacc: backgorund true \n", $2->c_str());
     Shell::_currentCommand._background = TRUE;
   }
   | /* can be empty */
