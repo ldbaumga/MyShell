@@ -65,6 +65,14 @@ pipe_list:
   | cmd_and_args
   ;
 
+background_opt:
+  AMPERSAND {
+    printf("   Yacc: backgorund true \n");
+    Shell::_currentCommand._background = true;
+  }
+  | /* can be empty */
+  ;
+
 io_modifier_list:
   GREAT WORD {
     printf("   Yacc: insert output \"%s\"\n", $2->c_str());
@@ -97,16 +105,11 @@ io_modifier_list:
   | /* can be empty */
   ;
 
-background_opt:
-  AMPERSAND {
-    printf("   Yacc: backgorund true \n");
-    Shell::_currentCommand._background = true;
-  }
-  | /* can be empty */
-  ;
-
 cmd_and_args:
-  command_word arg_list
+  command_word arg_list {
+    Shell::_currentCommand.
+    insertSimpleCommand( Command::_currentSimpleCommand );
+  }
   | command_word
   ;
 
