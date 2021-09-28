@@ -47,7 +47,7 @@ extern int yydebug;
 #line 15 "shell.y"
 
 #include <string>
-
+G
 #if __cplusplus > 199711L
 #define register      // Deprecated in C++11 so remove the keyword
 #endif

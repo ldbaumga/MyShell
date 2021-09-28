@@ -1,4 +1,4 @@
-
+/
 /*
  * CS-252
  * shell.y: parser for shell
@@ -14,7 +14,7 @@
 %code requires 
 {
 #include <string>
-G
+
 #if __cplusplus > 199711L
 #define register      // Deprecated in C++11 so remove the keyword
 #endif
@@ -84,13 +84,13 @@ io_modifier_list:
   | GREATGREAT WORD {
     printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
     Shell::_currentCommand._outFile = $2;
-    Shell::_currentCommand._append = TRUE;
+    Shell::_currentCommand._append = true;
   }
   | GREATGREATAMP WORD {
     printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
-    Shell::_currentCommand._append = TRUE;
+    Shell::_currentCommand._append = true;
   }
   | /* can be empty */
   ;
@@ -98,7 +98,7 @@ io_modifier_list:
 background_opt:
   AMPERSAND {
     printf("   Yacc: backgorund true \n");
-    Shell::_currentCommand._background = TRUE;
+    Shell::_currentCommand._background = true;
   }
   | /* can be empty */
   ;
