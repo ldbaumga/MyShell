@@ -110,7 +110,10 @@ cmd_and_args:
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
   }
-  | command_word
+  | command_word {
+    Shell::_currentCommand.
+    insertSimpleCommand( Command::_currentSimpleCommand );
+  }
   ;
 
 arg_list:
