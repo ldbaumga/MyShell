@@ -14,7 +14,7 @@
 %code requires 
 {
 #include <string>
-
+G
 #if __cplusplus > 199711L
 #define register      // Deprecated in C++11 so remove the keyword
 #endif
@@ -43,6 +43,91 @@ int yylex();
 
 %%
 
+goal:
+  command_list
+  ;
+
+command_list:
+  command_list command_line
+  | command_line
+  ;
+
+command_line:
+  pipe_list io_modifier_list backgroud_opt NEWLINE
+  | NEWLINE /*accepts empty cmd line*/
+  | error NEWLINE{yyerrok;} /*error recovery*/
+  ;
+
+pipe_list:
+  pipe_list PIPE cmd_and_args
+  | cmd_and_args
+  ;
+
+io_modifier_list:
+  GREAT WORD {
+    printf("   Yacc: insert output \"%s\"\n", $2->c_str());
+    Shell::_currentCommand._outFile = $2;
+  }
+  | LESS WORD {
+    printf("   Yacc: insert input \"%s\"\n", $2->c_str());
+    Shell::_currentCommand._inFile = $2;
+  }
+  | TWOGREAT WORD {
+    printf("   Yacc: insert error \"%s\"\n", $2->c_str());
+    Shell::_currentCommand._errFile = $2;
+  }
+  | GREATAMP WORD {
+    printf("   Yacc: insert output and error \"%s\"\n", $2->c_str());
+    Shell::_currentCommand._outFile = $2;
+    Shell::_currentCommand._errFile = $2;
+  }
+  | GREATGREAT WORD {
+    printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
+    Shell::_currentCommand._outFile = $2;
+    Shell::_currentCommand._append = TRUE;
+  }
+  | GREATGREATAMP WORD {
+    printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
+    Shell::_currentCommand._outFile = $2;
+    Shell::_currentCommand._errFile = $2;
+    Shell::_currentCommand._append = TRUE;
+  | /* can be empty */
+  ;
+
+background_opt:
+  AMPERSAND {
+    printf("   Yacc: backgorund true \"%s\"\n", $2->c_str());
+    Shell::_currentCommand._background = TRUE;
+  }
+  | /* can be empty */
+  ;
+
+cmd_and_args:
+  command_word arg_list
+  | command_word
+  ;
+
+command_word:
+  WORD {
+    printf("   Yacc: insert command \"%s\"\n", $1->c_str());
+    Command::_currentSimpleCommand = new SimpleCommand();
+    Command::_currentSimpleCommand->insertArgument( $1 );
+  }
+  ;
+
+arg_list:
+  arg_list argument
+  | argument
+  ;
+
+argument:
+   WORD {
+    printf("   Yacc: insert argument \"%s\"\n", $1->c_str());
+    Command::_currentSimpleCommand->insertArgument( $1 );\
+  }
+  ;
+
+/*
 goal:
   commands
   ;
@@ -73,7 +158,7 @@ command_and_args:
 
 argument_list:
   argument_list argument
-  | /* can be empty */
+  | /* can be empty *//*
   ;
 
 argument:
@@ -96,9 +181,9 @@ iomodifier_opt:
     printf("   Yacc: insert output \"%s\"\n", $2->c_str());
     Shell::_currentCommand._outFile = $2;
   }
-  | /* can be empty */ 
+  | /* can be empty *//* 
   ;
-
+*/
 %%
 
 void
