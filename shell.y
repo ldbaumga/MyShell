@@ -91,6 +91,7 @@ io_modifier_list:
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
     Shell::_currentCommand._append = TRUE;
+  }
   | /* can be empty */
   ;
 
