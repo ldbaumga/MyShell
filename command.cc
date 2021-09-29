@@ -108,7 +108,9 @@ void Command::execute() {
     // For every simple command fork a new process
     // Setup i/o redirection
     // and call exec
-
+    for (auto & simplecommand: _simpleCommands) {
+        fprintf(stdout, "%s", simpleCommand);
+    }
     // Clear to prepare for next command
     clear();
 
