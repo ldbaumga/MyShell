@@ -109,7 +109,7 @@ void Command::execute() {
     // Setup i/o redirection
     // and call exec
     for (auto & simpleCommand: _simpleCommands) {
-        fprintf(stdout, "%s", simpleCommand);
+        fprintf(stdout, "%c", simpleCommand);
     }
     // Clear to prepare for next command
     clear();
