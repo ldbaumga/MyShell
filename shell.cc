@@ -5,15 +5,18 @@
 int yyparse(void);
 
 void Shell::prompt() {
-  if(isatty(3) == 0) {
-  printf("myshell>");
-  }
+  //printf("myshell>");
+  printf("boof>");
   fflush(stdout);
 }
 
 int main() {
-    Shell::prompt();
 
+
+  //Part 1B.4 Prevents the shell prompt from being printed in a file
+  if(isatty(3) == 0) {
+    Shell::prompt();
+  }
   yyparse();
 }
 
