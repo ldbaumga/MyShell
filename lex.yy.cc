@@ -383,8 +383,8 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[18] =
     {   0,
-        0,    0,   13,   11,    2,    1,   10,   11,    5,    4,
-        3,   11,    6,    7,    8,    9,    0
+        0,    0,   13,   11,    2,    1,   10,   11,    9,    7,
+        8,   11,    6,    5,    4,    3,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -800,61 +800,61 @@ case 3:
 YY_RULE_SETUP
 #line 35 "shell.l"
 {
-    return PIPE;
+    return GREATGREATAMP;
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 38 "shell.l"
+#line 39 "shell.l"
 {
-  return GREAT;
+    return GREATGREAT;
 }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 42 "shell.l"
+#line 43 "shell.l"
 {
-    return LESS;
+    return GREATAMP;
 }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 46 "shell.l"
+#line 47 "shell.l"
 {
     return TWOGREAT;
 }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 50 "shell.l"
+#line 52 "shell.l"
 {
-    return GREATAMP;
+  return GREAT;
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 54 "shell.l"
+#line 56 "shell.l"
 {
-    return GREATGREAT;
+    return PIPE;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 58 "shell.l"
+#line 60 "shell.l"
 {
-    return GREATGREATAMP;
+    return LESS;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 62 "shell.l"
+#line 64 "shell.l"
 {
     return AMPERSAND;
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 66 "shell.l"
+#line 68 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   yylval.cpp_string = new std::string(yytext);
@@ -863,7 +863,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 71 "shell.l"
+#line 73 "shell.l"
 ECHO;
 	YY_BREAK
 #line 870 "lex.yy.cc"
@@ -1883,4 +1883,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 71 "shell.l"
+#line 73 "shell.l"
