@@ -5,14 +5,14 @@
 int yyparse(void);
 
 void Shell::prompt() {
-  if(isatty(3) == 0) {
-    printf("myshell>");
-  }
+  printf("myshell>");
   fflush(stdout);
 }
 
 int main() {
-  Shell::prompt();
+  if(isatty(3) == 0) {
+    Shell::prompt();
+  }
   yyparse();
 }
 
