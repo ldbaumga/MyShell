@@ -59,7 +59,9 @@ command_line:
   | NEWLINE /*accepts empty cmd line*/ {
     Shell::_currentCommand.execute();
   }
-  | error NEWLINE{yyerrok;} /*error recovery*/
+  | error NEWLINE{yyerrok;
+    Shell::_currentCommand.execute();
+  } /*error recovery*/
   ;
 
 pipe_list:
