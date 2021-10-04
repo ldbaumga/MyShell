@@ -60,7 +60,7 @@ command_line:
     Shell::_currentCommand.execute();
   }
   | error NEWLINE{yyerrok;
-    Shell::_currentCommand.execute();
+    Shell::_currentCommand.execute();//May or may not need this
   } /*error recovery*/
   ;
 
