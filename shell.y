@@ -56,7 +56,9 @@ command_line:
     printf("   Yacc: Execute command\n");
     Shell::_currentCommand.execute();
   }
-  | NEWLINE /*accepts empty cmd line*/
+  | NEWLINE /*accepts empty cmd line*/ {
+    Shell::_currentCommand.execute();
+  }
   | error NEWLINE{yyerrok;} /*error recovery*/
   ;
 
