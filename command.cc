@@ -105,12 +105,18 @@ void Command::execute() {
     // Print contents of Command data structure
     print();
 
+    //// Default I/O ////
+    int defaultin = dup(0);
+    int defaultout = dup(1);
+    int defaulterr = dup(2);
     // Add execution here
     // For every simple command fork a new process
     // Setup i/o redirection
     // and call exec
+    int index = 0;
     for (auto & simpleCommand: _simpleCommands) {
-        fprintf(stdout, "%s\n", simpleCommand->_arguments[0]->c_str());
+        index += 1;
+
         int pid = fork();
         if (pid == -1) {
             perror("fork\n");
@@ -127,16 +133,21 @@ void Command::execute() {
             simpCmds[size] = NULL;
             execvp(simpCmds[0], simpCmds);
 
-            perror("execvp");
+            perror("xecvp");
             _exit(1);
-
-
         }
         //PARENT
         if (_background == false) {
             waitpid(pid, NULL, 0);
         }
     }
+
+    dup2(defaultin, 0);
+    dup2(defaultout, 1);
+    dup2(defaulterr, 2);
+    close(defaultin);
+    close(defaultout);
+    close(defaulterr);
     // Clear to prepare for next command
     clear();
 
