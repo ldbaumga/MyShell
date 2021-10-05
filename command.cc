@@ -135,6 +135,19 @@ void Command::execute() {
     }
     dup2(errFile, 2);
     close(errFile);
+    //Out File
+    if (_outFile) {
+        if (_append) {
+            outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+        } else {
+            outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+        }
+    } else {
+        outFile = dup(defaultout);
+    }
+    dup2(outFile, 1);
+    close(outFile);
+
 
     // Add execution here
     // For every simple command fork a new process
