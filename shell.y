@@ -53,7 +53,8 @@ command_list:
 
 command_line:
   pipe_list io_modifier_list background_opt NEWLINE {
-    printf("   Yacc: Execute command\n");
+    if (isatty(0))
+        printf("   Yacc: Execute command\n");
     Shell::_currentCommand.execute();
   }
   | NEWLINE /*accepts empty cmd line*/ {
