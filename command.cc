@@ -22,7 +22,8 @@
 #include <string.h>
 #include "command.hh"
 #include "shell.hh"
-
+#include <fcntl.h>
+#include <sys/stat.h>
 
 Command::Command() {
     // Initialize a new vector of Simple Commands
