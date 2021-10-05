@@ -53,8 +53,9 @@ command_list:
 
 command_line:
   pipe_list io_modifier_list background_opt NEWLINE {
-    if (isatty(0))
+    if (isatty(0)) {
         printf("   Yacc: Execute command\n");
+    }
     Shell::_currentCommand.execute();
   }
   | NEWLINE /*accepts empty cmd line*/ {
@@ -70,7 +71,9 @@ pipe_list:
 
 background_opt:
   AMPERSAND {
-    printf("   Yacc: backgorund true \n");
+    if (isatty(0)) {
+        printf("   Yacc: backgorund true \n");
+    }
     Shell::_currentCommand._background = true;
   }
   | /* can be empty */
@@ -78,29 +81,41 @@ background_opt:
 
 io_modifier_list:
   GREAT WORD {
-    printf("   Yacc: insert output \"%s\"\n", $2->c_str());
+    if (isatty(0)) {
+      printf("   Yacc: insert output \"%s\"\n", $2->c_str());
+    }
     Shell::_currentCommand._outFile = $2;
   }
   | LESS WORD {
-    printf("   Yacc: insert input \"%s\"\n", $2->c_str());
+    if (isatty(0)) {
+      printf("   Yacc: insert input \"%s\"\n", $2->c_str());
+    }
     Shell::_currentCommand._inFile = $2;
   }
   | TWOGREAT WORD {
-    printf("   Yacc: insert error \"%s\"\n", $2->c_str());
+    if (isatty(0)) {
+      printf("   Yacc: insert error \"%s\"\n", $2->c_str());
+    }
     Shell::_currentCommand._errFile = $2;
   }
   | GREATAMP WORD {
-    printf("   Yacc: insert output and error \"%s\"\n", $2->c_str());
+    if (isatty(0)) {
+      printf("   Yacc: insert output and error \"%s\"\n", $2->c_str());
+    }
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
   }
   | GREATGREAT WORD {
-    printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
+    if (isatty(0)) {
+      printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
+    }
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._append = true;
   }
   | GREATGREATAMP WORD {
-    printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
+    if (isatty(0)) {
+      printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
+    }
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
     Shell::_currentCommand._append = true;
@@ -126,7 +141,9 @@ arg_list:
 
 command_word:
   WORD {
-    printf("   Yacc: insert command \"%s\"\n", $1->c_str());
+    if (isatty(0)) {
+      printf("   Yacc: insert command \"%s\"\n", $1->c_str());
+    }
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( $1 );
   }
@@ -134,7 +151,9 @@ command_word:
 
 argument:
    WORD {
-    printf("   Yacc: insert argument \"%s\"\n", $1->c_str());
+    if (isatty(0)) {
+      printf("   Yacc: insert argument \"%s\"\n", $1->c_str());
+    }
     Command::_currentSimpleCommand->insertArgument( $1 );\
   }
   ;
