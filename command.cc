@@ -113,7 +113,7 @@ void Command::execute() {
         int pid = fork();
         if (pid == -1) {
             perror("fork\n");
-            exit(2) //May need to change
+            exit(2); //May need to change
         }
 
         if (pid == 0) {
