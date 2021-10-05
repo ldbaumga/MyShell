@@ -123,6 +123,8 @@ void Command::execute() {
     } else {
         inFile = dup(defaultin);
     }
+    dup2(inFile, 0);
+    close(inFile);
    //Error file
     if (_errFile) {
         if (_append) {
