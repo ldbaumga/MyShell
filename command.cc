@@ -133,7 +133,7 @@ void Command::execute() {
 
         } else {
             //PARENT
-            if (_simpleCommands->_background == false) {
+            if (_simpleCommands._background == false) {
                 waitpid(pid, 0, 0);
             }
         }
