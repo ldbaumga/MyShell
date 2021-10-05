@@ -120,6 +120,10 @@ void Command::execute() {
     //In File
     if (_inFile) {
         inFile = open(_inFile->c_str(), O_RDONLY);
+        if (inFile < 0) {
+            perror("open");
+            exit(1);
+        }
     } else {
         inFile = dup(defaultin);
     }
@@ -131,6 +135,10 @@ void Command::execute() {
             errFile = open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
         } else {
             errFile = open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+        }
+        if (errFile < 0) {
+            perror("open");
+            exit(1);
         }
     } else {
         errFile = dup(defaulterr);
@@ -144,7 +152,10 @@ void Command::execute() {
         } else {
             outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
         }
-    } else {
+        if (outFile < 0) {
+            perror("open");
+            exit(1);
+        }    } else {
         outFile = dup(defaultout);
     }
     dup2(outFile, 1);
