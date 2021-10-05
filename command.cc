@@ -109,6 +109,10 @@ void Command::execute() {
     int defaultin = dup(0);
     int defaultout = dup(1);
     int defaulterr = dup(2);
+
+    int inFile = 0;
+    int outFile = 0;
+    int errFile = 0;
     // Add execution here
     // For every simple command fork a new process
     // Setup i/o redirection
@@ -118,15 +122,22 @@ void Command::execute() {
         index += 1;
 
         ////File Redirection ////
-        if (_inFile) {
 
-        } else if (_outFile) {
+        //In File
+        if (_inFile) {
+        }
+        //Out File
+        if (_outFile) {
              if (_append) {
 
             } else {
-
+                outFile = open(_outFile, O_TRUNC, 0664);
+                dup2(outFile, 1);
+                close(outFile);
             }
-        } else if (_errFile) {
+        }
+        //Error file
+        if (_errFile) {
             if (_append) {
 
             } else {
