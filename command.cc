@@ -104,7 +104,9 @@ void Command::execute() {
     }
 
     // Print contents of Command data structure
-    print();
+    if (isatty(0)) {
+      print();
+    }
 
     //// Default I/O ////
     int defaultin = dup(0);
