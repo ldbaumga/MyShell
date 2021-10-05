@@ -121,10 +121,10 @@ void Command::execute() {
             int size = simpleCommand->_arguments.size();
             char ** simpCmds = new char*[size + 1];
             for (int i = 0; i < size; i++) {
-                simpCmds[a] = strdup(simpleCommand->_arguments[i]->c_str());
+                simpCmds[i] = strdup(simpleCommand->_arguments[i]->c_str());
             }
             simpCmds[size] = NULL;
-            execvp(simpCmds[0], simpCmd);
+            execvp(simpCmds[0], simpCmds);
 
             perror("execvp");
             _exit(1);
@@ -132,7 +132,7 @@ void Command::execute() {
 
         } else {
             //PARENT
-            if (simpleCommand._background == false) {
+            if (simpleCommand->_background == false) {
                 waitpid(pid, 0, 0);
             }
         }
