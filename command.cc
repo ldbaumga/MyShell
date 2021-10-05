@@ -131,12 +131,12 @@ void Command::execute() {
             _exit(1);
 
 
-        } else {
+        }// else {
             //PARENT
             if (!_background == false) {
                 waitpid(pid, 0, 0);
             }
-        }
+       // }
     }
     // Clear to prepare for next command
     clear();
