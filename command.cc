@@ -18,7 +18,8 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <iostream>
-
+#include <sys/wait.h>
+#include <string.h>
 #include "command.hh"
 #include "shell.hh"
 
