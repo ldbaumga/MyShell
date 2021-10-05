@@ -120,7 +120,7 @@ void Command::execute() {
         ////File Redirection ////
         if (_inFile) {
         } else if (_outFile) {
-            fprintf(stderr, "b");
+            fprintf(stderr, "adfadafafda \n");
         } else if (_errFile) {
 
         }
