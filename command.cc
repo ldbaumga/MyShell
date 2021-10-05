@@ -119,9 +119,8 @@ void Command::execute() {
 
         ////File Redirection ////
         if (_inFile) {
-            fprintf(stderr, "b");
         } else if (_outFile) {
-
+            fprintf(stderr, "b");
         } else if (_errFile) {
 
         }
