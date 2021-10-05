@@ -134,7 +134,7 @@ void Command::execute() {
         }// else {
             //PARENT
             if (!_background == false) {
-                waitpid(pid, 0, 0);
+                waitpid(pid, NULL, 0);
             }
        // }
     }
