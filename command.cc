@@ -133,8 +133,8 @@ void Command::execute() {
     } else {
         errFile = dup(defaulterr);
     }
-
-
+    dup2(errFile, 2);
+    close(errFile);
 
     // Add execution here
     // For every simple command fork a new process
