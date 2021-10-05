@@ -92,6 +92,7 @@ void Command::print() {
             _inFile?_inFile->c_str():"default",
             _errFile?_errFile->c_str():"default",
             _background?"YES":"NO");
+            _append?"YES":"NO");
     printf( "\n\n" );
 }
 
@@ -119,10 +120,19 @@ void Command::execute() {
 
         ////File Redirection ////
         if (_inFile) {
-        } else if (_outFile) {
-            fprintf(stderr, "adfadafafda \n");
-        } else if (_errFile) {
 
+        } else if (_outFile) {
+             if (_append) {
+
+            } else {
+
+            }
+        } else if (_errFile) {
+            if (_append) {
+
+            } else {
+
+            }
         }
 
         int pid = fork();
