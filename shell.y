@@ -13,7 +13,7 @@
 %code requires 
 {
 #include <string>
-
+#include <unistd.h>
 #if __cplusplus > 199711L
 #define register      // Deprecated in C++11 so remove the keyword
 #endif
