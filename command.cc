@@ -113,6 +113,28 @@ void Command::execute() {
     int inFile = 0;
     int outFile = 0;
     int errFile = 0;
+
+    ////File Redirection ////
+
+    //In File
+    if (_inFile) {
+        inFile = open(_inFile->c_str(), O_RDONLY);
+    } else {
+        inFile = dup(defaultin);
+    }
+   //Error file
+    if (_errFile) {
+        if (_append) {
+            errFile = open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+        } else {
+            errFile = open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+        }
+    } else {
+        errFile = dup(defaulterr);
+    }
+
+
+
     // Add execution here
     // For every simple command fork a new process
     // Setup i/o redirection
@@ -120,32 +142,8 @@ void Command::execute() {
     int index = 0;
     for (auto & simpleCommand: _simpleCommands) {
         index += 1;
-
-        ////File Redirection ////
-
-        //In File
-        if (_inFile) {
-        }
-        //Out File
-        if (_outFile) {
-             if (_append) {
-
-            } else {
-                outFile = open(_outFile, O_TRUNC, 0664);
-                dup2(outFile, 1);
-                close(outFile);
-            }
-        }
-        //Error file
-        if (_errFile) {
-            if (_append) {
-
-            } else {
-
-            }
-        }
-
         int pid = fork();
+
         if (pid == -1) {
             perror("fork\n");
             exit(2); //May need to change
