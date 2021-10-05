@@ -54,16 +54,16 @@ void Command::clear() {
     if ( _outFile ) {
         delete _outFile;
     }
-    _outFile = NULL;
 
-    if ( _inFile ) {
+    if ( _inFile != _outFile) {
         delete _inFile;
     }
-    _inFile = NULL;
 
-    if ( _errFile ) {
+    if ( _errFile != _outFile) {
         delete _errFile;
     }
+    _outFile = NULL;
+    _inFile = NULL;
     _errFile = NULL;
 
     _background = false;
