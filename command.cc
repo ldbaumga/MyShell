@@ -16,7 +16,7 @@
 
 #include <cstdio>
 #include <cstdlib>
-
+#include <unistd.h>
 #include <iostream>
 
 #include "command.hh"
@@ -110,6 +110,32 @@ void Command::execute() {
     // and call exec
     for (auto & simpleCommand: _simpleCommands) {
         fprintf(stdout, "%s\n", simpleCommand->_arguments[0]->c_str());
+        int pid = fork();
+        if (pid == -1) {
+            perror("fork\n");
+            exit(2) //May need to change
+        }
+
+        if (pid == 0) {
+            //CHILD
+            int size = simpleCommand->_arguments.size();
+            char ** simpCmds = new char*[size + 1];
+            for (int i = 0; i < size; i++) {
+                simpCmds[a] = strdup(simpleCommand->_arguments[i]->c_str());
+            }
+            simpCmds[size] = NULL;
+            execvp(simpCmds[0], simpCmd);
+
+            perror("execvp");
+            _exit(1);
+
+
+        } else {
+            //PARENT
+            if (simpleCommand._background == false) {
+                waitpid(pid, 0, 0);
+            }
+        }
     }
     // Clear to prepare for next command
     clear();

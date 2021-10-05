@@ -132,6 +132,29 @@ int main(int argc, char **argv)
 
 	}
 
+  2 #include <stdlib.h>¬
+  3 #include <unistd.h>¬
+  4 #include <wait.h>¬
+  5 #include <sys/types.h>¬
+  6 #include <sys/stat.h>¬
+  7 #include <fcntl.h>¬
+  8 ¬
+  9 const char * usage = ""¬
+ 10 "Usage:\n"¬
+ 11 "    cat_grep file-name word outfile\n"¬
+ 12 "\n"¬
+ 13 "    It does something similar to the shell command:\n"¬
+ 14 "        csh> cat file | grep word > outfile\n"¬
+ 15 "\n"¬
+ 16 "Example:\n"¬
+ 17 "    cat_grep command.cc Command out\n"¬
+ 18 "    cat out\n\n";¬
+ 19 ¬
+ 20 const char *cat = "cat";¬
+ 21 const char *grep = "grep";¬
+cat_grep.cc                                                   1,0-1          Top
+"cat_grep.cc" 152L, 2918C
+
 	// Restore input, output, and error
 
 	dup2( defaultin, 0 );
