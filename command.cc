@@ -117,6 +117,15 @@ void Command::execute() {
     for (auto & simpleCommand: _simpleCommands) {
         index += 1;
 
+        ////File Redirection ////
+        if (_inFile) {
+            fprintf(stderr, "b");
+        } else if (_outFile) {
+
+        } else if (_errFile) {
+
+        }
+
         int pid = fork();
         if (pid == -1) {
             perror("fork\n");
@@ -141,13 +150,14 @@ void Command::execute() {
             waitpid(pid, NULL, 0);
         }
     }
-
+    //// Resetting File I/O ////
     dup2(defaultin, 0);
     dup2(defaultout, 1);
     dup2(defaulterr, 2);
     close(defaultin);
     close(defaultout);
     close(defaulterr);
+
     // Clear to prepare for next command
     clear();
 
