@@ -91,7 +91,7 @@ void Command::print() {
             _outFile?_outFile->c_str():"default",
             _inFile?_inFile->c_str():"default",
             _errFile?_errFile->c_str():"default",
-            _background?"YES":"NO");
+            _background?"YES":"NO";
             _append?"YES":"NO");
     printf( "\n\n" );
 }
