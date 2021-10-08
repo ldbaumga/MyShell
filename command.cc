@@ -119,17 +119,7 @@ void Command::execute() {
 
     ////File Redirection ////
 
-    //In File
-    if (_inFile) {
-        inFile = open(_inFile->c_str(), O_RDONLY);
-        if (inFile < 0) {
-            perror("open");
-            exit(1); // Delete If we don't want to exit shell?
-        }
-    } else {
-        inFile = dup(defaultin);
-    }
-  //Error file
+ //Error file
    /*
     if (_errFile) {
         if (_append) {
@@ -157,10 +147,8 @@ void Command::execute() {
         index += 1;
 
         //// PIPES //// ~Slide 261
-        dup2(inFile, 0);
-        close(inFile);
 
-         //Out File
+        //Out File
          //If it is last commnand, Set the output to the file, or stdout
         if (index == _simpleCommands.size()) {
             if (_outFile) {
@@ -176,13 +164,31 @@ void Command::execute() {
             } else {
                 outFile = dup(defaultout);
             }
-       } else {
+        } else if (index == 1) {
+            //Else, if its the first command, we set the input to the
+            //designated input
+            //In File
+            if (_inFile) {
+                inFile = open(_inFile->c_str(), O_RDONLY);
+                if (inFile < 0) {
+                    perror("open");
+                    exit(1); // Delete If we don't want to exit shell?
+                }
+            } else {
+                inFile = dup(defaultin);
+            }
+        } else {
             //Otherwise, we direct the output to pipes
         }
 
+        dup2(inFile, 0);
+        close(inFile);
+
         dup2(outFile, 1);
         close(outFile);
-         int pid = fork();
+
+
+        int pid = fork();
 
         if (pid == -1) {
             perror("fork\n");
