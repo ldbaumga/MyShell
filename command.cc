@@ -124,14 +124,13 @@ void Command::execute() {
         inFile = open(_inFile->c_str(), O_RDONLY);
         if (inFile < 0) {
             perror("open");
-            exit(1);
+            exit(1); // Delete If we don't want to exit shell?
         }
     } else {
         inFile = dup(defaultin);
     }
-    dup2(inFile, 0);
-    close(inFile);
-   //Error file
+  //Error file
+   /*
     if (_errFile) {
         if (_append) {
             errFile = open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
@@ -146,22 +145,7 @@ void Command::execute() {
         errFile = dup(defaulterr);
     }
     dup2(errFile, 2);
-    close(errFile);
-    //Out File
-    if (_outFile) {
-        if (_append) {
-            outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
-        } else {
-            outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
-        }
-        if (outFile < 0) {
-            perror("open");
-            exit(1);
-        }    } else {
-        outFile = dup(defaultout);
-    }
-    dup2(outFile, 1);
-    close(outFile);
+    close(errFile); */
 
 
     // Add execution here
@@ -171,12 +155,37 @@ void Command::execute() {
     int index = 0;
     for (auto & simpleCommand: _simpleCommands) {
         index += 1;
+
+        //// PIPES //// ~Slide 261
+        dup2(inFile, 0);
+        close(inFile);
+         //Out File
+        if (index == _simpleCommands.length) {
+
+        }
+        if (_outFile) {
+            if (_append) {
+                outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+            } else {
+                outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+            }
+            if (outFile < 0) {
+                perror("open");
+                exit(1);
+            }
+        } else {
+            outFile = dup(defaultout);
+        }
+        dup2(outFile, 1);
+        close(outFile);
+
         int pid = fork();
 
         if (pid == -1) {
             perror("fork\n");
-            exit(2); //May need to change
+            exit(2);
         }
+
 
         if (pid == 0) {
             //CHILD
