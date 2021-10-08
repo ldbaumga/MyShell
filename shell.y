@@ -59,10 +59,10 @@ command_line:
     Shell::_currentCommand.execute();
   }
   | NEWLINE /*accepts empty cmd line*/ {
-    Shell::Prompt;
+    Shell::prompt();
   }
   | error NEWLINE{yyerrok;
-    Shell::Prompt;} /*error recovery*/
+    Shell::prompt();} /*error recovery*/
   ;
 
 pipe_list:
