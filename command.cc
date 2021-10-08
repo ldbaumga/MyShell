@@ -190,12 +190,14 @@ void Command::execute() {
 
             perror("xecvp");
             _exit(1);
-        }
+        } // End child
+
         //PARENT
         if (_background == false) {
             waitpid(pid, NULL, 0);
         }
-    }
+    } // End simpleCommand Loop
+
     //// Resetting File I/O ////
     dup2(defaultin, 0);
     dup2(defaultout, 1);
@@ -209,6 +211,6 @@ void Command::execute() {
 
     // Print new prompt
     Shell::prompt();
-}
+} // End Command::execute()
 
 SimpleCommand * Command::_currentSimpleCommand;

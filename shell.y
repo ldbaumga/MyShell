@@ -62,6 +62,7 @@ command_line:
     Shell::prompt();
   }
   | error NEWLINE{yyerrok;
+    Shell::_currentCommand.clean;
     Shell::prompt();} /*error recovery*/
   ;
 

@@ -1745,7 +1745,7 @@ void
 yyerror(const char * s)
 {
   if (isatty(0)) {
-    fprintf(stderr,"%s", s);
+    fprintf(stderr,"%s\n", s);
   }
 }
 
