@@ -159,27 +159,30 @@ void Command::execute() {
         //// PIPES //// ~Slide 261
         dup2(inFile, 0);
         close(inFile);
-         //Out File
-        if (index == _simpleCommands.size()) {
 
-        }
-        if (_outFile) {
-            if (_append) {
-                outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+         //Out File
+         //If it is last commnand, Set the output to the file, or stdout
+        if (index == _simpleCommands.size()) {
+            if (_outFile) {
+                if (_append) {
+                    outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+                } else {
+                    outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+                }
+                if (outFile < 0) {
+                    perror("open");
+                    exit(1);
+                }
             } else {
-                outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+                outFile = dup(defaultout);
             }
-            if (outFile < 0) {
-                perror("open");
-                exit(1);
-            }
-        } else {
-            outFile = dup(defaultout);
+       } else {
+            //Otherwise, we direct the output to pipes
         }
+
         dup2(outFile, 1);
         close(outFile);
-
-        int pid = fork();
+         int pid = fork();
 
         if (pid == -1) {
             perror("fork\n");
