@@ -1371,7 +1371,7 @@ yyreduce:
   case 6:
 #line 61 "shell.y"
                                        {
-    Shell::Prompt;
+    Shell::prompt();
   }
 #line 1377 "y.tab.cc"
     break;
@@ -1379,7 +1379,7 @@ yyreduce:
   case 7:
 #line 64 "shell.y"
                  {yyerrok;
-    Shell::Prompt;}
+    Shell::prompt();}
 #line 1384 "y.tab.cc"
     break;
 
