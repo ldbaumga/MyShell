@@ -59,9 +59,10 @@ command_line:
     Shell::_currentCommand.execute();
   }
   | NEWLINE /*accepts empty cmd line*/ {
-    Shell::_currentCommand.execute();
+    Shell::Prompt;
   }
-  | error NEWLINE{yyerrok;} /*error recovery*/
+  | error NEWLINE{yyerrok;
+    Shell::Prompt;} /*error recovery*/
   ;
 
 pipe_list:
@@ -163,7 +164,9 @@ argument:
 void
 yyerror(const char * s)
 {
-  fprintf(stderr,"%s", s);
+  if (isatty(0)) {
+    fprintf(stderr,"%s", s);
+  }
 }
 
 #if 0
