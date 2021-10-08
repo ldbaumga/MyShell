@@ -160,7 +160,7 @@ void Command::execute() {
         dup2(inFile, 0);
         close(inFile);
          //Out File
-        if (index == _simpleCommands.length) {
+        if (index == _simpleCommands.size()) {
 
         }
         if (_outFile) {
