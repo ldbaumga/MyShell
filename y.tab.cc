@@ -1379,7 +1379,7 @@ yyreduce:
   case 7:
 #line 64 "shell.y"
                  {yyerrok;
-    Shell::_currentCommand.clean;
+    Shell::_currentCommand.clear;
     Shell::prompt();}
 #line 1385 "y.tab.cc"
     break;
