@@ -118,6 +118,16 @@ void Command::execute() {
     int errFile = 0;
 
     ////File Redirection ////
+        //In File
+        if (_inFile) {
+           inFile = open(_inFile->c_str(), O_RDONLY);
+            if (inFile < 0) {
+                perror("open");
+                exit(1); // Delete If we don't want to exit shell?
+            }
+        } else {
+           inFile = dup(defaultin);
+        }
 
  //Error file
    /*
@@ -167,17 +177,7 @@ void Command::execute() {
         } else if (index == 1) {
             //Else, if its the first command, we set the input to the
             //designated input
-            //In File
-            if (_inFile) {
-                inFile = open(_inFile->c_str(), O_RDONLY);
-                if (inFile < 0) {
-                    perror("open");
-                    exit(1); // Delete If we don't want to exit shell?
-                }
-            } else {
-                inFile = dup(defaultin);
-            }
-        } else {
+       } else {
             //Otherwise, we direct the output to pipes
         }
 
