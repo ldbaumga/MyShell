@@ -1785,9 +1785,9 @@ yyerror(const char * s)
 
 void ambig() {
   fprintf(stderr, "Ambiguous output redirect.\n");
-  Shell::_currentCommand.clear();
-  Shell::prompt();
-} /*error recovery*/
+//  Shell::_currentCommand.clear();
+//  Shell::prompt();
+}
 
 
 #if 0

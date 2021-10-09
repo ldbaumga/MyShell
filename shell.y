@@ -160,7 +160,6 @@ io_modifier:
     Shell::_currentCommand._errFile = $2;
     Shell::_currentCommand._append = true;
   }
-  | /* can be empty */
   ;
 
 cmd_and_args:
