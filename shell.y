@@ -83,6 +83,11 @@ background_opt:
   ;
 
 io_modifier_list:
+  io_modifier_list io_modifier
+  | /* empty */
+  ;
+
+io_modifier:
   GREAT WORD {
     if (isatty(0)) {
       printf("   Yacc: insert output \"%s\"\n", $2->c_str());
