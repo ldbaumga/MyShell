@@ -123,7 +123,7 @@ void Command::execute() {
            inFile = open(_inFile->c_str(), O_RDONLY);
             if (inFile < 0) {
                 perror("open");
-                exit(1); // Delete If we don't want to exit shell?
+                _exit(1); // Delete If we don't want to exit shell?
             }
         } else {
            inFile = dup(defaultin);
