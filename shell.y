@@ -36,7 +36,6 @@
 #include "shell.hh"
 
 void yyerror(const char * s);
-void ambig();
 int yylex();
 
 %}
@@ -94,8 +93,7 @@ io_modifier:
     }
 
     if (Shell::_currentCommand._outFile != NULL) {
-        ambig();
-        return;
+        Shell::_currentCommand._ambig = true;
     }
 
     Shell::_currentCommand._outFile = $2;
@@ -106,7 +104,7 @@ io_modifier:
     }
 
     if (Shell::_currentCommand._inFile != NULL) {
-        ambig();
+         Shell::_currentCommand._ambig = true;
     }
 
     Shell::_currentCommand._inFile = $2;
@@ -117,7 +115,7 @@ io_modifier:
     }
 
     if (Shell::_currentCommand._errFile != NULL) {
-        ambig();
+         Shell::_currentCommand._ambig = true;
     }
 
     Shell::_currentCommand._errFile = $2;
@@ -129,7 +127,7 @@ io_modifier:
 
     if (Shell::_currentCommand._outFile != NULL
         || Shell::_currentCommand._errFile != NULL) {
-        ambig();
+         Shell::_currentCommand._ambig = true;
     }
 
     Shell::_currentCommand._outFile = $2;
@@ -141,7 +139,7 @@ io_modifier:
     }
 
     if (Shell::_currentCommand._outFile != NULL) {
-        ambig();
+         Shell::_currentCommand._ambig = true;
     }
 
     Shell::_currentCommand._outFile = $2;
@@ -154,7 +152,7 @@ io_modifier:
 
     if (Shell::_currentCommand._outFile != NULL
         || Shell::_currentCommand._errFile != NULL) {
-        ambig();
+         Shell::_currentCommand._ambig = true;
     }
 
      Shell::_currentCommand._outFile = $2;
@@ -205,13 +203,6 @@ yyerror(const char * s)
 {
   fprintf(stderr,"%s\n", s);
 }
-
-void ambig() {
-  fprintf(stderr, "Ambiguous output redirect.\n");
-  Shell::_currentCommand.clear();
-  Shell::prompt();
-}
-
 
 #if 0
 main()

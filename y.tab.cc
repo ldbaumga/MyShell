@@ -548,8 +548,8 @@ static const yytype_int8 yytranslate[] =
 static const yytype_uint8 yyrline[] =
 {
        0,    47,    47,    51,    52,    56,    62,    65,    71,    72,
-      76,    82,    86,    87,    91,   102,   113,   124,   137,   149,
-     166,   170,   177,   178,   182,   192
+      76,    82,    86,    87,    91,   103,   114,   125,   138,   150,
+     167,   171,   178,   179,   183,   193
 };
 #endif
 
@@ -1407,15 +1407,16 @@ yyreduce:
 
     if (Shell::_currentCommand._outFile != NULL) {
         ambig();
+        return;
     }
 
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
   }
-#line 1415 "y.tab.cc"
+#line 1416 "y.tab.cc"
     break;
 
   case 15:
-#line 102 "shell.y"
+#line 103 "shell.y"
               {
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1427,11 +1428,11 @@ yyreduce:
 
     Shell::_currentCommand._inFile = (yyvsp[0].cpp_string);
   }
-#line 1431 "y.tab.cc"
+#line 1432 "y.tab.cc"
     break;
 
   case 16:
-#line 113 "shell.y"
+#line 114 "shell.y"
                   {
     if (isatty(0)) {
       printf("   Yacc: insert error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1443,11 +1444,11 @@ yyreduce:
 
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
   }
-#line 1447 "y.tab.cc"
+#line 1448 "y.tab.cc"
     break;
 
   case 17:
-#line 124 "shell.y"
+#line 125 "shell.y"
                   {
     if (isatty(0)) {
       printf("   Yacc: insert output and error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1461,11 +1462,11 @@ yyreduce:
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
   }
-#line 1465 "y.tab.cc"
+#line 1466 "y.tab.cc"
     break;
 
   case 18:
-#line 137 "shell.y"
+#line 138 "shell.y"
                     {
     if (isatty(0)) {
       printf("   Yacc: insert output and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1478,11 +1479,11 @@ yyreduce:
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
     Shell::_currentCommand._append = true;
   }
-#line 1482 "y.tab.cc"
+#line 1483 "y.tab.cc"
     break;
 
   case 19:
-#line 149 "shell.y"
+#line 150 "shell.y"
                        {
     if (isatty(0)) {
       printf("   Yacc: insert output and error and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1497,29 +1498,29 @@ yyreduce:
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
     Shell::_currentCommand._append = true;
   }
-#line 1501 "y.tab.cc"
+#line 1502 "y.tab.cc"
     break;
 
   case 20:
-#line 166 "shell.y"
+#line 167 "shell.y"
                         {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
   }
-#line 1510 "y.tab.cc"
+#line 1511 "y.tab.cc"
     break;
 
   case 21:
-#line 170 "shell.y"
+#line 171 "shell.y"
                  {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
   }
-#line 1519 "y.tab.cc"
+#line 1520 "y.tab.cc"
     break;
 
   case 24:
-#line 182 "shell.y"
+#line 183 "shell.y"
        {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1527,22 +1528,22 @@ yyreduce:
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );
   }
-#line 1531 "y.tab.cc"
+#line 1532 "y.tab.cc"
     break;
 
   case 25:
-#line 192 "shell.y"
+#line 193 "shell.y"
         {
     if (isatty(0)) {
       printf("   Yacc: insert argument \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );\
   }
-#line 1542 "y.tab.cc"
+#line 1543 "y.tab.cc"
     break;
 
 
-#line 1546 "y.tab.cc"
+#line 1547 "y.tab.cc"
 
       default: break;
     }
@@ -1774,7 +1775,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 200 "shell.y"
+#line 201 "shell.y"
 
 
 void
@@ -1785,8 +1786,8 @@ yyerror(const char * s)
 
 void ambig() {
   fprintf(stderr, "Ambiguous output redirect.\n");
-//  Shell::_currentCommand.clear();
-//  Shell::prompt();
+  Shell::_currentCommand.clear();
+  Shell::prompt();
 }
 
 

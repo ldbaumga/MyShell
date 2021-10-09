@@ -34,6 +34,7 @@ Command::Command() {
     _errFile = NULL;
     _background = false;
     _append = false;
+    _ambig = false;
 }
 
 void Command::insertSimpleCommand( SimpleCommand * simpleCommand ) {
@@ -70,6 +71,7 @@ void Command::clear() {
 
     _append = false;
 
+    _ambig = false;
 }
 
 void Command::print() {
@@ -100,6 +102,12 @@ void Command::print() {
 void Command::execute() {
     // Don't do anything if there are no simple commands
     if ( _simpleCommands.size() == 0 ) {
+        Shell::prompt();
+        return;
+    }
+    //IF the output is ambiguous, print and exit
+    if (_simpleCommands._ambig) {
+        fprintf(stderr, "Ambiguous redirect.\n");
         Shell::prompt();
         return;
     }
