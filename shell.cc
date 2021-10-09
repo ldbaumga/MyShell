@@ -5,7 +5,9 @@
 int yyparse(void);
 
 void Shell::prompt() {
-  printf("myshell>");
+    if(isatty(0)) {
+      printf("myshell>");
+    }
   fflush(stdout);
 }
 
@@ -13,9 +15,7 @@ int main() {
 
 
   //Part 1B.4 Prevents the shell prompt from being printed in a file
-  if(isatty(0)) {
-    Shell::prompt();
-  }
+  Shell::prompt();
   yyparse();
 }
 
