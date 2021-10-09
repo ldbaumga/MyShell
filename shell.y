@@ -210,7 +210,8 @@ void ambig() {
   fprintf(stderr, "Ambiguous output redirect.\n");
   Shell::_currentCommand.clear();
   Shell::prompt();
-}
+} /*error recovery*/
+
 
 #if 0
 main()
