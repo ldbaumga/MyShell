@@ -180,7 +180,7 @@ int yyparse (void);
 #include <cstdio>
 #include "shell.hh"
 
-void yyerror(const char * s);
+
 void ambig();
 int yylex();
 
@@ -1402,7 +1402,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert output \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentCommand._outFile != null) {
+    if (Shell::_currentCommand._outFile != NULL) {
         ambig();
     }
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
@@ -1416,7 +1416,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentCommand._inFile != null) {
+    if (Shell::_currentCommand._inFile != NULL) {
         ambig();
     }
     Shell::_currentCommand._inFile = (yyvsp[0].cpp_string);
@@ -1430,7 +1430,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentCommand._errFile != null) {
+    if (Shell::_currentCommand._errFile != NULL) {
         ambig();
     }
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
@@ -1444,8 +1444,8 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert output and error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentCommand._outFile != null
-        || Shell::_currentCommand._errFile != null) {
+    if (Shell::_currentCommand._outFile != NULL
+        || Shell::_currentCommand._errFile != NULL) {
         ambig();
     }
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
@@ -1460,7 +1460,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert output and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentCommand._outFile != null) {
+    if (Shell::_currentCommand._outFile != NULL) {
         ambig();
     }
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
@@ -1475,8 +1475,8 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert output and error and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentCommand._outFile != null
-        || Shell::_currentCommand._errFile != null) {
+    if (Shell::_currentCommand._outFile != NULL
+        || Shell::_currentCommand._errFile != NULL) {
         ambig();
     }
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
