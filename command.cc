@@ -123,7 +123,10 @@ void Command::execute() {
            inFile = open(_inFile->c_str(), O_RDONLY);
             if (inFile < 0) {
                 perror("open");
-                _exit(1); // Delete If we don't want to exit shell?
+                clear();
+                Shell::prompt();
+                return;
+                //exit(1); // Delete If we don't want to exit shell?
             }
         } else {
            inFile = dup(defaultin);
@@ -138,7 +141,10 @@ void Command::execute() {
             }
             if (errFile < 0) {
                 perror("open");
-                exit(1);
+                clear();
+                Shell::prompt();
+                return;
+                //exit(1);
             }
         } else {
             errFile = dup(defaulterr);
@@ -171,7 +177,10 @@ void Command::execute() {
                 }
                 if (outFile < 0) {
                     perror("open");
-                    _exit(1);
+                    clear();
+                    Shell::prompt();
+                    return;
+                    //exit(1);
                 }
             } else {
                 outFile = dup(defaultout);
