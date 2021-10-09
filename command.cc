@@ -129,23 +129,22 @@ void Command::execute() {
            inFile = dup(defaultin);
         }
 
- //Error file
-   /*
-    if (_errFile) {
-        if (_append) {
-            errFile = open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+        //Error file
+        if (_errFile) {
+            if (_append) {
+                errFile = open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+            } else {
+                errFile = open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+            }
+            if (errFile < 0) {
+                perror("open");
+                exit(1);
+            }
         } else {
-            errFile = open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+            errFile = dup(defaulterr);
         }
-        if (errFile < 0) {
-            perror("open");
-            exit(1);
-        }
-    } else {
-        errFile = dup(defaulterr);
-    }
-    dup2(errFile, 2);
-    close(errFile); */
+        dup2(errFile, 2);
+        close(errFile); */
 
 
     // Add execution here
@@ -220,10 +219,10 @@ void Command::execute() {
     //// Resetting File I/O ////
     dup2(defaultin, 0);
     dup2(defaultout, 1);
-    //dup2(defaulterr, 2);
+    dup2(defaulterr, 2);
     close(defaultin);
     close(defaultout);
-    //close(defaulterr);
+    close(defaulterr);
 
     // Clear to prepare for next command
     clear();
