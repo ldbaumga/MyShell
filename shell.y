@@ -96,9 +96,9 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._inFile != NULL) {
-        ambig();
-    }
+//    if (Shell::_currentCommand._inFile != NULL) {
+//        ambig();
+//    }
     Shell::_currentCommand._inFile = $2;
   }
   | TWOGREAT WORD {
