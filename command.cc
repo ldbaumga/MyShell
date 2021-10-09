@@ -107,7 +107,7 @@ void Command::execute() {
     }
     //IF the output is ambiguous, print and exit
     if (_ambig) {
-        fprintf(stderr, "Aguous output redirect.\n");
+        fprintf(stderr, "Ambiguous output redirect.\n");
         Shell::prompt();
         return;
     }
