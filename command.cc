@@ -144,7 +144,7 @@ void Command::execute() {
             errFile = dup(defaulterr);
         }
         dup2(errFile, 2);
-        close(errFile); */
+        close(errFile);
 
 
     // Add execution here
