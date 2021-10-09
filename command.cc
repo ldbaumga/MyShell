@@ -201,7 +201,10 @@ void Command::execute() {
 
         if (pid == -1) {
             perror("fork\n");
-            _exit(2);
+            clear();
+            Shell::prompt();
+            return;
+            //_exit(2);
         }
 
 
@@ -216,7 +219,10 @@ void Command::execute() {
             execvp(simpCmds[0], simpCmds);
 
             perror("xecvp");
-            _exit(1);
+            clear();
+            Shell::prompt();
+            return;
+            //_exit(1);
         } // End child
 
         //PARENT
