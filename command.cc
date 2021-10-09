@@ -179,11 +179,7 @@ void Command::execute() {
             int fdpipe[2];
             pipe(fdpipe);
             outFile = fdpipe[1];
-            if (index != 1) {
-                //If it is the first command, we do not change the inputs as we
-                //did that earlier
-                inFile = fdpipe[0];
-            }
+            inFile = fdpipe[0];
         }
 
         dup2(inFile, 0);
@@ -224,10 +220,10 @@ void Command::execute() {
     //// Resetting File I/O ////
     dup2(defaultin, 0);
     dup2(defaultout, 1);
-    dup2(defaulterr, 2);
+    //dup2(defaulterr, 2);
     close(defaultin);
     close(defaultout);
-    close(defaulterr);
+    //close(defaulterr);
 
     // Clear to prepare for next command
     clear();
