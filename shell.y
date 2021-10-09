@@ -60,7 +60,7 @@ command_line:
     Shell::_currentCommand.execute();
   }
   | NEWLINE /*accepts empty cmd line*/ {
-    Shell::prompt();
+    Shell::_currentCommand.execute();
   }
   | error NEWLINE{yyerrok;
     Shell::_currentCommand.clear();
@@ -87,36 +87,23 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert output \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._outFile != NULL) {
-        ambig();
-    }
     Shell::_currentCommand._outFile = $2;
   }
   | LESS WORD {
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", $2->c_str());
     }
-//    if (Shell::_currentCommand._inFile != NULL) {
-//        ambig();
-//    }
     Shell::_currentCommand._inFile = $2;
   }
   | TWOGREAT WORD {
     if (isatty(0)) {
       printf("   Yacc: insert error \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._errFile != NULL) {
-        ambig();
-    }
     Shell::_currentCommand._errFile = $2;
   }
   | GREATAMP WORD {
     if (isatty(0)) {
       printf("   Yacc: insert output and error \"%s\"\n", $2->c_str());
-    }
-    if (Shell::_currentCommand._outFile != NULL
-        || Shell::_currentCommand._errFile != NULL) {
-        ambig();
     }
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
@@ -125,19 +112,12 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._outFile != NULL) {
-        ambig();
-    }
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._append = true;
   }
   | GREATGREATAMP WORD {
     if (isatty(0)) {
       printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
-    }
-    if (Shell::_currentCommand._outFile != NULL
-        || Shell::_currentCommand._errFile != NULL) {
-        ambig();
     }
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;

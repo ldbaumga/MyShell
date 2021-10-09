@@ -1416,9 +1416,9 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentCommand._inFile != NULL) {
-        ambig();
-    }
+//    if (Shell::_currentCommand._inFile != NULL) {
+//        ambig();
+//    }
     Shell::_currentCommand._inFile = (yyvsp[0].cpp_string);
   }
 #line 1425 "y.tab.cc"
