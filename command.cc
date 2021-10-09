@@ -169,16 +169,21 @@ void Command::execute() {
                 }
                 if (outFile < 0) {
                     perror("open");
-                    exit(1);
+                    _exit(1);
                 }
             } else {
                 outFile = dup(defaultout);
             }
-        } else if (index == 1) {
-            //Else, if its the first command, we set the input to the
-            //designated input
-       } else {
+        } else {
             //Otherwise, we direct the output to pipes
+            int fdpipe[2];
+            pipe(fdpipe);
+            outFile = fdpipe[1];
+            if (index != 1) {
+                //If it is the first command, we do not change the inputs as we
+                //did that earlier
+                inFile = fdpipe[0];
+            }
         }
 
         dup2(inFile, 0);
