@@ -1401,7 +1401,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert output \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentcommand._outfile != null) {
+    if (Shell::_currentCommand._outfile != null) {
         ambig();
     }
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
@@ -1415,7 +1415,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentcommand._infile != null) {
+    if (Shell::_currentCommand._infile != null) {
         ambig();
     }
     Shell::_currentCommand._inFile = (yyvsp[0].cpp_string);
@@ -1429,7 +1429,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentcommand._errfile != null) {
+    if (Shell::_currentCommand._errfile != null) {
         ambig();
     }
     Shell::_currentCommand._errFile = (yyvsp[0].cpp_string);
@@ -1443,8 +1443,8 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert output and error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentcommand._outfile != null
-        || Shell::_currentcommand._errfile != null) {
+    if (Shell::_currentCommand._outfile != null
+        || Shell::_currentCommand._errfile != null) {
         ambig();
     }
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);
@@ -1459,7 +1459,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert output and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (Shell::_currentcommand._outfile != null) {
+    if (Shell::_currentCommand._outfile != null) {
         ambig();
     }
     Shell::_currentCommand._outFile = (yyvsp[0].cpp_string);

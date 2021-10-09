@@ -36,6 +36,7 @@
 #include "shell.hh"
 
 void yyerror(const char * s);
+void ambig();
 int yylex();
 
 %}
@@ -86,7 +87,7 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert output \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._outfile != null) {
+    if (Shell::_currentCommand._outFile != null) {
         ambig();
     }
     Shell::_currentCommand._outFile = $2;
@@ -95,7 +96,7 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._infile != null) {
+    if (Shell::_currentCommand._inFile != null) {
         ambig();
     }
     Shell::_currentCommand._inFile = $2;
@@ -104,7 +105,7 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert error \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._errfile != null) {
+    if (Shell::_currentCommand._errFile != null) {
         ambig();
     }
     Shell::_currentCommand._errFile = $2;
@@ -113,8 +114,8 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert output and error \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._outfile != null
-        || Shell::_currentCommand._errfile != null) {
+    if (Shell::_currentCommand._outFile != null
+        || Shell::_currentCommand._errFile != null) {
         ambig();
     }
     Shell::_currentCommand._outFile = $2;
@@ -124,7 +125,7 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
     }
-    if (Shell::_currentCommand._outfile != null) {
+    if (Shell::_currentCommand._outFile != null) {
         ambig();
     }
     Shell::_currentCommand._outFile = $2;
