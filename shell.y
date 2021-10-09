@@ -95,6 +95,7 @@ io_modifier:
 
     if (Shell::_currentCommand._outFile != NULL) {
         ambig();
+        return;
     }
 
     Shell::_currentCommand._outFile = $2;
@@ -207,8 +208,8 @@ yyerror(const char * s)
 
 void ambig() {
   fprintf(stderr, "Ambiguous output redirect.\n");
-//  Shell::_currentCommand.clear();
-//  Shell::prompt();
+  Shell::_currentCommand.clear();
+  Shell::prompt();
 }
 
 

@@ -497,7 +497,7 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  12
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  26
+#define YYNRULES  25
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  36
 
@@ -549,7 +549,7 @@ static const yytype_uint8 yyrline[] =
 {
        0,    47,    47,    51,    52,    56,    62,    65,    71,    72,
       76,    82,    86,    87,    91,   102,   113,   124,   137,   149,
-     163,   167,   171,   178,   179,   183,   193
+     166,   170,   177,   178,   182,   192
 };
 #endif
 
@@ -601,9 +601,9 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,    25,     6,     0,     0,     4,    13,     9,    22,
-       7,     1,     3,     0,    11,    26,    21,    24,     8,     0,
-       0,     0,     0,     0,     0,    10,     0,    12,    23,    14,
+       0,     0,    24,     6,     0,     0,     4,    13,     9,    21,
+       7,     1,     3,     0,    11,    25,    20,    23,     8,     0,
+       0,     0,     0,     0,     0,    10,     0,    12,    22,    14,
       15,    16,    17,    18,    19,     5
 };
 
@@ -657,7 +657,7 @@ static const yytype_int8 yyr1[] =
 {
        0,    14,    15,    16,    16,    17,    17,    17,    18,    18,
       19,    19,    20,    20,    21,    21,    21,    21,    21,    21,
-      21,    22,    22,    23,    23,    24,    25
+      22,    22,    23,    23,    24,    25
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -665,7 +665,7 @@ static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     2,     1,     4,     1,     2,     3,     1,
        1,     0,     2,     0,     2,     2,     2,     2,     2,     2,
-       0,     2,     1,     2,     1,     1,     1
+       2,     1,     2,     1,     1,     1
 };
 
 
@@ -1500,8 +1500,8 @@ yyreduce:
 #line 1501 "y.tab.cc"
     break;
 
-  case 21:
-#line 167 "shell.y"
+  case 20:
+#line 166 "shell.y"
                         {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
@@ -1509,8 +1509,8 @@ yyreduce:
 #line 1510 "y.tab.cc"
     break;
 
-  case 22:
-#line 171 "shell.y"
+  case 21:
+#line 170 "shell.y"
                  {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
@@ -1518,8 +1518,8 @@ yyreduce:
 #line 1519 "y.tab.cc"
     break;
 
-  case 25:
-#line 183 "shell.y"
+  case 24:
+#line 182 "shell.y"
        {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1530,8 +1530,8 @@ yyreduce:
 #line 1531 "y.tab.cc"
     break;
 
-  case 26:
-#line 193 "shell.y"
+  case 25:
+#line 192 "shell.y"
         {
     if (isatty(0)) {
       printf("   Yacc: insert argument \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1774,7 +1774,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 201 "shell.y"
+#line 200 "shell.y"
 
 
 void
