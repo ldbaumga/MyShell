@@ -1459,7 +1459,7 @@ yyreduce:
       printf("   Yacc: insert output and error and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
     if (Shell::_currentCommand._outFile != null
-        || Shell:_currentCommand.errFile != null) {
+        || Shell::_currentCommand.errFile != null) {
 
     }
 

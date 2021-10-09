@@ -86,11 +86,17 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert output \"%s\"\n", $2->c_str());
     }
+    if (Shell::_currentcommand._outfile != null) {
+        ambig();
+    }
     Shell::_currentCommand._outFile = $2;
   }
   | LESS WORD {
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", $2->c_str());
+    }
+    if (Shell::_currentcommand._infile != null) {
+        ambig();
     }
     Shell::_currentCommand._inFile = $2;
   }
@@ -98,11 +104,18 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert error \"%s\"\n", $2->c_str());
     }
+    if (Shell::_currentcommand._errfile != null) {
+        ambig();
+    }
     Shell::_currentCommand._errFile = $2;
   }
   | GREATAMP WORD {
     if (isatty(0)) {
       printf("   Yacc: insert output and error \"%s\"\n", $2->c_str());
+    }
+    if (Shell::_currentcommand._outfile != null
+        || Shell::_currentcommand._errfile != null) {
+        ambig();
     }
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
@@ -110,6 +123,9 @@ io_modifier_list:
   | GREATGREAT WORD {
     if (isatty(0)) {
       printf("   Yacc: insert output and append \"%s\"\n", $2->c_str());
+    }
+    if (Shell::_currentcommand._outfile != null) {
+        ambig();
     }
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._append = true;
@@ -119,10 +135,9 @@ io_modifier_list:
       printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
     }
     if (Shell::_currentCommand._outFile != null
-        || Shell::_currentCommand.errFile != null) {
-
+        || Shell::_currentCommand._errFile != null) {
+        ambig();
     }
-
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
     Shell::_currentCommand._append = true;
@@ -167,11 +182,16 @@ argument:
 
 %%
 
-void yyerror(const char * s)
+void
+yyerror(const char * s)
 {
-  if (isatty(0)) {
-    fprintf(stderr,"%s\n", s);
-  }
+  fprintf(stderr,"%s\n", s);
+}
+
+void ambig() {
+  fprintf(stderr, "Ambiguous Redirect");
+  Shell::_currentCommand.clear();
+  Shell::prompt();
 }
 
 #if 0
