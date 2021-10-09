@@ -69,6 +69,7 @@ void Command::clear() {
     _background = false;
 
     _append = false;
+
 }
 
 void Command::print() {

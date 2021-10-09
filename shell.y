@@ -118,6 +118,11 @@ io_modifier_list:
     if (isatty(0)) {
       printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
     }
+    if (Shell::_currentCommand._outFile != null
+        || Shell:_currentCommand.errFile != null) {
+
+    }
+
     Shell::_currentCommand._outFile = $2;
     Shell::_currentCommand._errFile = $2;
     Shell::_currentCommand._append = true;
@@ -162,8 +167,7 @@ argument:
 
 %%
 
-void
-yyerror(const char * s)
+void yyerror(const char * s)
 {
   if (isatty(0)) {
     fprintf(stderr,"%s\n", s);
