@@ -243,7 +243,9 @@ void Command::execute() {
     clear();
 
     // Print new prompt
-    Shell::prompt();
+    if (isatty(0)) {
+        Shell::prompt();
+    }
 } // End Command::execute()
 
 SimpleCommand * Command::_currentSimpleCommand;
