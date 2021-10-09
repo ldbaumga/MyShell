@@ -119,7 +119,7 @@ io_modifier_list:
       printf("   Yacc: insert output and error and append \"%s\"\n", $2->c_str());
     }
     if (Shell::_currentCommand._outFile != null
-        || Shell:_currentCommand.errFile != null) {
+        || Shell::_currentCommand.errFile != null) {
 
     }
 
