@@ -192,7 +192,7 @@ void Command::execute() {
 
         if (pid == -1) {
             perror("fork\n");
-            exit(2);
+            _exit(2);
         }
 
 
