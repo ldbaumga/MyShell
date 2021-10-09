@@ -177,7 +177,7 @@ void Command::execute() {
         } else {
             //Otherwise, we direct the output to pipes
             int fdpipe[2];
-            pipe(fdpipe);
+            pipe(fdpipe)
             outFile = fdpipe[1];
             if (index != 1) {
                 //If it is the first command, we do not change the inputs as we
