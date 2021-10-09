@@ -180,7 +180,7 @@ int yyparse (void);
 #include <cstdio>
 #include "shell.hh"
 
-
+void yyerror(const char * s);
 void ambig();
 int yylex();
 
