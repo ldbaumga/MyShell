@@ -127,7 +127,7 @@ io_modifier:
     }
 
     if (Shell::_currentCommand._outFile != NULL
-        || Shell:L_currentCommand._errFile != NULL) {
+        || Shell::_currentCommand._errFile != NULL) {
         ambig();
     }
 
