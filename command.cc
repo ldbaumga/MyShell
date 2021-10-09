@@ -156,6 +156,9 @@ void Command::execute() {
     for (auto & simpleCommand: _simpleCommands) {
         index += 1;
 
+        dup2(inFile, 0);
+        close(inFile);
+
         //// PIPES //// ~Slide 261
 
         //Out File
@@ -181,9 +184,6 @@ void Command::execute() {
             outFile = fdpipe[1];
             inFile = fdpipe[0];
         }
-
-        dup2(inFile, 0);
-        close(inFile);
 
         dup2(outFile, 1);
         close(outFile);
