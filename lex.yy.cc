@@ -890,7 +890,7 @@ YY_RULE_SETUP
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
-  std::string backslash = std::string("\\");
+  std::string backslash ("\\");
   std::string str2;
   //str.Replace(str.begin(), str.end(), '\\\\', 
   //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
