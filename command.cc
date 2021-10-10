@@ -233,9 +233,9 @@ void Command::execute() {
             execvp(simpCmds[0], simpCmds);
 
             perror("xecvp");
-            clear();
-            Shell::prompt();
-            return;
+            //clear();
+            //Shell::prompt();
+            //return;
             _exit(1);
         } // End child
 
