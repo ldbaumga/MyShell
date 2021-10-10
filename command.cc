@@ -100,12 +100,13 @@ void Command::print() {
 }
 
 void Command::execute() {
+    int size = _simpleCommands.size();
     // Don't do anything if there are no simple commands
     if ( _simpleCommands.size() == 0 ) {
         Shell::prompt();
         return;
     }
-    //IF the output is ambiguous, print and exit
+    //If the output is ambiguous, print and exit
     if (_ambig) {
         fprintf(stderr, "Ambiguous output redirect.\n");
         Shell::prompt();
