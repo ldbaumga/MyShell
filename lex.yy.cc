@@ -381,11 +381,11 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[24] =
+static const flex_int16_t yy_accept[23] =
     {   0,
         0,    0,   14,   12,    2,    1,   12,   10,   12,    9,
-        7,    8,   12,   12,    6,    5,    4,   11,   12,    0,
-        3,   11,    0
+        7,    8,   12,   11,   12,    0,    6,    5,    4,   11,
+        3,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -426,36 +426,36 @@ static const YY_CHAR yy_meta[12] =
         1
     } ;
 
-static const flex_int16_t yy_base[27] =
+static const flex_int16_t yy_base[26] =
     {   0,
-        0,    0,   23,    0,   37,   37,   13,    0,    8,    0,
-        6,    0,    0,   16,    0,    0,    9,   21,    0,   13,
-        0,   12,   37,   26,   30,   34
+        0,    0,   20,    0,   37,   37,   11,    0,    9,    0,
+       11,    0,    0,   21,    0,   17,    0,    0,    9,   12,
+        0,   37,   26,   30,   34
     } ;
 
-static const flex_int16_t yy_def[27] =
+static const flex_int16_t yy_def[26] =
     {   0,
-       23,    1,   23,   24,   23,   23,   24,   24,   24,   24,
-       24,   24,   24,   25,   24,   24,   24,   25,   18,   26,
-       24,   26,    0,   23,   23,   23
+       22,    1,   22,   23,   22,   22,   24,   23,   23,   23,
+       23,   23,   23,   24,   14,   25,   23,   23,   23,   25,
+       23,    0,   22,   22,   22
     } ;
 
 static const flex_int16_t yy_nxt[49] =
     {   0,
-        4,    4,    5,    6,    7,    8,    4,    9,   10,   11,
-       12,   16,   22,   22,   21,   17,   18,   15,   20,   14,
-       13,   18,   23,   20,   23,   13,   13,   23,   23,   13,
-       19,   19,   23,   19,   20,   20,    3,   23,   23,   23,
-       23,   23,   23,   23,   23,   23,   23,   23
+        4,    4,    5,    6,    7,    8,    7,    9,   10,   11,
+       12,   14,   20,   16,   21,   13,   18,   20,   17,   22,
+       19,   14,   22,   16,   22,   13,   13,   22,   22,   13,
+       15,   15,   22,   15,   16,   16,    3,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22,   22
     } ;
 
 static const flex_int16_t yy_chk[49] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,   11,   22,   20,   17,   11,   14,    9,   14,    7,
-       14,   18,    3,   18,    0,   18,   24,    0,    0,   24,
-       25,   25,    0,   25,   26,   26,   23,   23,   23,   23,
-       23,   23,   23,   23,   23,   23,   23,   23
+        1,    7,   20,    7,   19,    7,   11,   16,    9,    3,
+       11,   14,    0,   14,    0,   14,   23,    0,    0,   23,
+       24,   24,    0,   24,   25,   25,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22,   22
     } ;
 
 /* Table of booleans, true if rule could match eol. */
@@ -749,7 +749,7 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 24 )
+				if ( yy_current_state >= 23 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1180,7 +1180,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 24 )
+			if ( yy_current_state >= 23 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1208,11 +1208,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 24 )
+		if ( yy_current_state >= 23 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 23);
+	yy_is_jam = (yy_current_state == 22);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
