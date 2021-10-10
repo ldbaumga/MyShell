@@ -8,6 +8,10 @@ extern "C" void disp(int sig) {
     Shell::prompt();
 }
 
+extern "C" void zomb_disp(int sig) {
+    fprintf(stderr, "\n[%d] exited.\n", sig);
+}
+
 int yyparse(void);
 
 void Shell::prompt() {
@@ -19,6 +23,7 @@ void Shell::prompt() {
 }
 
 int main() {
+  //Ctrl-C signal handler
   struct sigaction sa;
   sa.sa_handler = disp;
   sigemptyset(&sa.sa_mask);
@@ -27,6 +32,17 @@ int main() {
     perror("sigaction");
     exit(2);
   }
+
+  //Ctrl-C signal handler
+  struct sigaction zomb;
+  zomb.sa_handler = zomb_disp;
+  sigemptyset(&zomb.sa_mask);
+  zomb.sa_flags = SA_NOCLDWAIT;
+  if(sigaction(SIGCHLD, &zomb, NULL)) {
+    perror("sigaction");
+    exit(2);
+  }
+
   Shell::prompt();
   yyparse();
 }
