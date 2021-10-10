@@ -9,6 +9,7 @@ extern "C" void disp(int sig) {
 }
 
 extern "C" void zomb_disp(int sig) {
+    waitpid(sig, NULL, WNOHANG);
     fprintf(stderr, "\n[%d] exited.\n", sig);
 }
 
@@ -33,7 +34,7 @@ int main() {
     exit(2);
   }
 
-  //Ctrl-C signal handler
+  //Zombie signal handler
   struct sigaction zomb;
   zomb.sa_handler = zomb_disp;
   sigemptyset(&zomb.sa_mask);
