@@ -132,7 +132,7 @@ void Command::execute() {
         if (_inFile) {
            inFile = open(_inFile->c_str(), O_RDONLY);
             if (inFile < 0) {
-                perror("open");
+                perror(_inFile->c_str());
                 clear();
                 Shell::prompt();
                 return;
