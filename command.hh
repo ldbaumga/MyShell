@@ -21,6 +21,9 @@ struct Command {
   void print();
   void execute();
 
+  int inputRedirect;
+  void errRedirect;
+
   static SimpleCommand *_currentSimpleCommand;
 };
 
