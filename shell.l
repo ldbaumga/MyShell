@@ -29,7 +29,7 @@ void myunputc(int c) {
 }
 
 (["'])(.*?)\1 {
-  fprintf(stderr, "%s", yytext);
+  fprintf(stderr, "\n%s\n", yytext);
   yylval.cpp_string = new std::string(yytext);
   return WORD;
 }
