@@ -393,17 +393,17 @@ static const YY_CHAR yy_ec[256] =
         1,    2,    2,    2,    2,    2,    2,    2,    3,    4,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
-        2,    3,    2,    5,    2,    2,    2,    6,    7,    2,
+        2,    3,    2,    5,    2,    2,    2,    6,    5,    2,
+        2,    2,    2,    2,    2,    2,    2,    2,    2,    7,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    8,
-        2,    2,    2,    2,    2,    2,    2,    2,    2,    9,
-        2,   10,    2,    2,    2,    2,    2,    2,    2,    2,
+        2,    9,    2,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
 
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
-        2,    2,    2,   11,    2,    2,    2,    2,    2,    2,
+        2,    2,    2,   10,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
         2,    2,    2,    2,    2,    2,    2,    2,    2,    2,
@@ -420,17 +420,16 @@ static const YY_CHAR yy_ec[256] =
         2,    2,    2,    2,    2
     } ;
 
-static const YY_CHAR yy_meta[12] =
+static const YY_CHAR yy_meta[11] =
     {   0,
-        1,    1,    2,    3,    4,    1,    1,    1,    1,    1,
-        1
+        1,    1,    2,    3,    1,    1,    1,    1,    1,    1
     } ;
 
 static const flex_int16_t yy_base[26] =
     {   0,
-        0,    0,   20,    0,   37,   37,   11,    0,    9,    0,
-       11,    0,    0,   21,    0,   17,    0,    0,    9,   12,
-        0,   37,   26,   30,   34
+        0,    0,   26,    0,   27,   27,   10,    0,   16,    0,
+        8,    0,    0,   17,    0,   18,    0,    0,   10,   14,
+        0,   27,   11,   20,   22
     } ;
 
 static const flex_int16_t yy_def[26] =
@@ -440,22 +439,20 @@ static const flex_int16_t yy_def[26] =
        23,    0,   22,   22,   22
     } ;
 
-static const flex_int16_t yy_nxt[49] =
+static const flex_int16_t yy_nxt[38] =
     {   0,
-        4,    4,    5,    6,    7,    8,    7,    9,   10,   11,
-       12,   14,   20,   16,   21,   13,   18,   20,   17,   22,
-       19,   14,   22,   16,   22,   13,   13,   22,   22,   13,
-       15,   15,   22,   15,   16,   16,    3,   22,   22,   22,
-       22,   22,   22,   22,   22,   22,   22,   22
+        4,    4,    5,    6,    7,    8,    9,   10,   11,   12,
+       14,   13,   16,   18,   20,   21,   19,   14,   20,   16,
+       15,   15,   16,   16,   17,   22,    3,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22
     } ;
 
-static const flex_int16_t yy_chk[49] =
+static const flex_int16_t yy_chk[38] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    7,   20,    7,   19,    7,   11,   16,    9,    3,
-       11,   14,    0,   14,    0,   14,   23,    0,    0,   23,
-       24,   24,    0,   24,   25,   25,   22,   22,   22,   22,
-       22,   22,   22,   22,   22,   22,   22,   22
+        7,   23,    7,   11,   20,   19,   11,   14,   16,   14,
+       24,   24,   25,   25,    9,    3,   22,   22,   22,   22,
+       22,   22,   22,   22,   22,   22,   22
     } ;
 
 /* Table of booleans, true if rule could match eol. */
@@ -502,8 +499,8 @@ void myunputc(int c) {
   unput(c);
 }
 
-#line 506 "lex.yy.cc"
-#line 507 "lex.yy.cc"
+#line 503 "lex.yy.cc"
+#line 504 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -723,7 +720,7 @@ YY_DECL
 #line 26 "shell.l"
 
 
-#line 727 "lex.yy.cc"
+#line 724 "lex.yy.cc"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -756,7 +753,7 @@ yy_match:
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 37 );
+		while ( yy_base[yy_current_state] != 27 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -888,7 +885,7 @@ YY_RULE_SETUP
 #line 84 "shell.l"
 ECHO;
 	YY_BREAK
-#line 892 "lex.yy.cc"
+#line 889 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
