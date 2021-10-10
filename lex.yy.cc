@@ -874,7 +874,7 @@ YY_RULE_SETUP
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
-  str.erase(std::remove(str.begin(), str.end(), "\\"), str.end());
+  str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
   yylval.cpp_string = new std::string(str);
   return WORD;
 }
