@@ -178,7 +178,7 @@ void Command::execute() {
 
         //Out File
          //If it is last commnand, Set the output to the file, or stdout
-        if (index == _simpleCommands.size()) {
+        if (index == size) {
             if (_outFile) {
                 if (_append) {
                     outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
