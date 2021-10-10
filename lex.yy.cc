@@ -798,7 +798,7 @@ case 2:
 YY_RULE_SETUP
 #line 31 "shell.l"
 {
-  fprintf(stderr, "%s", yytext);
+  fprintf(stderr, "\n%s\n", yytext);
   yylval.cpp_string = new std::string(yytext);
   return WORD;
 }
