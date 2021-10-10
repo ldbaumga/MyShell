@@ -75,6 +75,8 @@ void myunputc(int c) {
 
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
-  yylval.cpp_string = new std::string(yytext);
+  std::string str = std::string(yytext);
+  str.erase(remove(str.begin(), str.end(), '\'), str.end());
+  yylval.cpp_string = new std::string(str);
   return WORD;
 }
