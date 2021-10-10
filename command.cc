@@ -128,11 +128,11 @@ int Command::errorRedirect(int defaulterr) {
   //This function opens the errfile
   //If none is specified, it is set to default
     if (_errFile) {
-        //if (_append) {
-        //    return open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
-        //} else {
+        if (_append) {
+            return open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+        } else {
             return open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
-        //}
+        }
    } else {
         return dup(defaulterr);
    }
