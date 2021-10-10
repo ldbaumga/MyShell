@@ -150,7 +150,7 @@ void Command::execute() {
                 errFile = open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
             }
             if (errFile < 0) {
-                perror(_errFile);
+                perror(_errFile->c_str());
                 clear();
                 Shell::prompt();
                 return;
