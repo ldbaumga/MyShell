@@ -183,9 +183,6 @@ command_word:
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
     }
-    if (strcmp($1->c_str(), "exit") == 0) {
-      exit(0);
-    }
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( $1 );
   }
