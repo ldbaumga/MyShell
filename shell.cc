@@ -10,7 +10,7 @@ extern "C" void disp(int sig) {
 }
 
 extern "C" void zomb_disp(int sig) {
-    pid_t pid = wait3(sig, NULL, WNOHANG);
+    wait(sig, NULL, WNOHANG);
     fprintf(stderr, "\n[%d] exited.\n", sig);
 }
 
