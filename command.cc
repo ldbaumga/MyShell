@@ -111,17 +111,16 @@ int Command::inputRedirect(int defaultin) {
 }
 
 int Command::outputRedirect(int defaultout) {
-            if (_outFile) {
-                if (_append) {
-                    outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
-                } else {
-                    outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
-                }
-           } else {
-                outFile = dup(defaultout);
-            }
- 
-}
+    if (_outFile) {
+        if (_append) {
+            return open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+        } else {
+            return open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+        }
+    } else {
+        return dup(defaultout);
+    }
+ }
 
 int Command::errorRedirect(int defaulterr) {
     //Error file
