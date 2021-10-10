@@ -197,7 +197,7 @@ void Command::execute() {
         //Out File
         if (index == size) {
           //If it is last commnand, Set the output to the file, or stdout
-            outfile = outputRedirect(defaultout);
+            outFile = outputRedirect(defaultout);
             if (outFile < 0) {
                 perror(_outFile->c_str());
                 clear();
