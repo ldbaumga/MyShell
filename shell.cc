@@ -10,7 +10,7 @@ extern "C" void disp(int sig) {
 }
 
 extern "C" void zomb_disp(int sig) {
-    waitpid(sig, WNOHANG, NULL);
+    pid_t pid = wait3(sig, NULL, WNOHANG);
     fprintf(stderr, "\n[%d] exited.\n", sig);
 }
 
@@ -39,7 +39,7 @@ int main() {
   struct sigaction zomb;
   zomb.sa_handler = zomb_disp;
   sigemptyset(&zomb.sa_mask);
-  zomb.sa_flags = SA_NOCLDWAIT;
+  zomb.sa_flags = SA_RESTART;
   if(sigaction(SIGCHLD, &zomb, NULL)) {
     perror("sigaction");
     exit(2);
