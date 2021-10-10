@@ -4,7 +4,7 @@
 #include <signal.h>
 
 extern "C" void disp(int sig) {
-    fprintf(stderr, "\nsig:%d        Ouch!\n", sig);
+    fprintf(stderr, "\nOuch!\n", sig);
 }
 
 int yyparse(void);
