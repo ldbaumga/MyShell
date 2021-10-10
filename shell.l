@@ -84,15 +84,16 @@ void myunputc(int c) {
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
+  std::string backslash = std::string("\\");
   std::string str2;
   //str.Replace(str.begin(), str.end(), '\\\\', 
   //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
   for (int i = 0; i < str.length()-1; i++) {
-    if(*str[i] == "\\" && str[i+1] == "\\") {
+    if(str[i].compare(backslash) && str[i+1].compare(backslash)) {
         str2.push_back(str[i]);
         i += 1;
         continue;
-    } else if (*str[i] == "\\") {
+    } else if (str[i].compare(backslash)) {
         str2.push_back(str[i+1]);
         i += 1;
         continue;
