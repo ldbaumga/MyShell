@@ -1,6 +1,11 @@
 #include <cstdio>
 #include <unistd.h>
 #include "shell.hh"
+#include <signal.h>
+
+extern "C" void disp(int sig) {
+    fprintf(stderr, "\nsig:%d        Ouch!\n", sig);
+}
 
 int yyparse(void);
 
