@@ -890,17 +890,31 @@ YY_RULE_SETUP
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
-  str.erase(std::remove(str.begin(), str.end(), '[\\\\]'), str.end());
-  yylval.cpp_string = new std::string(str);
+  std::string str2;
+  //str.Replace(str.begin(), str.end(), '\\\\', 
+  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
+  for (int i = 0; i < str.length()-1; i++) {
+    if(str[i] == "\\" && str[i+1] == "\\") {
+        str2.push_back(str[i]);
+        i += 1;
+        continue;
+    } else if (str[i] == "\\") {
+        str2.push_back(str[i+1]);
+        i += 1;
+        continue;
+    }
+    str2.push_back(str[i]);
+  }
+  yylval.cpp_string = new std::string(str2);
   return WORD;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 91 "shell.l"
+#line 105 "shell.l"
 ECHO;
 	YY_BREAK
-#line 904 "lex.yy.cc"
+#line 918 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1917,4 +1931,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 91 "shell.l"
+#line 105 "shell.l"
