@@ -1523,7 +1523,7 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if ((yyvsp[0].cpp_string)->c_str() == "exit") {
+    if ((yyvsp[0].cpp_string)->c_str() == "exit\n") {
         exit(1);
     }
     Command::_currentSimpleCommand = new SimpleCommand();
