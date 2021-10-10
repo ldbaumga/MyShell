@@ -104,41 +104,24 @@ int Command::inputRedirect(int defaultin) {
     ////File Redirection ////
     //In File
     if (_inFile) {
-        int inFile = open(_inFile->c_str(), O_RDONLY);
-        if (inFile < 0) {
-            perror(_inFile->c_str());
-            clear();
-            Shell::prompt();
-            return;
-            //exit(1); // Delete If we don't want to exit shell?
-        }
-        return inFile;
+        return open(_inFile->c_str(), O_RDONLY);
     } else {
        return dup(defaultin);
     }
 }
 
-void Command::errorRedirect(int defaulterr) {
+int Command::errorRedirect(int defaulterr) {
     int errFile = 0;
     //Error file
     if (_errFile) {
         if (_append) {
-            errFile = open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+            return open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
         } else {
-            errFile = open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+            return open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
         }
-        if (errFile < 0) {
-            perror(_errFile->c_str());
-            clear();
-            Shell::prompt();
-            return;
-            //exit(1);
-        }
-    } else {
-        errFile = dup(defaulterr);
-    }
-    dup2(errFile, 2);
-    close(errFile);
+   } else {
+        return dup(defaulterr);
+   }
 }
 
 void Command::execute() {
@@ -167,9 +150,27 @@ void Command::execute() {
 
     int inFile = 0;
     int outFile = 0;
+    int errFile = 0;
 
     inFile = inputRedirect(defaultin);
-    errorRedirect(defaulterror);
+    if (inFile < 0) {
+        perror(_inFile->c_str());
+        clear();
+        Shell::prompt();
+        return;
+        //exit(1); // Delete If we don't want to exit shell?
+    }
+
+    errFile = errorRedirect(defaulterror);
+    if (errFile < 0) {
+        perror(_errFile->c_str());
+        clear();
+        Shell::prompt();
+        return;
+        //exit(1);
+    }
+    dup2(errFile, 2);
+    close(errFile);
 
     // Add execution here
     // For every simple command fork a new process
