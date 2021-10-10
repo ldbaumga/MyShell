@@ -66,7 +66,7 @@ void myunputc(int c) {
     return AMPERSAND;
 }
 
-([\"\'])([^\n]*)\1 {
+(\"\')([^\n]*)\1 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
   str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
