@@ -99,7 +99,7 @@ void Command::print() {
     printf( "\n\n" );
 }
 
-int Command::inputRedirect() {
+int Command::inputRedirect(int defaultin) {
     //This function redirects the standard Input and Error
     ////File Redirection ////
     //In File
@@ -118,7 +118,7 @@ int Command::inputRedirect() {
     }
 }
 
-void Command::errorRedirect() {
+void Command::errorRedirect(int defaulterr) {
     int errFile = 0;
     //Error file
     if (_errFile) {
@@ -168,8 +168,8 @@ void Command::execute() {
     int inFile = 0;
     int outFile = 0;
 
-    inFile = inputRedirect();
-    errorRedirect();
+    inFile = inputRedirect(defaultin);
+    errorRedirect(defaulterror);
 
     // Add execution here
     // For every simple command fork a new process
