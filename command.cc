@@ -110,6 +110,19 @@ int Command::inputRedirect(int defaultin) {
     }
 }
 
+int Command::outputRedirect(int defaultout) {
+            if (_outFile) {
+                if (_append) {
+                    outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+                } else {
+                    outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+                }
+           } else {
+                outFile = dup(defaultout);
+            }
+ 
+}
+
 int Command::errorRedirect(int defaulterr) {
     //Error file
     if (_errFile) {
@@ -185,20 +198,12 @@ void Command::execute() {
         //Out File
         if (index == size) {
           //If it is last commnand, Set the output to the file, or stdout
-            if (_outFile) {
-                if (_append) {
-                    outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
-                } else {
-                    outFile = open(_outFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
-                }
-                if (outFile < 0) {
-                    perror(_outFile->c_str());
-                    clear();
-                    Shell::prompt();
-                    return;
-                }
-            } else {
-                outFile = dup(defaultout);
+            outfile = outputRedirect(defaultout);
+            if (outFile < 0) {
+                perror(_outFile->c_str());
+                clear();
+                Shell::prompt();
+                return;
             }
         } else {
           //Otherwise, we direct the output to pipes
@@ -221,9 +226,8 @@ void Command::execute() {
             return;
         }
 
-
+        //// CHILD ////
         if (pid == 0) {
-            //CHILD
             int size = simpleCommand->_arguments.size();
             char ** simpCmds = new char*[size + 1];
             for (int i = 0; i < size; i++) {
@@ -233,16 +237,15 @@ void Command::execute() {
             execvp(simpCmds[0], simpCmds);
 
             perror("xecvp");
-            //clear();
-            //Shell::prompt();
-            //return;
             _exit(1);
-        } // End child
+        }
+        //// END CHILD ////
 
-        //PARENT
+        //// PARENT ////
         if (_background == false) {
             waitpid(pid, NULL, 0);
         }
+        //// END PARENT ////
     } // End simpleCommand Loop
 
     //// Resetting File I/O ////
