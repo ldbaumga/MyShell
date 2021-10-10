@@ -22,7 +22,7 @@ struct Command {
   void execute();
 
   int inputRedirect;
-  void errRedirect;
+  void errorRedirect;
 
   static SimpleCommand *_currentSimpleCommand;
 };
