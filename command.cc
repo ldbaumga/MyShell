@@ -100,9 +100,8 @@ void Command::print() {
 }
 
 int Command::inputRedirect(int defaultin) {
-    //This function redirects the standard Input and Error
-    ////File Redirection ////
-    //In File
+  //This function opens the apropriate input file in read only
+  //If an input file is not specified, it is set to default
     if (_inFile) {
         return open(_inFile->c_str(), O_RDONLY);
     } else {
@@ -111,6 +110,9 @@ int Command::inputRedirect(int defaultin) {
 }
 
 int Command::outputRedirect(int defaultout) {
+  //This function opens the appropriate out file with either O_APPEND or
+  //O_TRUNC, depending on if the file needs to be appeneded or not
+  //If there is no out file specified, it is set to default
     if (_outFile) {
         if (_append) {
             return open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
@@ -123,13 +125,14 @@ int Command::outputRedirect(int defaultout) {
  }
 
 int Command::errorRedirect(int defaulterr) {
-    //Error file
+  //This function opens the errfile
+  //If none is specified, it is set to default
     if (_errFile) {
-        if (_append) {
-            return open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
-        } else {
+        //if (_append) {
+        //    return open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+        //} else {
             return open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
-        }
+        //}
    } else {
         return dup(defaulterr);
    }
