@@ -1535,13 +1535,16 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert argument \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
+    if ((yyvsp[0].cpp_string)->c_str() == "exit") {
+        exit(1);
+    }
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );\
   }
-#line 1541 "y.tab.cc"
+#line 1544 "y.tab.cc"
     break;
 
 
-#line 1545 "y.tab.cc"
+#line 1548 "y.tab.cc"
 
       default: break;
     }
@@ -1773,7 +1776,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 199 "shell.y"
+#line 202 "shell.y"
 
 
 void
