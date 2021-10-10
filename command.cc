@@ -111,7 +111,6 @@ int Command::inputRedirect(int defaultin) {
 }
 
 int Command::errorRedirect(int defaulterr) {
-    int errFile = 0;
     //Error file
     if (_errFile) {
         if (_append) {
