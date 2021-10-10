@@ -89,7 +89,7 @@ void myunputc(int c) {
   //str.Replace(str.begin(), str.end(), '\\\\', 
   //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
   for (int i = 0; i < str.length()-1; i++) {
-    if(str[i] == backslash && str[i+1] == backslash) {
+    if(str[i].compare(backslash) == 0 && str[i+1].compare(backslash) == 0) {
         str2.push_back(str[i+1]);
         i += 1;
         continue;
