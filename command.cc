@@ -99,6 +99,48 @@ void Command::print() {
     printf( "\n\n" );
 }
 
+int Command::inputRedirect() {
+    //This function redirects the standard Input and Error
+    ////File Redirection ////
+    //In File
+    if (_inFile) {
+        int inFile = open(_inFile->c_str(), O_RDONLY);
+        if (inFile < 0) {
+            perror(_inFile->c_str());
+            clear();
+            Shell::prompt();
+            return;
+            //exit(1); // Delete If we don't want to exit shell?
+        }
+        return inFile;
+    } else {
+       return dup(defaultin);
+    }
+}
+
+void Command::errorRedirect() {
+    int errFile = 0;
+    //Error file
+    if (_errFile) {
+        if (_append) {
+            errFile = open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
+        } else {
+            errFile = open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
+        }
+        if (errFile < 0) {
+            perror(_errFile->c_str());
+            clear();
+            Shell::prompt();
+            return;
+            //exit(1);
+        }
+    } else {
+        errFile = dup(defaulterr);
+    }
+    dup2(errFile, 2);
+    close(errFile);
+}
+
 void Command::execute() {
     int size = _simpleCommands.size();
     // Don't do anything if there are no simple commands
@@ -125,43 +167,9 @@ void Command::execute() {
 
     int inFile = 0;
     int outFile = 0;
-    int errFile = 0;
 
-    ////File Redirection ////
-        //In File
-        if (_inFile) {
-           inFile = open(_inFile->c_str(), O_RDONLY);
-            if (inFile < 0) {
-                perror(_inFile->c_str());
-                clear();
-                Shell::prompt();
-                return;
-                //exit(1); // Delete If we don't want to exit shell?
-            }
-        } else {
-           inFile = dup(defaultin);
-        }
-
-        //Error file
-        if (_errFile) {
-            if (_append) {
-                errFile = open(_errFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
-            } else {
-                errFile = open(_errFile->c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0655);
-            }
-            if (errFile < 0) {
-                perror(_errFile->c_str());
-                clear();
-                Shell::prompt();
-                return;
-                //exit(1);
-            }
-        } else {
-            errFile = dup(defaulterr);
-        }
-        dup2(errFile, 2);
-        close(errFile);
-
+    inFile = inputRedirect();
+    errorRedirect();
 
     // Add execution here
     // For every simple command fork a new process
