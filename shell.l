@@ -65,7 +65,7 @@ void myunputc(int c) {
     return AMPERSAND;
 }
 
-\"\'[^\n\"]*\1 {
+[\"\'][^\n\"]*\1 {
   fprintf(stderr, "\n%s\n", yytext);
   yylval.cpp_string = new std::string(yytext);
   return WORD;
