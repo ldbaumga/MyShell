@@ -86,20 +86,8 @@ void myunputc(int c) {
   std::string str = std::string(yytext);
   std::string backslash = std::string("\\");
   std::string str2;
-  //str.Replace(str.begin(), str.end(), '\\\\', 
-  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
-  for (int i = 0; i < str.length()-1; i++) {
-    if(str[i].compare(backslash) == 0 && str[i+1].compare(backslash) == 0) {
-        str2.push_back(str[i+1]);
-        i += 1;
-        continue;
-    } else if (str[i] == backslash) {
-        str2.push_back(str[i+1]);
-        i += 1;
-        continue;
-    }
-    str2.push_back(str[i]);
-  }
+  str.Replace(str.begin(), str.end(), '\\\\', 
+  str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
   yylval.cpp_string = new std::string(str2);
   return WORD;
 }
