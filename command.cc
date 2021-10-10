@@ -161,7 +161,7 @@ void Command::execute() {
         //exit(1); // Delete If we don't want to exit shell?
     }
 
-    errFile = errorRedirect(defaulterror);
+    errFile = errorRedirect(defaulterr);
     if (errFile < 0) {
         perror(_errFile->c_str());
         clear();
