@@ -153,7 +153,7 @@ void Command::execute() {
     }
     //If the user writes "exit" we exit the shell
     if (size == 1 && (strcmp(_simpleCommands[0]->_arguments[0]->c_str(), "exit"))== 0) {
-        fprintf(stderr, "\n Goodbye!! \n");
+        fprintf(stderr, "\n Goodbye!!\n\n");
         exit(0);
     }
 
