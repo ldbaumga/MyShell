@@ -28,12 +28,6 @@ void myunputc(int c) {
   return NEWLINE;
 }
 
-[\"\'](.*?)\1 {
-  fprintf(stderr, "\n%s\n", yytext);
-  yylval.cpp_string = new std::string(yytext);
-  return WORD;
-}
-
 [ \t] {
   /* Discard spaces and tabs */
 }
@@ -70,6 +64,13 @@ void myunputc(int c) {
 "&" {
     return AMPERSAND;
 }
+
+[\"\'](.*?)\1 {
+  fprintf(stderr, "\n%s\n", yytext);
+  yylval.cpp_string = new std::string(yytext);
+  return WORD;
+}
+
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
   yylval.cpp_string = new std::string(yytext);
