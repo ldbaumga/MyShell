@@ -142,7 +142,7 @@ void Command::execute() {
       print();
     }
 
-    //// Default I/O ////
+    //// File Redirection ////
     int defaultin = dup(0);
     int defaultout = dup(1);
     int defaulterr = dup(2);
@@ -157,7 +157,6 @@ void Command::execute() {
         clear();
         Shell::prompt();
         return;
-        //exit(1); // Delete If we don't want to exit shell?
     }
 
     errFile = errorRedirect(defaulterr);
@@ -166,10 +165,10 @@ void Command::execute() {
         clear();
         Shell::prompt();
         return;
-        //exit(1);
     }
     dup2(errFile, 2);
     close(errFile);
+    //// End File Redirection ////
 
     // Add execution here
     // For every simple command fork a new process
@@ -182,11 +181,10 @@ void Command::execute() {
         dup2(inFile, 0);
         close(inFile);
 
-        //// PIPES //// ~Slide 261
-
+        //// PIPES ////
         //Out File
-         //If it is last commnand, Set the output to the file, or stdout
         if (index == size) {
+          //If it is last commnand, Set the output to the file, or stdout
             if (_outFile) {
                 if (_append) {
                     outFile = open(_outFile->c_str(), O_WRONLY | O_APPEND | O_CREAT, 0655);
@@ -198,13 +196,12 @@ void Command::execute() {
                     clear();
                     Shell::prompt();
                     return;
-                    //exit(1);
                 }
             } else {
                 outFile = dup(defaultout);
             }
         } else {
-            //Otherwise, we direct the output to pipes
+          //Otherwise, we direct the output to pipes
             int fdpipe[2];
             pipe(fdpipe);
             outFile = fdpipe[1];
@@ -213,7 +210,7 @@ void Command::execute() {
 
         dup2(outFile, 1);
         close(outFile);
-
+        //// END PIPES ////
 
         int pid = fork();
 
@@ -222,7 +219,6 @@ void Command::execute() {
             clear();
             Shell::prompt();
             return;
-            //_exit(2);
         }
 
 
@@ -240,7 +236,7 @@ void Command::execute() {
             clear();
             Shell::prompt();
             return;
-            //_exit(1);
+            _exit(1);
         } // End child
 
         //PARENT
