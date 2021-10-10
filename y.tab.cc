@@ -549,7 +549,7 @@ static const yytype_uint8 yyrline[] =
 {
        0,    47,    47,    51,    52,    56,    62,    65,    71,    72,
       76,    82,    86,    87,    91,   102,   113,   124,   137,   149,
-     166,   170,   177,   178,   182,   195
+     166,   170,   177,   178,   182,   192
 };
 #endif
 
@@ -1524,28 +1524,25 @@ yyreduce:
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
-    if (strcmp((yyvsp[0].cpp_string)->c_str(), "exit") == 0) {
-      exit(0);
-    }
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );
   }
-#line 1534 "y.tab.cc"
+#line 1531 "y.tab.cc"
     break;
 
   case 25:
-#line 195 "shell.y"
+#line 192 "shell.y"
         {
     if (isatty(0)) {
       printf("   Yacc: insert argument \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
    Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );\
   }
-#line 1545 "y.tab.cc"
+#line 1542 "y.tab.cc"
     break;
 
 
-#line 1549 "y.tab.cc"
+#line 1546 "y.tab.cc"
 
       default: break;
     }
@@ -1777,7 +1774,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 203 "shell.y"
+#line 200 "shell.y"
 
 
 void
