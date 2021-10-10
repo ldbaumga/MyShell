@@ -10,8 +10,11 @@ extern "C" void disp(int sig) {
 }
 
 extern "C" void zomb_disp(int sig) {
-    pid_t pid = wait(0, 0, NULL);
-    fprintf(stderr, "\n[%d] exited.\n", pid);
+    pid_t pid = wait3(0, 0, NULL);
+
+    while(waitpid(-1, NULL, WNOHANG) > 0) {
+        fprintf(stderr, "\n[%d] exited.\n", pid);
+    }
 }
 
 int yyparse(void);
