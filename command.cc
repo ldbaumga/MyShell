@@ -243,7 +243,7 @@ void Command::execute() {
             int size = simpleCommand->_arguments.size();
             char ** simpCmds = new char*[size + 1];
             for (int i = 0; i < size; i++) {
-                simpCmds[i] = strdup(simpleCommand->_arguments[i]->c_str());
+                simpCmds[i] = strdup(_simpleCommands.SimpleCommand[0]._arguments[0]->c_str(), "exit"));
             }
             simpCmds[size] = NULL;
             execvp(simpCmds[0], simpCmds);
