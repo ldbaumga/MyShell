@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include "shell.hh"
 #include <signal.h>
+#include <sys/wait.h>
 
 extern "C" void disp(int sig) {
     fprintf(stderr, "\nsig:%d        Ouch!\n", sig);
