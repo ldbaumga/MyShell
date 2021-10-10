@@ -168,6 +168,8 @@ void Command::execute() {
 
     inFile = inputRedirect(defaultin);
     if (inFile < 0) {
+      //if there was an error when opening a file, we print the error, clear
+      //the command obj and print a new prompt
         perror(_inFile->c_str());
         clear();
         Shell::prompt();
@@ -176,6 +178,8 @@ void Command::execute() {
 
     errFile = errorRedirect(defaulterr);
     if (errFile < 0) {
+      //if there was an error when opening a file, we print the error, clear
+      //the command obj and print a new prompt
         perror(_errFile->c_str());
         clear();
         Shell::prompt();
@@ -202,13 +206,15 @@ void Command::execute() {
           //If it is last commnand, Set the output to the file, or stdout
             outFile = outputRedirect(defaultout);
             if (outFile < 0) {
+              //if there was an error when opening a file, we print the error, clear
+              //the command obj and print a new prompt
                 perror(_outFile->c_str());
                 clear();
                 Shell::prompt();
                 return;
             }
         } else {
-          //Otherwise, we direct the output to pipes
+          //Otherwise, we direct the input and output to pipes
             int fdpipe[2];
             pipe(fdpipe);
             outFile = fdpipe[1];
