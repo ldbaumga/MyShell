@@ -892,30 +892,18 @@ YY_RULE_SETUP
   std::string str = std::string(yytext);
   std::string backslash = std::string("\\");
   std::string str2;
-  //str.Replace(str.begin(), str.end(), '\\\\', 
-  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
-  for (int i = 0; i < str.length()-1; i++) {
-    if(str[i].compare(backslash) == 0 && str[i+1].compare(backslash) == 0) {
-        str2.push_back(str[i+1]);
-        i += 1;
-        continue;
-    } else if (str[i] == backslash) {
-        str2.push_back(str[i+1]);
-        i += 1;
-        continue;
-    }
-    str2.push_back(str[i]);
-  }
+  str.Replace(str.begin(), str.end(), '\\\\', 
+  str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
   yylval.cpp_string = new std::string(str2);
   return WORD;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 106 "shell.l"
+#line 94 "shell.l"
 ECHO;
 	YY_BREAK
-#line 919 "lex.yy.cc"
+#line 907 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1932,4 +1920,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 106 "shell.l"
+#line 94 "shell.l"
