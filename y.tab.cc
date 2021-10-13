@@ -506,7 +506,7 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  16
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  33
+#define YYNRULES  34
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  46
 
@@ -559,8 +559,8 @@ static const yytype_uint8 yyrline[] =
 {
        0,    49,    49,    53,    54,    58,    64,    67,    73,    74,
       78,    84,    88,    89,    93,   104,   115,   126,   139,   151,
-     168,   172,   179,   180,   184,   191,   199,   205,   211,   212,
-     213,   214,   215,   225
+     168,   172,   179,   180,   184,   191,   199,   205,   209,   215,
+     216,   217,   218,   219,   229
 };
 #endif
 
@@ -614,9 +614,9 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,    32,     6,    24,    25,     0,     0,     0,     0,
-       4,    13,     9,    28,    29,    30,    31,    21,     7,    26,
-      27,     1,     3,     0,    11,    33,    20,    23,     8,     0,
+       0,     0,    33,     6,    24,    25,     0,    28,     0,     0,
+       4,    13,     9,    29,    30,    31,    32,    21,     7,    26,
+      27,     1,     3,     0,    11,    34,    20,    23,     8,     0,
        0,     0,     0,     0,     0,    10,     0,    12,    22,    14,
       15,    16,    17,    18,    19,     5
 };
@@ -672,8 +672,8 @@ static const yytype_int8 yyr1[] =
 {
        0,    18,    19,    20,    20,    21,    21,    21,    22,    22,
       23,    23,    24,    24,    25,    25,    25,    25,    25,    25,
-      26,    26,    27,    27,    28,    29,    30,    31,    32,    32,
-      32,    32,    32,    33
+      26,    26,    27,    27,    28,    29,    30,    31,    31,    32,
+      32,    32,    32,    32,    33
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -682,7 +682,7 @@ static const yytype_int8 yyr2[] =
        0,     2,     1,     2,     1,     4,     1,     2,     3,     1,
        1,     0,     2,     0,     2,     2,     2,     2,     2,     2,
        2,     1,     2,     1,     1,     1,     2,     2,     1,     1,
-       1,     1,     1,     1
+       1,     1,     1,     1,     1
 };
 
 
@@ -1565,13 +1565,22 @@ yyreduce:
   case 27:
 #line 205 "shell.y"
           {
-
+  std::string str = new std::string((yyvsp[0].cpp_string));
+    chdir(str->c_str());
   }
-#line 1571 "y.tab.cc"
+#line 1572 "y.tab.cc"
     break;
 
-  case 32:
-#line 215 "shell.y"
+  case 28:
+#line 209 "shell.y"
+       {
+    chdir(getenv("HOME"));
+  }
+#line 1580 "y.tab.cc"
+    break;
+
+  case 33:
+#line 219 "shell.y"
          {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1579,22 +1588,22 @@ yyreduce:
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );
   }
-#line 1583 "y.tab.cc"
+#line 1592 "y.tab.cc"
     break;
 
-  case 33:
-#line 225 "shell.y"
+  case 34:
+#line 229 "shell.y"
         {
     if (isatty(0)) {
       printf("   Yacc: insert argument \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
    Command::_currentSimpleCommand->insertArgument( (yyvsp[0].cpp_string) );\
   }
-#line 1594 "y.tab.cc"
+#line 1603 "y.tab.cc"
     break;
 
 
-#line 1598 "y.tab.cc"
+#line 1607 "y.tab.cc"
 
       default: break;
     }
@@ -1826,7 +1835,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 233 "shell.y"
+#line 237 "shell.y"
 
 
 void
