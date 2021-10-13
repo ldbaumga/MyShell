@@ -1544,7 +1544,7 @@ yyreduce:
            {
   Command::_currentSimpleCommand = new SimpleCommand();
   const char * s = "/user/bin/printenv";
-  std::string * str = s;
+  std::string * str(s);
   Command::_currentSimpleCommand->insertArgument(str);
   }
 #line 1551 "y.tab.cc"
