@@ -1543,7 +1543,7 @@ yyreduce:
 #line 190 "shell.y"
            {
   Command::_currentSimpleCommand = new SimpleCommand();
-  const char * s = "/user/bin/printenv";
+  char * s = "/user/bin/printenv";
   std::string * str(s);
   Command::_currentSimpleCommand->insertArgument(str);
   }
