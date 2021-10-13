@@ -239,6 +239,14 @@ void Command::execute() {
             }
             continue;
         }*/
+
+        //setenv
+        if (strcmp(simpleCommand->_arguments[0]->c_str(), "setenv") == 0) {
+            setenv(simpeCommand->_arguments[1], simpeCommand->_arguments[2]);
+            continue;
+        }
+
+
         //CD
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
             int cmdSize = simpleCommand->_arguments.size();
