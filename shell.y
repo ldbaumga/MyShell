@@ -165,8 +165,7 @@ io_modifier:
   ;
 
 cmd_and_args:
-  cd argument
-  | command_word arg_list {
+  command_word arg_list {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
   }
@@ -193,13 +192,6 @@ printenv:
   Command::_currentSimpleCommand = new SimpleCommand();
   std::string * str = new std::string("/usr/bin/printenv");
   Command::_currentSimpleCommand->insertArgument(str);
-  }
-  ;
-
-cd:
-  CD arg_list {
-  fprintf(stderr, "%s\n", $2->c_str());
-  chdir($2->c_str());
   }
   ;
 
