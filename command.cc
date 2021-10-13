@@ -230,6 +230,14 @@ void Command::execute() {
         close(outFile);
         //// END PIPES ////
 
+        //// Built In Functions ////
+        //CD
+        if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
+            fprintf(stderr, "ddddd");
+            return;
+        }
+
+
         int pid = fork();
 
         if (pid == -1) {
@@ -241,13 +249,6 @@ void Command::execute() {
 
         //// CHILD ////
         if (pid == 0) {
-          //// Built In Functions ////
-            //CD
-            if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
-                fprintf(stderr, "ddddd");
-                _exit(1);
-            }
-
             int size = simpleCommand->_arguments.size();
             char ** simpCmds = new char*[size + 1];
             for (int i = 0; i < size; i++) {
