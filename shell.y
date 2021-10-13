@@ -195,12 +195,6 @@ printenv:
   }
   ;
 
-source:
-  SOURCE WORD {
-
-  }
-  ;
-
 cd:
   CD WORD {
   fprintf(stderr, "%s\n", $2->c_str());
@@ -214,7 +208,6 @@ cd:
 command_word:
   exit
   | printenv
-  | source
   | cd
   | WORD {
     if (isatty(0)) {
