@@ -234,7 +234,8 @@ void Command::execute() {
         //CD
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
             fprintf(stderr, "ddddd");
-            return;
+
+            continue;
         }
 
 
