@@ -189,7 +189,7 @@ exit:
 printenv:
   PRINTENV {
   Command::_currentSimpleCommand = new SimpleCommand();
-  std::string str * = "/user/bin/printenv";
+  std::string * str = "/user/bin/printenv";
   Command::_currentSimpleCommand->insertArgument(str);
   }
   ;
