@@ -243,7 +243,7 @@ void Command::execute() {
         if (pid == 0) {
           //// Built In Functions ////
             //CD
-            if (simpleCommand->_arguments[0]->c_str() == "cd") {
+            if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
                 fprintf(stderr, "ddddd");
                 return;
             }
