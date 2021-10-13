@@ -15,6 +15,7 @@
 #include <string>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 #if __cplusplus > 199711L
 #define register      // Deprecated in C++11 so remove the keyword
 #endif
