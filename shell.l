@@ -41,14 +41,6 @@ void myunputc(int c) {
     return PRINTENV;
 }
 
-"source" {
-    return SOURCE;
-}
-
-"cd" {
-    return CD;
-}
-
 \"([^\n]*)\" {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
