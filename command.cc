@@ -233,9 +233,10 @@ void Command::execute() {
         //// Built In Functions ////
         //CD
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
-            if (size == 1) {
+            int cmdSize = simpleCommand->_arguments.size();
+            if (cmdSize == 1) {
                 chdir(getenv("HOME"));
-            } else if (size == 2) {
+            } else if (cmdSize == 2) {
                 chdir(simpleCommand->_arguments[1]->c_str());
             }
 
