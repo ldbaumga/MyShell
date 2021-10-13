@@ -234,9 +234,9 @@ void Command::execute() {
         //printenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "printenv") == 0) {
             int e = 0;
-            while(environ[e]) {
-                printf("%s\n", environ[e++]);
-            }
+//            while(environ[e]) {
+  //              printf("%s\n", environ[e++]);
+   //         }
             continue;
         }
         //CD
