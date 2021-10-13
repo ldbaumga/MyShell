@@ -233,7 +233,8 @@ void Command::execute() {
         //// Built In Functions ////
         //printenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "printenv") == 0) {
-            print(environ);
+            printf(environ);
+            continue;
         }
         //CD
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
