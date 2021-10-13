@@ -203,7 +203,10 @@ source:
 
 cd:
   CD WORD {
-
+    chdir($1);
+  }
+  | CD {
+    chdir(getenv("HOME"));
   }
   ;
 
