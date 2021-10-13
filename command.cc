@@ -264,7 +264,7 @@ void Command::execute() {
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "unsetenv") == 0) {
             if (simpleCommand->_arguments.size() != 2) {
                 perror("Incorrect Usage");
-                clear();
+               clear();
                 Shell::prompt();
                 return;
             }

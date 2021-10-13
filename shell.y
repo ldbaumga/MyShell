@@ -194,6 +194,12 @@ printenv:
   }
   ;
 
+setenv:
+  SETENV WORD WORD {
+    setenv($1->c_str(), $2->c_str());
+  }
+  ;
+
 command_word:
   exit
   | printenv
