@@ -71,11 +71,12 @@ extern int yydebug;
     GREATGREAT = 266,
     GREATGREATAMP = 267,
     AMPERSAND = 268,
-    PRINTENV = 269,
-    SETENV = 270,
-    UNSETENV = 271,
-    SOURCE = 272,
-    CD = 273
+    EXIT = 269,
+    PRINTENV = 270,
+    SETENV = 271,
+    UNSETENV = 272,
+    SOURCE = 273,
+    CD = 274
   };
 #endif
 /* Tokens.  */
@@ -90,11 +91,12 @@ extern int yydebug;
 #define GREATGREAT 266
 #define GREATGREATAMP 267
 #define AMPERSAND 268
-#define PRINTENV 269
-#define SETENV 270
-#define UNSETENV 271
-#define SOURCE 272
-#define CD 273
+#define EXIT 269
+#define PRINTENV 270
+#define SETENV 271
+#define UNSETENV 272
+#define SOURCE 273
+#define CD 274
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -106,7 +108,7 @@ union YYSTYPE
   // Example of using a c++ type in yacc
   std::string *cpp_string;
 
-#line 110 "y.tab.hh"
+#line 112 "y.tab.hh"
 
 };
 typedef union YYSTYPE YYSTYPE;

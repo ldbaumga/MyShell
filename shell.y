@@ -179,8 +179,17 @@ arg_list:
   | argument
   ;
 
+exit:
+  EXIT {
+  fprintf(stderr, "\n Goodbye!!\n\n");
+  exit(0);
+}
+  ;
+
+
 command_word:
-  WORD {
+  EXIT
+  | WORD {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
     }
