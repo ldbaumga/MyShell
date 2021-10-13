@@ -236,7 +236,7 @@ void Command::execute() {
             if (size == 1) {
                 chdir(getenv("HOME"));
             } else if (size == 2) {
-                chdir(simpleCommand->_arguments[1]->C_str());
+                chdir(simpleCommand->_arguments[1]->c_str());
             }
 
             continue;
