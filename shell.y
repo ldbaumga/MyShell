@@ -165,7 +165,7 @@ io_modifier:
   ;
 
 cmd_and_args:
-  cd
+  cd arg_list
   | command_word arg_list {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
