@@ -231,11 +231,19 @@ void Command::execute() {
         //// END PIPES ////
 
         //// Built In Functions ////
+        //printenv
+        if (strcmp(simpleCommand->_arguments[0]->c_str(), "printenv") == 0) {
+            print(environ);
+        }
         //CD
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
             int cmdSize = simpleCommand->_arguments.size();
             if (cmdSize == 1) {
-                chdir(getenv("HOME"));
+                if (chdir(getenv("HOME")) != 0) {
+                    perror("cd");
+                    clear();
+                    Shell::prompt();
+                    return;
             } else if (cmdSize == 2) {
                 if (chdir(simpleCommand->_arguments[1]->c_str()) != 0) {
                     perror(simpleCommand->_arguments[1]->c_str());
@@ -244,7 +252,6 @@ void Command::execute() {
                     return;
                 }
             }
-
             continue;
         }
 
