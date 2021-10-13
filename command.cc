@@ -239,6 +239,9 @@ void Command::execute() {
             } else if (cmdSize == 2) {
                 if (chdir(simpleCommand->_arguments[1]->c_str()) != 0) {
                     perror(simpleCommand->_arguments[1]->c_str());
+                    clear();
+                    Shell::prompt();
+                    retun;
                 }
             }
 
