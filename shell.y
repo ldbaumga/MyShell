@@ -165,7 +165,7 @@ io_modifier:
   ;
 
 cmd_and_args:
-  cd arg_list
+  cd argument
   | cd
   | command_word arg_list {
     Shell::_currentCommand.
@@ -199,7 +199,7 @@ printenv:
 
 cd:
   CD arg_list {
-  fprintf(stderr, "%s\n", $2[0]->c_str());
+  fprintf(stderr, "%s\n", $2->c_str());
   chdir($2->c_str());
   }
   | CD {
