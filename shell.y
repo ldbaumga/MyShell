@@ -189,7 +189,7 @@ exit:
 printenv:
   PRINTENV {
   Command::_currentSimpleCommand = new SimpleCommand();
-  Command::_currentSimpleCommand->insertArgument("/usr/bin/printenv"->c_str());
+  Command::_currentSimpleCommand->insertArgument("/usr/bin/printenv");
   }
   ;
 

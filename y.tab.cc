@@ -1543,7 +1543,7 @@ yyreduce:
 #line 190 "shell.y"
            {
   Command::_currentSimpleCommand = new SimpleCommand();
-  Command::_currentSimpleCommand->insertArgument("/usr/bin/printenv");
+  Command::_currentSimpleCommand->insertArgument("/usr/bin/printenv"->c_str());
   }
 #line 1549 "y.tab.cc"
     break;
