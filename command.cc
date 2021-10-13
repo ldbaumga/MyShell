@@ -242,10 +242,38 @@ void Command::execute() {
 
         //setenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "setenv") == 0) {
-            setenv(simpleCommand->_arguments[1]->c_str(), simpleCommand->_arguments[2]->c_str(), 1);
+            if (simpleCommand->_arguments.size() != 3) {
+                perror("Incorrect Usage");
+                clear();
+                Shell::prompt();
+                return;
+            }
+            if (setenv(simpleCommand->_arguments[1]->c_str(),
+                        simpleCommand->_arguments[2]->c_str(), 1) != 0) {
+                perror(setenv);
+                clear();
+                Shell::prompt();
+                return;
+            }
             continue;
         }
 
+        //unsetenv
+        if (strcmp(simpleCommand->_arguments[0]->c_str(), "unsetenv") == 0) {
+            if (simpleCommand->_arguments.size() != 2) {
+                perror("Incorrect Usage");
+                clear();
+                Shell::prompt();
+                return;
+            }
+            if (unsetenv(simpleCommand->_arguments[1]->c_str()) != 0) {
+                perror(unsetenv);
+                clear();
+                Shell::prompt();
+                return;
+            }
+            continue;
+        }
 
         //CD
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "cd") == 0) {
