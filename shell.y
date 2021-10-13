@@ -188,7 +188,7 @@ exit:
 
 
 command_word:
-  EXIT
+  exit
   | WORD {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
