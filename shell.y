@@ -196,7 +196,9 @@ printenv:
 
 setenv:
   SETENV WORD WORD {
-  setenv($1, $2, 1);
+  std::string 1 = new std::string($1);
+  std::string 2 = new std::string($2);
+  setenv(1->c_str(), 2->c_str(), 1);
   }
   ;
 
