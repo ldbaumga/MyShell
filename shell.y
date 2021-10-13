@@ -165,7 +165,8 @@ io_modifier:
   ;
 
 cmd_and_args:
-  command_word arg_list {
+  cd
+  | command_word arg_list {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
   }
@@ -196,7 +197,7 @@ printenv:
   ;
 
 cd:
-  CD WORD {
+  CD argument {
   fprintf(stderr, "%s\n", $2->c_str());
   chdir($2->c_str());
   }
@@ -208,7 +209,6 @@ cd:
 command_word:
   exit
   | printenv
-  | cd
   | WORD {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
