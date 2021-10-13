@@ -245,6 +245,7 @@ void Command::execute() {
             //CD
             if (simpleCommand->_arguments[0]->c_str() == "cd") {
                 fprintf(stderr, "ddddd");
+                return;
             }
 
             int size = simpleCommand->_arguments.size();
