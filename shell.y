@@ -166,6 +166,7 @@ io_modifier:
 
 cmd_and_args:
   cd arg_list
+  | cd
   | command_word arg_list {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
@@ -197,7 +198,7 @@ printenv:
   ;
 
 cd:
-  CD argument {
+  CD arg_list {
   fprintf(stderr, "%s\n", $2->c_str());
   chdir($2->c_str());
   }
