@@ -33,22 +33,6 @@ void myunputc(int c) {
   /* Discard spaces and tabs */
 }
 
-\"([^\n]*)\" {
-  std::string str = std::string(yytext);
-  str = str.substr(1, str.size() - 2);
-  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
-  yylval.cpp_string = new std::string(str);
-  return WORD;
-}
-
-\'([^\n]*)\' {
-  std::string str = std::string(yytext);
-  str = str.substr(1, str.size() - 2);
-  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
-  yylval.cpp_string = new std::string(str);
-  return WORD;
-}
-
 "exit" {
     return EXIT;
 }
@@ -71,6 +55,22 @@ void myunputc(int c) {
 
 "cd" {
     return CD;
+}
+
+\"([^\n]*)\" {
+  std::string str = std::string(yytext);
+  str = str.substr(1, str.size() - 2);
+  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
+  yylval.cpp_string = new std::string(str);
+  return WORD;
+}
+
+\'([^\n]*)\' {
+  std::string str = std::string(yytext);
+  str = str.substr(1, str.size() - 2);
+  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
+  yylval.cpp_string = new std::string(str);
+  return WORD;
 }
 
 ">>&" {
