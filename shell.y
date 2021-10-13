@@ -197,7 +197,7 @@ printenv:
 
 setenv:
   SETENV WORD WORD {
-    int a = setenv($1->c_str(), $2->c_str());
+    setenv($1->c_str(), $2->c_str());
   }
   ;
 
