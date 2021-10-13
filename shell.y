@@ -203,6 +203,7 @@ source:
 
 cd:
   CD WORD {
+  fprintf(stderr, "%s\n", $2->c_str());
   chdir($2->c_str());
   }
   | CD {
@@ -213,7 +214,6 @@ cd:
 command_word:
   exit
   | printenv
-  | source
   | cd
   | WORD {
     if (isatty(0)) {
