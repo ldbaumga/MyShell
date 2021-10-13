@@ -214,6 +214,7 @@ cd:
 command_word:
   exit
   | printenv
+  | source
   | cd
   | WORD {
     if (isatty(0)) {
