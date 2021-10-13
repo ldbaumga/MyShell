@@ -31,7 +31,7 @@
 %token <cpp_string> WORD
 %token NEWLINE NOTOKEN PIPE GREAT LESS TWOGREAT GREATAMP GREATGREAT
 %token GREATGREATAMP AMPERSAND
-%token EXIT PRINTENV SETENV UNSETENV SOURCE CD
+%token EXIT PRINTENV SOURCE CD
 
 %{
 //#define yylex yylex
@@ -195,16 +195,23 @@ printenv:
   }
   ;
 
-setenv:
-  SETENV WORD WORD {
-    setenv($1->c_str(), $2->c_str());
+source:
+  SOURCE WORD {
+
+  }
+  ;
+
+cd:
+  CD WORD {
+
   }
   ;
 
 command_word:
   exit
   | printenv
-  | setenv
+  | source
+  | cd
   | WORD {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
