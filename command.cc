@@ -231,17 +231,8 @@ void Command::execute() {
         close(outFile);
         //// END PIPES ////
 
-        /*
-        //// Built In Functions ////
-        //printenv
-        if (strcmp(simpleCommand->_arguments[0]->c_str(), "printenv") == 0) {
-            int e = 0;
-            while(environ[e]) {
-                printf("%s\n", environ[e++]);
-            }
-            continue;
-        }
 
+        //// Built In Functions ////
         //setenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "setenv") == 0) {
             if (simpleCommand->_arguments.size() != 3) {
@@ -297,7 +288,6 @@ void Command::execute() {
             }
             continue;
         }
-        */
 
         int pid = fork();
 
