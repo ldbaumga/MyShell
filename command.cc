@@ -151,12 +151,13 @@ void Command::execute() {
         Shell::prompt();
         return;
     }
+/*
     //If the user writes "exit" we exit the shell
     if (size == 1 && (strcmp(_simpleCommands[0]->_arguments[0]->c_str(), "exit"))== 0) {
         fprintf(stderr, "\n Goodbye!!\n\n");
         exit(0);
     }
-
+*/
     // Print contents of Command data structure
     if (isatty(0)) {
       print();
