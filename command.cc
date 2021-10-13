@@ -250,7 +250,7 @@ void Command::execute() {
             }
             if (setenv(simpleCommand->_arguments[1]->c_str(),
                         simpleCommand->_arguments[2]->c_str(), 1) != 0) {
-                perror(setenv);
+                perror("setenv");
                 clear();
                 Shell::prompt();
                 return;
@@ -267,7 +267,7 @@ void Command::execute() {
                 return;
             }
             if (unsetenv(simpleCommand->_arguments[1]->c_str()) != 0) {
-                perror(unsetenv);
+                perror("unsetenv");
                 clear();
                 Shell::prompt();
                 return;
