@@ -241,7 +241,7 @@ void Command::execute() {
                     perror(simpleCommand->_arguments[1]->c_str());
                     clear();
                     Shell::prompt();
-                    retun;
+                    return;
                 }
             }
 
