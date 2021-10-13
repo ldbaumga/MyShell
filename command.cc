@@ -242,7 +242,7 @@ void Command::execute() {
 
         //setenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "setenv") == 0) {
-            setenv(simpleCommand->_arguments[1]->c_str(), simpleCommand->_arguments[2]->c_str());
+            setenv(simpleCommand->_arguments[1]->c_str(), simpleCommand->_arguments[2]->c_str(), 1);
             continue;
         }
 
