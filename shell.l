@@ -41,14 +41,6 @@ void myunputc(int c) {
     return PRINTENV;
 }
 
-"setenv" {
-    return SETENV;
-}
-
-"unsetenv" {
-    return UNSETENV;
-}
-
 "source" {
     return SOURCE;
 }
