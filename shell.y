@@ -205,7 +205,6 @@ setenv:
 command_word:
   exit
   | printenv
-  | setenv
   | WORD {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
