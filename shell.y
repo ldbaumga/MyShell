@@ -203,7 +203,7 @@ source:
 
 cd:
   CD WORD {
-  std::string str = new std::string((char *)$1);
+  std::string str = new std::string($2);
     chdir(str->c_str());
   }
   | CD {
