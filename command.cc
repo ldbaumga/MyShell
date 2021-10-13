@@ -230,6 +230,7 @@ void Command::execute() {
         close(outFile);
         //// END PIPES ////
 
+        /*
         //// Built In Functions ////
         //printenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "printenv") == 0) {
@@ -295,7 +296,7 @@ void Command::execute() {
             }
             continue;
         }
-
+        */
 
         int pid = fork();
 
