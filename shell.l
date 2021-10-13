@@ -49,6 +49,30 @@ void myunputc(int c) {
   return WORD;
 }
 
+"exit" {
+    return EXIT;
+}
+
+"printenv" {
+    return PRINTENV;
+}
+
+"setenv" {
+    return SETENV;
+}
+
+"unsetenv" {
+    return UNSETENV;
+}
+
+"source" {
+    return SOURCE;
+}
+
+"cd" {
+    return CD;
+}
+
 ">>&" {
     return GREATGREATAMP;
 }
