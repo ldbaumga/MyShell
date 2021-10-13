@@ -232,13 +232,13 @@ void Command::execute() {
 
         //// Built In Functions ////
         //printenv
-        /*if (strcmp(simpleCommand->_arguments[0]->c_str(), "printenv") == 0) {
+        if (strcmp(simpleCommand->_arguments[0]->c_str(), "printenv") == 0) {
             int e = 0;
             while(environ[e]) {
                 printf("%s\n", environ[e++]);
             }
             continue;
-        }*/
+        }
 
         //setenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "setenv") == 0) {
