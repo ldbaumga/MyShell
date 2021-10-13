@@ -203,7 +203,8 @@ source:
 
 cd:
   CD WORD {
-    chdir($1->c_str());
+  std::string str = new std::string($1);
+    chdir(str->c_str());
   }
   | CD {
     chdir(getenv("HOME"));
