@@ -241,6 +241,12 @@ void Command::execute() {
 
         //// CHILD ////
         if (pid == 0) {
+          //// Built In Functions ////
+            //CD
+            if (simpleCommand->_arguments[0]->c_str() == "cd") {
+                fprintf(stderr, "ddddd");
+            }
+
             int size = simpleCommand->_arguments.size();
             char ** simpCmds = new char*[size + 1];
             for (int i = 0; i < size; i++) {
