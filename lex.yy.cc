@@ -385,10 +385,10 @@ static const flex_int16_t yy_accept[61] =
     {   0,
         0,    0,   21,   19,    2,    1,   19,   18,   19,   19,
        17,   15,   19,   19,   19,   19,   19,   16,   19,   19,
-        0,    3,   19,    0,    4,   14,   13,   12,   10,   19,
-       19,   19,   19,   19,    3,    4,   11,   19,   19,   19,
-       19,   19,    5,   19,   19,   19,   19,   19,   19,   19,
-       19,   19,    7,    9,   19,   19,   19,    6,    8,    0
+        0,    9,   19,    0,   10,   14,   13,   12,    8,   19,
+       19,   19,   19,   19,    9,   10,   11,   19,   19,   19,
+       19,   19,    3,   19,   19,   19,   19,   19,   19,   19,
+       19,   19,    5,    7,   19,   19,   19,    4,    6,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -836,16 +836,47 @@ case 3:
 YY_RULE_SETUP
 #line 36 "shell.l"
 {
-  std::string str = std::string(yytext);
-  str = str.substr(1, str.size() - 2);
-  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
-  yylval.cpp_string = new std::string(str);
-  return WORD;
+    return EXIT;
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
+#line 40 "shell.l"
+{
+    return PRINTENV;
+}
+	YY_BREAK
+case 5:
+YY_RULE_SETUP
 #line 44 "shell.l"
+{
+    return SETENV;
+}
+	YY_BREAK
+case 6:
+YY_RULE_SETUP
+#line 48 "shell.l"
+{
+    return UNSETENV;
+}
+	YY_BREAK
+case 7:
+YY_RULE_SETUP
+#line 52 "shell.l"
+{
+    return SOURCE;
+}
+	YY_BREAK
+case 8:
+YY_RULE_SETUP
+#line 56 "shell.l"
+{
+    return CD;
+}
+	YY_BREAK
+case 9:
+YY_RULE_SETUP
+#line 60 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -854,46 +885,15 @@ YY_RULE_SETUP
   return WORD;
 }
 	YY_BREAK
-case 5:
-YY_RULE_SETUP
-#line 52 "shell.l"
-{
-    return EXIT;
-}
-	YY_BREAK
-case 6:
-YY_RULE_SETUP
-#line 56 "shell.l"
-{
-    return PRINTENV;
-}
-	YY_BREAK
-case 7:
-YY_RULE_SETUP
-#line 60 "shell.l"
-{
-    return SETENV;
-}
-	YY_BREAK
-case 8:
-YY_RULE_SETUP
-#line 64 "shell.l"
-{
-    return UNSETENV;
-}
-	YY_BREAK
-case 9:
+case 10:
 YY_RULE_SETUP
 #line 68 "shell.l"
 {
-    return SOURCE;
-}
-	YY_BREAK
-case 10:
-YY_RULE_SETUP
-#line 72 "shell.l"
-{
-    return CD;
+  std::string str = std::string(yytext);
+  str = str.substr(1, str.size() - 2);
+  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
+  yylval.cpp_string = new std::string(str);
+  return WORD;
 }
 	YY_BREAK
 case 11:

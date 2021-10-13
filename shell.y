@@ -189,14 +189,21 @@ exit:
 printenv:
   PRINTENV {
   Command::_currentSimpleCommand = new SimpleCommand();
-  std::string * str = new std::string("/user/bin/printenv");
+  std::string * str = new std::string("/usr/bin/printenv");
   Command::_currentSimpleCommand->insertArgument(str);
+  }
+  ;
+
+setenv:
+  SETENV WORD WORD {
+  setenv($1, $2, 1);
   }
   ;
 
 command_word:
   exit
   | printenv
+  | setenv
   | WORD {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
