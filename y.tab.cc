@@ -1543,7 +1543,7 @@ yyreduce:
 #line 190 "shell.y"
            {
   Command::_currentSimpleCommand = new SimpleCommand();
-  String str = "/user/bin/printenv";
+  std::string str = "/user/bin/printenv";
   Command::_currentSimpleCommand->insertArgument(str);
   }
 #line 1550 "y.tab.cc"
