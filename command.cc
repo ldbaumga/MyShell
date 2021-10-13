@@ -234,9 +234,9 @@ void Command::execute() {
         //printenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "printenv") == 0) {
             int e = 0;
-//            while(environ[e]) {
-  //              printf("%s\n", environ[e++]);
-   //         }
+            while(environ[e]) {
+                printf("%s\n", environ[e++]);
+            }
             continue;
         }
         //CD
@@ -248,6 +248,7 @@ void Command::execute() {
                     clear();
                     Shell::prompt();
                     return;
+                }
             } else if (cmdSize == 2) {
                 if (chdir(simpleCommand->_arguments[1]->c_str()) != 0) {
                     perror(simpleCommand->_arguments[1]->c_str());
