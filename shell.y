@@ -183,12 +183,19 @@ exit:
   EXIT {
   fprintf(stderr, "\n Goodbye!!\n\n");
   exit(0);
-}
+  }
   ;
 
+printenv:
+  PRINTENV {
+  Command::_currentSimpleCommand = new SimpleCommand();
+  Command::_currentSimpleCommand->insertArgument("/usr/bin/printenv");
+  }
+  ;
 
 command_word:
   exit
+  | printenv
   | WORD {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
