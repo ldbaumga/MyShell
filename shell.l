@@ -41,6 +41,11 @@ void myunputc(int c) {
     return PRINTENV;
 }
 
+\$\(([^\n]*)\) {
+    fprintf(stderr, "subshell");
+
+}
+
 \"([^\n]*)\" {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
