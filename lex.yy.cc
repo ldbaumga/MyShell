@@ -856,7 +856,7 @@ YY_RULE_SETUP
     }
     //CHILD
     if (pid == 0) {
-    execve("./shell", str->c_str());
+    execve("./shell");
     } //END CHILD
 }
 	YY_BREAK

@@ -8,7 +8,7 @@
  */
 
 %{
-
+#include <unistd.h>
 #include <cstring>
 #include "y.tab.hh"
 #include <string.h>
