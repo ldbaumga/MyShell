@@ -51,7 +51,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     str += "\nexit\n";
 
     char ** args = new char*[2];
-    args[0] = "/proc/self/exe";
+    args[0] =(char *) "/proc/self/exe";
     args[1] = NULL;
 
     char[0] prog
