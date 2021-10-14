@@ -45,7 +45,6 @@ void myunputc(int c) {
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 2);
 
-    shell s = new shell();
 
     int pid = fork();
 
@@ -53,7 +52,7 @@ void myunputc(int c) {
       perror("fork\n");
       _exit(0);
     }
-
+    execvp("./shell", str);
     //CHILD
     if (pid == 0) {
 
