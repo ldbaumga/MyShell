@@ -48,7 +48,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     } else {
         str = str.substr(1, str.size() - 2);
     }
-    fprintf(stderr, "%s", str->c_str());
+    fprintf(stderr, "%s", str);
 
     int pin[2];
     int pout[2];
