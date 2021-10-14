@@ -48,7 +48,11 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     } else {
         str = str.substr(1, str.size() - 2);
     }
-    fprintf(stderr, "%s", str);
+    str += "\nexit\n";
+
+    char * args[] a = new char*args[2];
+
+    char[0] prog
 
     int pin[2];
     int pout[2];
