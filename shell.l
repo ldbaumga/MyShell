@@ -8,6 +8,7 @@
  */
 
 %{
+#include <sys/wait.h>
 #include <unistd.h>
 #include <cstring>
 #include "y.tab.hh"
