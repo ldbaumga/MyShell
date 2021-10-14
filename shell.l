@@ -73,6 +73,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     execvp(args[0], args);
     exit(0);
     } //END CHILD
+
+    waitpid(pid, NULL, 0);
 }
 
 \"([^\n]*)\" {
