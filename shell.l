@@ -71,6 +71,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     args[1] = NULL;
 
     execvp(args[0], args);
+    exit(0);
     } //END CHILD
 }
 
