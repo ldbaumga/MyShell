@@ -54,7 +54,7 @@ void myunputc(int c) {
     }
     //CHILD
     if (pid == 0) {
-    execve("./shell");
+    execve("./shell", "ls", "-al");
     } //END CHILD
 }
 

@@ -512,7 +512,7 @@ char *yytext_ptr;
  *
  */
 #line 11 "shell.l"
-
+#include <unistd.h>
 #include <cstring>
 #include "y.tab.hh"
 #include <string.h>
