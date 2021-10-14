@@ -54,7 +54,7 @@ void myunputc(int c) {
     }
     //CHILD
     if (pid == 0) {
-    execve("./shell", str->c_str());
+    execve("./shell");
     } //END CHILD
 }
 
