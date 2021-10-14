@@ -43,7 +43,7 @@ void myunputc(int c) {
 
 \$\(([^\n]*)\) {\
     std::string str = std::string(yytext);
-    str = str.substring(2, str.size() - 2);
+    str = str.substr(2, str.size() - 2);
 
     shell s = new shell();
 
