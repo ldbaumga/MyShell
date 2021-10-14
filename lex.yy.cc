@@ -852,7 +852,7 @@ YY_RULE_SETUP
     }
     str += "\nexit\n";
 
-    char * args[] a = new char*args[2];
+    char ** args = new char*args[2];
 
     char[0] prog
 
