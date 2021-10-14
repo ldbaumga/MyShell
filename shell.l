@@ -41,9 +41,23 @@ void myunputc(int c) {
     return PRINTENV;
 }
 
-\$\(([^\n]*)\) {
-    fprintf(stderr, "subshell");
+\$\(([^\n]*)\) {\
+    std::string str = std::string(yytext);
+    str = str.substring(2, str.size() - 2);
 
+    shell s = new shell();
+
+    int pid = fork();
+
+    if(pid == -1) {
+      perror("fork\n");
+      _exit(0);
+    }
+
+    //CHILD
+    if (pid == 0) {
+
+    } //END CHILD
 }
 
 \"([^\n]*)\" {
