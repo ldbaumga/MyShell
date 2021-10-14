@@ -52,7 +52,7 @@ void myunputc(int c) {
       perror("fork\n");
       _exit(0);
     }
-    execvp("./shell", str);
+    execvp("./shell", str->c_str());
     //CHILD
     if (pid == 0) {
 

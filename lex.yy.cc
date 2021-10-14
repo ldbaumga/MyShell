@@ -847,7 +847,6 @@ YY_RULE_SETUP
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 2);
 
-    shell s = new shell();
 
     int pid = fork();
 
@@ -855,7 +854,7 @@ YY_RULE_SETUP
       perror("fork\n");
       _exit(0);
     }
-
+    execvp("./shell", str);
     //CHILD
     if (pid == 0) {
 
@@ -864,7 +863,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 63 "shell.l"
+#line 62 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -875,7 +874,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 71 "shell.l"
+#line 70 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -886,63 +885,63 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 79 "shell.l"
+#line 78 "shell.l"
 {
     return GREATGREATAMP;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 83 "shell.l"
+#line 82 "shell.l"
 {
     return GREATGREAT;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 87 "shell.l"
+#line 86 "shell.l"
 {
     return GREATAMP;
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 91 "shell.l"
+#line 90 "shell.l"
 {
     return TWOGREAT;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 96 "shell.l"
+#line 95 "shell.l"
 {
   return GREAT;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 100 "shell.l"
+#line 99 "shell.l"
 {
     return PIPE;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 104 "shell.l"
+#line 103 "shell.l"
 {
     return LESS;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 108 "shell.l"
+#line 107 "shell.l"
 {
     return AMPERSAND;
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 111 "shell.l"
+#line 110 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -953,10 +952,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 118 "shell.l"
+#line 117 "shell.l"
 ECHO;
 	YY_BREAK
-#line 960 "lex.yy.cc"
+#line 959 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1973,4 +1972,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 118 "shell.l"
+#line 117 "shell.l"
