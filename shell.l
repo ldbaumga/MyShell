@@ -54,8 +54,6 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     args[0] =(char *) "/proc/self/exe";
     args[1] = NULL;
 
-    char[0] prog
-
     int pin[2];
     int pout[2];
 
