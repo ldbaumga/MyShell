@@ -60,6 +60,10 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     pipe(pin);
     pipe(pout);
 
+    write(pin[1], str, str.size());
+    close(pin);
+    close(pout);
+
     /*
     int pid = fork();
 

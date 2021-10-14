@@ -856,8 +856,6 @@ YY_RULE_SETUP
     args[0] =(char *) "/proc/self/exe";
     args[1] = NULL;
 
-    char[0] prog
-
     int pin[2];
     int pout[2];
 
@@ -879,7 +877,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 78 "shell.l"
+#line 76 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -890,63 +888,63 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 86 "shell.l"
+#line 84 "shell.l"
 {
     return GREATGREATAMP;
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 90 "shell.l"
+#line 88 "shell.l"
 {
     return GREATGREAT;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 94 "shell.l"
+#line 92 "shell.l"
 {
     return GREATAMP;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 98 "shell.l"
+#line 96 "shell.l"
 {
     return TWOGREAT;
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 103 "shell.l"
+#line 101 "shell.l"
 {
   return GREAT;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 107 "shell.l"
+#line 105 "shell.l"
 {
     return PIPE;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 111 "shell.l"
+#line 109 "shell.l"
 {
     return LESS;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 115 "shell.l"
+#line 113 "shell.l"
 {
     return AMPERSAND;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 118 "shell.l"
+#line 116 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -957,10 +955,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 125 "shell.l"
+#line 123 "shell.l"
 ECHO;
 	YY_BREAK
-#line 964 "lex.yy.cc"
+#line 962 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1977,4 +1975,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 125 "shell.l"
+#line 123 "shell.l"
