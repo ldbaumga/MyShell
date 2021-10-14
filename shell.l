@@ -41,11 +41,20 @@ void myunputc(int c) {
     return PRINTENV;
 }
 
-\$\(([^\n]*)\) {\
+$\(([^\n]*)\)|\'[^\n*]\' {\
     std::string str = std::string(yytext);
-    str = str.substr(2, str.size() - 2);
-    char *const a = "ls";
-    char *const b = "-al";
+    if (str.at(0) == "$") {
+        str = str.substr(2, str.size() - 2);
+    } else {
+        str = str.substr(1, str.size() - 2);
+    }
+    fprintf(stderr, "%s", str->c_str());
+
+    int pin[2];
+    int pout[2];
+
+    pipe(pin);
+    pipe(pout);
 
     int pid = fork();
 
@@ -55,7 +64,7 @@ void myunputc(int c) {
     }
     //CHILD
     if (pid == 0) {
-    execve("./shell", a, b);
+    execve("/proc/self/exe", );
     } //END CHILD
 }
 
