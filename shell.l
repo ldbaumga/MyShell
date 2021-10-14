@@ -44,8 +44,8 @@ void myunputc(int c) {
 \$\(([^\n]*)\) {\
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 2);
-    char *const argv[] a = "ls";
-    char *const envp[] b = "-al";
+    char *const a = "ls";
+    char *const b = "-al";
 
     int pid = fork();
 
