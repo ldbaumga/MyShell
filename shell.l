@@ -44,7 +44,8 @@ void myunputc(int c) {
 \$\(([^\n]*)\) {\
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 2);
-
+    char *const argv[] a = "ls";
+    char *const envp[] b = "-al";
 
     int pid = fork();
 
@@ -54,7 +55,7 @@ void myunputc(int c) {
     }
     //CHILD
     if (pid == 0) {
-    execve("./shell", "ls", "-al");
+    execve("./shell", a, b);
     } //END CHILD
 }
 
