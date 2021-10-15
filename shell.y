@@ -72,7 +72,11 @@ command_line:
 
 cd:
   CD WORD {
-    chdir($2->c_str());
+    if (chdir($2->c_str()) != 0) {
+        perror("Directory does not exist");
+        clear();
+        Shell::prompt();
+    }
   }
   | CD {
     chdir(getenv("HOME"));
