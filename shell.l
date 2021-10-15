@@ -54,6 +54,9 @@ void myunputc(int c) {
     return CD;
 }
 
+"source" {
+    return SOURCE;
+}
 
 ">>&" {
     return GREATGREATAMP;
