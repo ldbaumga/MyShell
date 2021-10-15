@@ -103,7 +103,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     close(pout[0]);
     fprintf(stderr, "char: %c", c);
 
-    myunputc('a');
+    myunputc(c);
     }
 }
 
