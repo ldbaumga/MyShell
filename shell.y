@@ -64,6 +64,7 @@ command_line:
   | cd
   | setenv
   | unsetenv
+  | source
   | NEWLINE /*accepts empty cmd line*/ {
     Shell::_currentCommand.execute();
   }
@@ -94,6 +95,12 @@ setenv:
 unsetenv:
   UNSETENV WORD {
     unsetenv($2->c_str());
+  }
+  ;
+
+source:
+  SOURCE WORD {
+    
   }
   ;
 

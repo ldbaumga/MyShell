@@ -76,7 +76,8 @@ extern int yydebug;
     PRINTENV = 270,
     CD = 271,
     SETENV = 272,
-    UNSETENV = 273
+    UNSETENV = 273,
+    SOURCE = 274
   };
 #endif
 /* Tokens.  */
@@ -96,6 +97,7 @@ extern int yydebug;
 #define CD 271
 #define SETENV 272
 #define UNSETENV 273
+#define SOURCE 274
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -107,7 +109,7 @@ union YYSTYPE
   // Example of using a c++ type in yacc
   std::string *cpp_string;
 
-#line 111 "y.tab.hh"
+#line 113 "y.tab.hh"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -159,7 +159,7 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
 }
 }
 
-\"([^\n]*)\" {
+\"([^\n\"]*)\" {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
   yylval.cpp_string = new std::string(str);
