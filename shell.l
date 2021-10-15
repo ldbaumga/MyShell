@@ -75,10 +75,9 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     }
     //CHILD
     if (pid == 0) {
-    char ** args = new char*[3];
+    char ** args = new char*[2];
     args[0] =(char *) "/proc/self/exe";
-    args[1] = (char *) "ls";
-    args[2] = NULL;
+    args[1] = NULL;
 
     execvp(args[0], args);
     _exit(0);
