@@ -905,7 +905,7 @@ YY_RULE_SETUP
     }
     close(pout[0]);
 
-    myunputc(c);
+    //myunputc(c);
 }
 }
 	YY_BREAK
