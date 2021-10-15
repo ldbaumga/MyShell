@@ -68,16 +68,13 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     }
     //CHILD
     if (pid == 0) {
-    char * args[2];
-    args[0] = "shell";
-    args[1] = NULL;
 
     fprintf(stderr, "I made it\n");
 
     dup2(pin[0], 0);
     dup2(pout[1], 1);
 
-    execvp("/proc/self/exe", args);
+    execvp("/proc/self/exe", NULL);
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
