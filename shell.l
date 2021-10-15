@@ -81,11 +81,9 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
-    write(pin[1], str.c_str(), str.size());
-    fprintf(stderr, "I made it too\n");
-
-
     waitpid(pid, NULL, 0);
+    write(pin[1], str.c_str(), str.size());
+
 
     int buffersize = 1024;
     char * buff = new char[buffersize];
