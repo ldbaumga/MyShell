@@ -79,9 +79,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     execvp(arg[1], arg);
     perror("execvp(subshell)");
-    exit(1);
+    _exit(1);
     } else { //END CHILD
-    waitpid(pid, NULL, 0);
     write(pin[1], str.c_str(), str.size());
     dup2(defaultin, 0);
     dup2(defaultout, 1);
