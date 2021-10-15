@@ -93,9 +93,11 @@ fprintf(stderr, "I made it tt\n");
     close(defaultin);
     close(defaultout);
 
-    int buffersize = 1024;
-    char * buff = new char[buffersize];
-    int r = read(pout[0], buff, buffersize);
+    char c;
+
+    while(read(pout[0], &c, 1)) {
+        fprintf(stderr, "1\n");
+    }
 
     printf("buff: %s\n",buff);
     for (int i = r; i > 0; i--) {
