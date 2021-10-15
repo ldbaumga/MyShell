@@ -97,7 +97,9 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     std::string str;
     char c;
-    read(pout[0], &c, 1);
+    while(read(pout[0], &c, 1)) {
+        strcat(str,l c);
+    }
     close(pout[0]);
     fprintf(stderr, "char: %c", c);
 
