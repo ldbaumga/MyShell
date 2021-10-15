@@ -95,12 +95,12 @@ fprintf(stderr, "I made it tt\n");
 
     char c;
 
-fprintf(stderr, "I made it tt\n");
+fprintf(stderr, "I made it tt2\n");
 
-    while(read(pout[0], &c, 1)) {
+    /*while(read(pout[0], &c, 1)) {
         fprintf(stderr, "1\n");
     }
-
+*/
 fprintf(stderr, "I made it ttt\n");
 
     }
