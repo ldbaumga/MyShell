@@ -867,7 +867,7 @@ YY_RULE_SETUP
     close(pin[0]);
     close(pout[1]);
 
-    write(pin[1], str.c_str(), str.size());
+//    write(pin[1], str.c_str(), str.size());
 
     int pid = fork();
 

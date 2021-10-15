@@ -60,12 +60,12 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     int defaultin = dup(0);
     int defaultout = dup(1);
 
-//    dup2(pin[0], 0);
-//    dup2(pout[1], 1);
+    dup2(pin[0], 0);
+    dup2(pout[1], 1);
     close(pin[0]);
     close(pout[1]);
 
-//    write(pin[1], str.c_str(), str.size());
+    write(pin[1], str.c_str(), str.size());
 
     int pid = fork();
 
@@ -82,8 +82,19 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     execvp(args[0], args);
     _exit(0);
     } else { //END CHILD
-
     waitpid(pid, NULL, 0);
+
+    dup2(defaultin, 0);
+    dup2(defaultout, 1);
+    close(defaultin);
+    close(defaultout);
+
+    int buffersize = 1024;
+    char * buff = new char[buffersize];
+    read(pout[0], buff, buffersize);
+    close(pout[0]);
+
+    fprintf(stderr, "%s", buff);
     }
 }
 
