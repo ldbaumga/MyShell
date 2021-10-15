@@ -29,7 +29,7 @@ void Shell::prompt() {
 
 int main() {
   //Ctrl-C signal handler
-  /*struct sigaction sa;
+  struct sigaction sa;
   sa.sa_handler = disp;
   sigemptyset(&sa.sa_mask);
   sa.sa_flags = SA_RESTART;
@@ -37,7 +37,7 @@ int main() {
     perror("sigaction");
     exit(2);
   }
-*/
+
   //Zombie signal handler
   struct sigaction zomb;
   zomb.sa_handler = zomb_disp;
