@@ -232,6 +232,7 @@ void Command::execute() {
 
 
         //// Built In Functions ////
+        /*
         //setenv
         if (strcmp(simpleCommand->_arguments[0]->c_str(), "setenv") == 0) {
             if (simpleCommand->_arguments.size() != 3) {
@@ -287,7 +288,7 @@ void Command::execute() {
             }
             continue;
         }
-
+*/
         int pid = fork();
 
         if (pid == -1) {

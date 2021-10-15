@@ -73,7 +73,7 @@ command_line:
 cd:
   CD WORD
   | CD {
-    fprintf(stderr, "S");
+    chdir(getenv("HOME"));
   }
   ;
 
