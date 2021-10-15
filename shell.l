@@ -54,7 +54,7 @@ void myunputc(int c) {
     return CD;
 }
 
-$\(([^\n]*)\)| {\
+$\(([^\n]*)\) {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
         str = str.substr(2, str.size() - 3);
