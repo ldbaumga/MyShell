@@ -75,10 +75,10 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     //CHILD
     if (pid == 0) {
     char * args[2];
-    args[0] = (char *) "shell";
+    args[0] = (char *) "/proc/self/exe";
     args[1] = NULL;
 
-    execvp("/proc/self/exe", args);
+    execvp(args[0], args);
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD

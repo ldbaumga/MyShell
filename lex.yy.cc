@@ -877,7 +877,7 @@ YY_RULE_SETUP
     //CHILD
     if (pid == 0) {
     char * args[2];
-    args[0] = "shell";
+    args[0] = (char *) "shell";
     args[1] = NULL;
 
     execvp("/proc/self/exe", args);
