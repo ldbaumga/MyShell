@@ -50,8 +50,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
         str = str.substr(1, str.size() - 2);
     }
     str += "\nexit\n";
-    int pout[2];
     int pin[2];
+    int pout[2];
 
     pipe(pin);
     pipe(pout);
@@ -69,7 +69,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     //CHILD
     if (pid == 0) {
     char * args[2];
-    args[0] = (char *) "shell";
+    args[0] = "shell";
     args[1] = NULL;
 
     fprintf(stderr, "I made it\n");
