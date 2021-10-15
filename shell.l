@@ -98,7 +98,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     char c;
     while(read(pout[0], &c, 1)) {
-        if (*c == "\n") {
+        if (c == "\n") {
             c =" ";
         }
         fprintf(stderr, "%c", c);
