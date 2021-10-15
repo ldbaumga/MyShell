@@ -97,11 +97,11 @@ fprintf(stderr, "I made it tt\n");
 
 fprintf(stderr, "I made it tt2\n");
 
-    /*while(read(pout[0], &c, 1)) {
+    waitpid(pid, NULL, 0);
+    while(read(pout[0], &c, 1)) {
         fprintf(stderr, "1\n");
     }
-*/
-    waitpid(pid, NULL, 0);
+
 fprintf(stderr, "I made it ttt\n");
 
     }
