@@ -105,7 +105,6 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
         a.push_back(c);
     }
     close(pout[0]);
-    fprintf(stderr, "%s", a.c_str());
     for ( int i = a.size() - 1; i >= 0; i--) {
         myunputc(a.at(i));
     }
