@@ -885,7 +885,7 @@ YY_RULE_SETUP
     arg[0] = (char *) "/proc/self/exe";
 
 
-        execvp(arg[1], arg);
+    execvp(arg[1], arg);
     perror("execvp(subshell)");
     _exit(1);
     } else { //END CHILD
@@ -897,7 +897,7 @@ YY_RULE_SETUP
     close(defaultin);
     close(defaultout);
 
-    std::string str = new std::string;
+    std::string str = new std::string();
     char c;
     read(pout[0], &c, 1);
     close(pout[0]);
