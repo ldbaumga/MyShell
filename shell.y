@@ -73,7 +73,7 @@ command_line:
 cd:
   CD WORD {
     if (chdir($2->c_str()) != 0) {
-        fprintf(dup(2), "cd: can't cd into %s", $2);
+        fprintf(dup(2), "cd: can't cd into %s", $2->c_str());
         Shell::_currentCommand.clear();
     }
   }
