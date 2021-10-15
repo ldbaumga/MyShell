@@ -74,7 +74,6 @@ cd:
   CD WORD {
     if (chdir($2->c_str()) != 0) {
         fprintf(stderr, "cd: can't cd into %s\n", $2->c_str());
-        Shell::_currentCommand.clear();
     }
   }
   | CD {
