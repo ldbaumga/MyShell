@@ -144,14 +144,12 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
 
     char c;
     std::string a;
-    a.push_back('\"');
     while(read(pout[0], &c, 1)) {
         if (c == '\n') {
             c =' ';
         }
         a.push_back(c);
     }
-    a.push_back('\"');
     close(pout[0]);
     for ( int i = a.size() - 1; i >= 0; i--) {
         myunputc(a.at(i));
@@ -172,6 +170,7 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
   for (int i = 0; i < str.size(); i++) {
     if (str.at(i) == '\\') {
         str.erase(str.begin() + i);
+        i++;
     }
   }
   yylval.cpp_string = new std::string(str);
