@@ -126,7 +126,6 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 \"([^\n]*)\" {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
-  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
   yylval.cpp_string = new std::string(str);
   return WORD;
 }
@@ -169,7 +168,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
   for (int i = 0; i < str.size(); i++) {
     if (str.at(i) == '\\') {
         str.erase(str.begin() + i);
-        i += 1;
+        i += 3;
     }
   }
   yylval.cpp_string = new std::string(str);
