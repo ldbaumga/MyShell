@@ -949,77 +949,76 @@ YY_RULE_SETUP
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
-  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
   yylval.cpp_string = new std::string(str);
   return WORD;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 134 "shell.l"
+#line 133 "shell.l"
 {
     return GREATGREATAMP;
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 138 "shell.l"
+#line 137 "shell.l"
 {
     return GREATGREAT;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 142 "shell.l"
+#line 141 "shell.l"
 {
     return GREATAMP;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 146 "shell.l"
+#line 145 "shell.l"
 {
     return TWOGREAT;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 151 "shell.l"
+#line 150 "shell.l"
 {
   return GREAT;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 155 "shell.l"
+#line 154 "shell.l"
 {
     return PIPE;
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 159 "shell.l"
+#line 158 "shell.l"
 {
     return LESS;
 }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 163 "shell.l"
+#line 162 "shell.l"
 {
     return AMPERSAND;
 }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 166 "shell.l"
+#line 165 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
   for (int i = 0; i < str.size(); i++) {
     if (str.at(i) == '\\') {
         str.erase(str.begin() + i);
-        i += 1;
+        i += 3;
     }
   }
   yylval.cpp_string = new std::string(str);
@@ -1028,10 +1027,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 178 "shell.l"
+#line 177 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1035 "lex.yy.cc"
+#line 1034 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2048,4 +2047,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 178 "shell.l"
+#line 177 "shell.l"
