@@ -74,7 +74,9 @@ command_line:
 
 cd:
   CD WORD {
-    if (chdir(realpath($2->c_str(), NULL)) != 0) {
+    if (strcmp($2->c_str(), "${HOME}") == 0) {
+        chdir(getenv("HOME"));
+    } else if (chdir(realpath($2->c_str(), NULL)) != 0) {
         fprintf(stderr, "cd: can't cd into %s\n", $2->c_str());
     }
   }
