@@ -89,25 +89,16 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     waitpid(pid, NULL, 0);
 
-    char * newStr = (char *) malloc(2048);
-    newStr[0]='\0';
-    char ch;
-    int bytes;
-    while ((bytes = read(pout[0], &ch, 1)) > 0) {
-        char c[2];
-        c[0] = ch;
-        c[1] = '\0';
-        strcat(newStr, c);
-        fprintf(stderr, "s");
-    }
-
-
     dup2(defaultin, 0);
     dup2(defaultout, 1);
     close(defaultin);
     close(defaultout);
 
-        myunputc('a');
+    char c;
+    read(pout[0], &c, 1);
+    fprintf(stderr, "%c", c);
+
+    myunputc('a');
     }
 }
 
