@@ -899,7 +899,7 @@ YY_RULE_SETUP
     close(pout[0]);
 
     //fprintf(stderr, "%d, %s", r, buff);
-    for (int i = rd - 1; i > 0; i--) {
+    for (int i = r - 1; i > 0; i--) {
     myunputc(buff[i]);
     }
     }
