@@ -893,9 +893,9 @@ fprintf(stderr, "I made it tt\n");
 fprintf(stderr, "I made it tt2\n");
 
     waitpid(pid, NULL, 0);
-    while(read(pout[0], &c, 1)) {
-        fprintf(stderr, "1\n");
-    }
+    //while(read(pout[0], &c, 1)) {
+    //    fprintf(stderr, "1\n");
+    //}
 
 fprintf(stderr, "I made it ttt\n");
     dup2(defaultin, 0);

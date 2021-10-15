@@ -91,9 +91,17 @@ fprintf(stderr, "I made it tt\n");
 fprintf(stderr, "I made it tt2\n");
 
     waitpid(pid, NULL, 0);
-    //while(read(pout[0], &c, 1)) {
-    //    fprintf(stderr, "1\n");
-    //}
+
+    char * newStr = (char *) malloc(2048);
+    newStr[0]='\0';
+    char ch;
+    int bytes;
+    while ((bytes = read(pipout[1], &ch, 1)) > 0) {
+        char c[2];
+        c[0] = ch;
+        c[1] = '\0';
+        strcat(newStr, c);
+    }
 
 fprintf(stderr, "I made it ttt\n");
     dup2(defaultin, 0);
