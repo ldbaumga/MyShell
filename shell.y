@@ -63,6 +63,7 @@ command_line:
   }
   | cd
   | setenv
+  | unsetenv
   | NEWLINE /*accepts empty cmd line*/ {
     Shell::_currentCommand.execute();
   }
@@ -85,6 +86,12 @@ cd:
 setenv:
   SETENV WORD WORD {
     setenv($2->c_str(), $3->c_str(), 1);
+  }
+  ;
+
+unsetenv:
+  UNSETENV WORD {
+    unsetenv($2->c_str());
   }
   ;
 
