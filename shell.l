@@ -72,6 +72,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     args[0] = (char *) "/proc/self/exe";
     args[1] = NULL;
 
+    fprintf(stderr, "I made it");
+
     dup2(pin[0], 0);
     dup2(pout[1], 1);
 
