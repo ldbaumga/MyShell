@@ -71,7 +71,9 @@ command_line:
   ;
 
 cd:
-  CD WORD
+  CD WORD {
+    chdir($2->c_str());
+  }
   | CD {
     chdir(getenv("HOME"));
   }

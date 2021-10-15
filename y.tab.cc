@@ -1409,7 +1409,7 @@ yyreduce:
   case 10:
 #line 75 "shell.y"
        {
-    fprintf(stderr, "S");
+    chdir(getenv("HOME"));
   }
 #line 1415 "y.tab.cc"
     break;
