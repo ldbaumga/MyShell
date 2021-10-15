@@ -166,7 +166,9 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
-  //str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
+  for (int i = 0; i < str.size(); i++) {
+
+  }
   yylval.cpp_string = new std::string(str);
   return WORD;
 }
