@@ -1410,7 +1410,7 @@ yyreduce:
 #line 74 "shell.y"
           {
     if (chdir((yyvsp[0].cpp_string)->c_str()) != 0) {
-        fprintf(dup(2), "cd: can't cd into %s", (yyvsp[0].cpp_string)->c_str());
+        fprintf(stderr, "cd: can't cd into %s", (yyvsp[0].cpp_string)->c_str());
         Shell::_currentCommand.clear();
     }
   }
