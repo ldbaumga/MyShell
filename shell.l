@@ -99,10 +99,6 @@ fprintf(stderr, "I made it tt\n");
         fprintf(stderr, "1\n");
     }
 
-    printf("buff: %s\n",buff);
-    for (int i = r; i > 0; i--) {
-    myunputc(buff[i]);
-    }
     }
 }
 
