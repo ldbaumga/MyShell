@@ -53,6 +53,45 @@ void myunputc(int c) {
 "cd" {
     return CD;
 }
+\"([^\n]*)\" {
+  std::string str = std::string(yytext);
+  str = str.substr(1, str.size() - 2);
+  yylval.cpp_string = new std::string(str);
+  return WORD;
+}
+
+">>&" {
+    return GREATGREATAMP;
+}
+
+">>" {
+    return GREATGREAT;
+}
+
+">&" {
+    return GREATAMP;
+}
+
+"2>" {
+    return TWOGREAT;
+}
+
+
+">" {
+  return GREAT;
+}
+
+"|" {
+    return PIPE;
+}
+
+"<" {
+    return LESS;
+}
+
+"&" {
+    return AMPERSAND;
+}
 
 $\(([^\n]*)\)|\'([^\n]*)\' {
     std::string str = std::string(yytext);
@@ -123,45 +162,7 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
 }
 }
 
-\"([^\n]*)\" {
-  std::string str = std::string(yytext);
-  str = str.substr(1, str.size() - 2);
-  yylval.cpp_string = new std::string(str);
-  return WORD;
-}
 
-">>&" {
-    return GREATGREATAMP;
-}
-
-">>" {
-    return GREATGREAT;
-}
-
-">&" {
-    return GREATAMP;
-}
-
-"2>" {
-    return TWOGREAT;
-}
-
-
-">" {
-  return GREAT;
-}
-
-"|" {
-    return PIPE;
-}
-
-"<" {
-    return LESS;
-}
-
-"&" {
-    return AMPERSAND;
-}
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
