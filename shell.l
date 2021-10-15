@@ -96,7 +96,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     int r = read(pout[0], buff, buffersize);
     close(pout[0]);
 
-    fprintf(buff);
+    printf(buff);
     for (int i = r; i > 0; i--) {
     myunputc(buff[i]);
     }
