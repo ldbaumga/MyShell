@@ -42,6 +42,18 @@ void myunputc(int c) {
     return PRINTENV;
 }
 
+"setenv" {
+    return SETENV;
+}
+
+"unsetenv" {
+    return UNSETENV;
+}
+
+"cd" {
+    return CD;
+}
+
 $\(([^\n]*)\)|\'[^\n*]\' {\
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {

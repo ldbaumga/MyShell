@@ -31,7 +31,7 @@
 %token <cpp_string> WORD
 %token NEWLINE NOTOKEN PIPE GREAT LESS TWOGREAT GREATAMP GREATGREAT
 %token GREATGREATAMP AMPERSAND
-%token EXIT PRINTENV
+%token EXIT PRINTENV CD SETENV UNSETENV
 
 %{
 //#define yylex yylex
@@ -60,6 +60,9 @@ command_line:
         printf("   Yacc: Execute command\n");
     }
     Shell::_currentCommand.execute();
+  }
+  | CD WORD {
+    fprintf(stderr, "s");
   }
   | NEWLINE /*accepts empty cmd line*/ {
     Shell::_currentCommand.execute();
