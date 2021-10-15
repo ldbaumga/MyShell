@@ -73,7 +73,7 @@ command_line:
 cd:
   CD WORD {
     if (chdir($2->c_str()) != 0) {
-        perror("Directory does not exist");
+        perror("cd: can't cd to $2");
         Shell::_currentCommand.clear();
     }
   }
