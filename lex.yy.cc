@@ -882,10 +882,10 @@ YY_RULE_SETUP
     if (pid == 0) {
     char * arg[2];
     arg[1] = NULL;
-    arg[0] = (char *) "/proc/self/exe";
+    arg[0] ="shell";
 
 
-    execvp(arg[1], arg);
+    execvp("/proc/self/exe", arg);
     perror("execvp(subshell)");
     _exit(1);
     } else { //END CHILD
