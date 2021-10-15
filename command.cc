@@ -162,7 +162,7 @@ void Command::execute() {
     if (isatty(0)) {
       print();
     }
-    fprintf(stderr, "test");
+    printf("test");
     //// File Redirection ////
     int defaultin = dup(0);
     int defaultout = dup(1);
