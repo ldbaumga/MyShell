@@ -81,6 +81,12 @@ cd:
   }
   ;
 
+setenv:
+  SETENV WORD WORD {
+    setenv($2->c_str(), $3->c_str(), 1);
+  }
+  ;
+
 pipe_list:
   pipe_list PIPE cmd_and_args
   | cmd_and_args
