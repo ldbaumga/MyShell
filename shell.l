@@ -93,10 +93,10 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     int buffersize = 1024;
     char * buff = new char[buffersize];
-    read(pout[0], buff, buffersize);
+    int r = read(pout[0], buff, buffersize);
     close(pout[0]);
 
-    fprintf(stderr, "%d, %s", rd, buff);
+    fprintf(stderr, "%d, %s", r, buff);
     }
 }
 
