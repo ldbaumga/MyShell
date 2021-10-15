@@ -182,7 +182,9 @@ arg_list:
 
 exit:
   EXIT {
-  fprintf(stderr, "\n Goodbye!!\n\n");
+  if (isatty(0)) {
+    fprintf(stderr, "\n Goodbye!!\n\n");
+  }
   exit(0);
   }
   ;
