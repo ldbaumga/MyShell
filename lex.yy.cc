@@ -907,7 +907,7 @@ YY_RULE_SETUP
     close(defaultin);
     close(defaultout);
 
-
+        myunputc('a');
     }
 }
 	YY_BREAK

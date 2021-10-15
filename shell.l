@@ -66,6 +66,11 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     int pid = fork();
 
+    write(pin[1], str.c_str(), str.size());
+    write(pin[1], "\n", 1);
+    write(pin[1], "exit\n", 5);
+
+
     if(pid == -1) {
       perror("fork\n");
       exit(1);
@@ -81,10 +86,6 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     perror("execvp(subshell)");
     _exit(1);
     } else { //END CHILD
-
-    write(pin[1], str.c_str(), str.size());
-    write(pin[1], "\n", 1);
-    write(pin[1], "exit\n", 5);
 
     waitpid(pid, NULL, 0);
 
