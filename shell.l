@@ -167,9 +167,9 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
   for (int i = 0; i < str.size(); i++) {
-    if (str.at(i) = '\') {
+    if (str.at(i) = '\\') {
         str.erase(i);
-        i += 2;
+        i += 1;
     }
   }
   yylval.cpp_string = new std::string(str);
