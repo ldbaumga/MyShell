@@ -871,7 +871,7 @@ YY_RULE_SETUP
     //CHILD
     if (pid == 0) {
     char * args[2];
-    args[0] = (char *) "/proc/self/exe";
+    args[0] = (char *) "shell";
     args[1] = NULL;
 
     fprintf(stderr, "I made it\n");
@@ -879,7 +879,7 @@ YY_RULE_SETUP
     dup2(pin[0], 0);
     dup2(pout[1], 1);
 
-    execvp(args[0], args);
+    execvp("/proc/self/exe", args);
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
