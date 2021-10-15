@@ -59,6 +59,11 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     int defaultout = dup(1);
 
 
+    dup2(pin[0], 0);
+    dup2(pout[1], 1);
+
+
+
     int pid = fork();
 
     if(pid == -1) {
@@ -71,12 +76,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     arg[1] = NULL;
     arg[0] = (char *) "/proc/self/exe";
 
-    fprintf(stderr, "I made it\n");
 
-    dup2(pin[0], 0);
-    dup2(pout[1], 1);
-
-    execvp(arg[1], arg);
+        execvp(arg[1], arg);
     perror("execvp(subshell)");
     _exit(1);
     } else { //END CHILD
@@ -84,11 +85,6 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     write(pin[1], str.c_str(), str.size());
     write(pin[1], "\n", 1);
     write(pin[1], "exit\n", 5);
-fprintf(stderr, "I made it tt\n");
-
-    char c;
-
-fprintf(stderr, "I made it tt2\n");
 
     waitpid(pid, NULL, 0);
 
@@ -101,12 +97,9 @@ fprintf(stderr, "I made it tt2\n");
         c[0] = ch;
         c[1] = '\0';
         strcat(newStr, c);
-        fprintf(stderr, "s");
     }
 
-    fprintf(stderr, "newster: %s\n", newStr);
 
-fprintf(stderr, "I made it ttt\n");
     dup2(defaultin, 0);
     dup2(defaultout, 1);
     close(defaultin);
