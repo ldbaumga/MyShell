@@ -45,7 +45,7 @@ void myunputc(int c) {
 $\(([^\n]*)\)|\'[^\n*]\' {\
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
-        str = str.substr(2, str.size() - 2);
+        str = str.substr(2, str.size() - 3);
     } else {
         str = str.substr(1, str.size() - 2);
     }
