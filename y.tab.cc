@@ -1411,7 +1411,7 @@ yyreduce:
           {
     if (chdir((yyvsp[0].cpp_string)->c_str()) != 0) {
         perror("Directory does not exist");
-        Shelll::_currentCommand.clear();
+        Shell::_currentCommand.clear();
         Shell::prompt();
     }
   }

@@ -75,7 +75,6 @@ cd:
     if (chdir($2->c_str()) != 0) {
         perror("Directory does not exist");
         Shell::_currentCommand.clear();
-        Shell::prompt();
     }
   }
   | CD {
