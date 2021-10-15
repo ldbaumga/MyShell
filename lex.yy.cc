@@ -882,7 +882,7 @@ YY_RULE_SETUP
     if (pid == 0) {
     char * arg[2];
     arg[1] = NULL;
-    arg[0] ="shell";
+    arg[0] =(char *) "shell";
 
 
     execvp("/proc/self/exe", arg);

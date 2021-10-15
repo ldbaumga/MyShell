@@ -162,7 +162,6 @@ void Command::execute() {
     if (isatty(0)) {
       print();
     }
-    printf("test");
     //// File Redirection ////
     int defaultin = dup(0);
     int defaultout = dup(1);
