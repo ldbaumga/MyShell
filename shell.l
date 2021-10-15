@@ -81,7 +81,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     args[2] = NULL;
 
     execvp(args[0], args);
-    exit(0);
+    _exit(0);
     } else { //END CHILD
 
     waitpid(pid, NULL, 0);
