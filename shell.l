@@ -65,6 +65,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     close(pin[0]);
     close(pout[1]);
 
+
     int pid = fork();
 
     if(pid == -1) {
@@ -81,8 +82,9 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
-    sleep(10);
+
     write(pin[1], str.c_str(), str.size());
+    write(pin[1], "\n", 1);
     close(pin[1]);
 
     waitpid(pid, NULL, 0);
