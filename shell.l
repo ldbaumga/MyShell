@@ -55,12 +55,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     int pin[2];
 
     pipe(pin);
-    int subshellin = pin[0];
-    int writeme = pin[1];
-
     pipe(pout);
-    int readme = pout[0];
-    int subshellout = pout[1];
 
     int defaultin = dup(0);
     int defaultout = dup(1);
@@ -78,17 +73,18 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     args[0] = (char *) "/proc/self/exe";
     args[1] = NULL;
 
-    dup2(subshellin, 0);
-    dup2(subshellout, 1);
-    close(subshellin);
-    close(subshellout);
+    dup2(pin[0], 0);
+    close(pin[0]);
+    dup2(pout[1], 1);
+    close(pout[0]);
+
 
     execvp(args[0], args);
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
-    write(writeme, str.c_str(), str.size());
-    close(writeme);
+    write(pin[1], str.c_str(), str.size());
+    close(pin[1]);
 
     waitpid(pid, NULL, 0);
 

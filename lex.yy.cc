@@ -867,11 +867,6 @@ YY_RULE_SETUP
     int defaultin = dup(0);
     int defaultout = dup(1);
 
-    dup2(subshellin, 0);
-    dup2(subshellout, 1);
-    close(subshellin);
-    close(subshellout);
-
 
     int pid = fork();
 
@@ -884,6 +879,11 @@ YY_RULE_SETUP
     char * args[2];
     args[0] = (char *) "/proc/self/exe";
     args[1] = NULL;
+
+    dup2(subshellin, 0);
+    dup2(subshellout, 1);
+    close(subshellin);
+    close(subshellout);
 
     execvp(args[0], args);
     perror("execvp(subshell)");
