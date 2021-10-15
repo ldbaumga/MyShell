@@ -90,20 +90,19 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     waitpid(pid, NULL, 0);
 
-    dup2(defaultin, 0);
-    dup2(defaultout, 1);
-    close(defaultin);
-    close(defaultout);
-
     std::string str;
     char c;
     while(read(pout[0], &c, 1)) {
         fprintf(stderr, "%c", c);
     }
     close(pout[0]);
-    fprintf(stderr, "char: %c", c);
 
     myunputc(c);
+
+    dup2(defaultin, 0);
+    dup2(defaultout, 1);
+    close(defaultin);
+    close(defaultout);
     }
 }
 
