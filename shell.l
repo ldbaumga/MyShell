@@ -103,7 +103,7 @@ fprintf(stderr, "I made it tt2\n");
         strcat(newStr, c);
     }
 
-    fprintf(stderr, "%s", newStr);
+    fprintf(stderr, "newster: %s\n", newStr);
 
 fprintf(stderr, "I made it ttt\n");
     dup2(defaultin, 0);
