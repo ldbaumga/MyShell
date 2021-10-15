@@ -61,7 +61,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     dup2(pin[0], 0);
     dup2(pout[1], 1);
-
+    close(pin[0]);
+    close(put[1]);
 
 
     int pid = fork();
@@ -69,7 +70,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     write(pin[1], str.c_str(), str.size());
     write(pin[1], "\n", 1);
     write(pin[1], "exit\n", 5);
-
+    close(pin[1]);
 
     if(pid == -1) {
       perror("fork\n");
@@ -96,6 +97,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
     char c;
     read(pout[0], &c, 1);
+    close(pout[0]);
     fprintf(stderr, "%c", c);
 
     myunputc('a');
