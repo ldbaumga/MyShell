@@ -1413,7 +1413,7 @@ yyreduce:
     if (strcmp((yyvsp[0].cpp_string)->c_str(), "${HOME}") == 0) {
         chdir(getenv("HOME"));
     } else if (chdir(realpath((yyvsp[0].cpp_string)->c_str(), NULL)) != 0) {
-        fprintf(stderr, "cd: can't cd into %s", (yyvsp[0].cpp_string)->c_str());
+        fprintf(stderr, "cd: can't cd to %s\n", (yyvsp[0].cpp_string)->c_str());
     }
   }
 #line 1420 "y.tab.cc"
