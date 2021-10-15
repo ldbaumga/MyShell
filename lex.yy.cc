@@ -900,7 +900,7 @@ YY_RULE_SETUP
     std::string str;
     char c;
     while(read(pout[0], &c, 1)) {
-        fprintf(stderr, "char: %c", c);
+        fprintf(stderr, "%c", c);
     }
     close(pout[0]);
     fprintf(stderr, "char: %c", c);
