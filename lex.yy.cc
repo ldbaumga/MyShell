@@ -900,7 +900,7 @@ YY_RULE_SETUP
     char c;
     read(pout[0], &c, 1);
     close(pout[0]);
-    fprintf(stderr, "%c", c);
+    fprintf(stderr, "char: %c", c);
 
     myunputc('a');
     }
