@@ -1409,7 +1409,7 @@ yyreduce:
   case 9:
 #line 74 "shell.y"
           {
-    if (chdir((yyvsp[0].cpp_string)->c_str()) != 0) {
+    if (chdir(realpath((yyvsp[0].cpp_string)->c_str())) != 0) {
         fprintf(stderr, "cd: can't cd into %s\n", (yyvsp[0].cpp_string)->c_str());
     }
   }
