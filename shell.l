@@ -51,8 +51,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     }
     str += "\nexit\n";
 
-    int pin[2];
     int pout[2];
+    int pin[2];
 
     pipe(pin);
     pipe(pout);
@@ -74,11 +74,11 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     }
     //CHILD
     if (pid == 0) {
-    char ** args = new char*[2];
-    args[0] =(char *) "/proc/self/exe";
+    char * args[2];
+    args[0] = "shell";
     args[1] = NULL;
 
-    execvp(args[0], args);
+    execvp("/proc/self/exe", args);
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
