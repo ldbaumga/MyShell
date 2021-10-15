@@ -97,7 +97,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 
 
     char c;
-    str::string a;
+    std::string a;
     while(read(pout[0], &c, 1)) {
         if (c == '\n') {
             c =' ';
