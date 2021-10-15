@@ -383,11 +383,11 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[62] =
     {   0,
-        0,    0,   20,   18,    2,    1,   18,   18,   17,   18,
-       18,   16,   14,   18,   18,   18,   18,   18,   15,   18,
-       18,    0,    9,   18,   18,    0,    8,   13,   12,   11,
-        7,   18,   18,   18,   18,    9,   18,    0,    8,    8,
-       10,   18,   18,   18,   18,    8,    3,   18,   18,   18,
+        0,    0,   20,   18,    2,    1,   18,   18,   16,   18,
+       18,   15,   13,   18,   18,   18,   18,   18,   14,   18,
+       18,    0,    8,   18,   18,    0,   17,   12,   11,   10,
+        7,   18,   18,   18,   18,    8,   18,    0,   17,   17,
+        9,   18,   18,   18,   18,   17,    3,   18,   18,   18,
        18,   18,   18,   18,    5,   18,   18,   18,    4,    6,
         0
     } ;
@@ -873,7 +873,73 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 57 "shell.l"
+#line 56 "shell.l"
+{
+  std::string str = std::string(yytext);
+  str = str.substr(1, str.size() - 2);
+  yylval.cpp_string = new std::string(str);
+  return WORD;
+}
+	YY_BREAK
+case 9:
+YY_RULE_SETUP
+#line 63 "shell.l"
+{
+    return GREATGREATAMP;
+}
+	YY_BREAK
+case 10:
+YY_RULE_SETUP
+#line 67 "shell.l"
+{
+    return GREATGREAT;
+}
+	YY_BREAK
+case 11:
+YY_RULE_SETUP
+#line 71 "shell.l"
+{
+    return GREATAMP;
+}
+	YY_BREAK
+case 12:
+YY_RULE_SETUP
+#line 75 "shell.l"
+{
+    return TWOGREAT;
+}
+	YY_BREAK
+case 13:
+YY_RULE_SETUP
+#line 80 "shell.l"
+{
+  return GREAT;
+}
+	YY_BREAK
+case 14:
+YY_RULE_SETUP
+#line 84 "shell.l"
+{
+    return PIPE;
+}
+	YY_BREAK
+case 15:
+YY_RULE_SETUP
+#line 88 "shell.l"
+{
+    return LESS;
+}
+	YY_BREAK
+case 16:
+YY_RULE_SETUP
+#line 92 "shell.l"
+{
+    return AMPERSAND;
+}
+	YY_BREAK
+case 17:
+YY_RULE_SETUP
+#line 96 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -943,75 +1009,9 @@ YY_RULE_SETUP
 }
 }
 	YY_BREAK
-case 9:
-YY_RULE_SETUP
-#line 126 "shell.l"
-{
-  std::string str = std::string(yytext);
-  str = str.substr(1, str.size() - 2);
-  yylval.cpp_string = new std::string(str);
-  return WORD;
-}
-	YY_BREAK
-case 10:
-YY_RULE_SETUP
-#line 133 "shell.l"
-{
-    return GREATGREATAMP;
-}
-	YY_BREAK
-case 11:
-YY_RULE_SETUP
-#line 137 "shell.l"
-{
-    return GREATGREAT;
-}
-	YY_BREAK
-case 12:
-YY_RULE_SETUP
-#line 141 "shell.l"
-{
-    return GREATAMP;
-}
-	YY_BREAK
-case 13:
-YY_RULE_SETUP
-#line 145 "shell.l"
-{
-    return TWOGREAT;
-}
-	YY_BREAK
-case 14:
-YY_RULE_SETUP
-#line 150 "shell.l"
-{
-  return GREAT;
-}
-	YY_BREAK
-case 15:
-YY_RULE_SETUP
-#line 154 "shell.l"
-{
-    return PIPE;
-}
-	YY_BREAK
-case 16:
-YY_RULE_SETUP
-#line 158 "shell.l"
-{
-    return LESS;
-}
-	YY_BREAK
-case 17:
-YY_RULE_SETUP
-#line 162 "shell.l"
-{
-    return AMPERSAND;
-}
-	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 165 "shell.l"
+#line 166 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1026,7 +1026,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 176 "shell.l"
+#line 177 "shell.l"
 ECHO;
 	YY_BREAK
 #line 1033 "lex.yy.cc"
@@ -2046,4 +2046,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 176 "shell.l"
+#line 177 "shell.l"

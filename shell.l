@@ -53,12 +53,7 @@ void myunputc(int c) {
 "cd" {
     return CD;
 }
-\"([^\n]*)\" {
-  std::string str = std::string(yytext);
-  str = str.substr(1, str.size() - 2);
-  yylval.cpp_string = new std::string(str);
-  return WORD;
-}
+
 
 ">>&" {
     return GREATGREATAMP;
@@ -162,6 +157,12 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
 }
 }
 
+\"([^\n]*)\" {
+  std::string str = std::string(yytext);
+  str = str.substr(1, str.size() - 2);
+  yylval.cpp_string = new std::string(str);
+  return WORD;
+}
 
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
