@@ -101,6 +101,7 @@ fprintf(stderr, "I made it tt2\n");
         fprintf(stderr, "1\n");
     }
 */
+    waitpid(pid, NULL, 0);
 fprintf(stderr, "I made it ttt\n");
 
     }
