@@ -49,7 +49,6 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     } else {
         str = str.substr(1, str.size() - 2);
     }
-    str += "\nexit\n";
     int pin[2];
     int pout[2];
 
@@ -81,7 +80,10 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     perror("execvp(subshell)");
     _exit(1);
     } else { //END CHILD
+
     write(pin[1], str.c_str(), str.size());
+    write(pin[1], "\n", 1);
+    write(pin[1], "exit\n", 5);
     dup2(defaultin, 0);
     dup2(defaultout, 1);
 fprintf(stderr, "I made it tt\n");
