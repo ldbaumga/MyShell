@@ -857,12 +857,7 @@ YY_RULE_SETUP
     int pin[2];
 
     pipe(pin);
-    int subshellin = pin[0];
-    int writeme = pin[1];
-
     pipe(pout);
-    int readme = pout[0];
-    int subshellout = pout[1];
 
     int defaultin = dup(0);
     int defaultout = dup(1);
@@ -880,17 +875,18 @@ YY_RULE_SETUP
     args[0] = (char *) "/proc/self/exe";
     args[1] = NULL;
 
-    dup2(subshellin, 0);
-    dup2(subshellout, 1);
-    close(subshellin);
-    close(subshellout);
+    dup2(pin[0], 0);
+    close(pin[0]);
+    dup2(pout[1], 1);
+    close(pout[0]);
+
 
     execvp(args[0], args);
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
-    write(writeme, str.c_str(), str.size());
-    close(writeme);
+    write(pin[1], str.c_str(), str.size());
+    close(pin[1]);
 
     waitpid(pid, NULL, 0);
 
@@ -915,7 +911,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 114 "shell.l"
+#line 110 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -926,63 +922,63 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 122 "shell.l"
+#line 118 "shell.l"
 {
     return GREATGREATAMP;
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 126 "shell.l"
+#line 122 "shell.l"
 {
     return GREATGREAT;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 130 "shell.l"
+#line 126 "shell.l"
 {
     return GREATAMP;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 134 "shell.l"
+#line 130 "shell.l"
 {
     return TWOGREAT;
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 139 "shell.l"
+#line 135 "shell.l"
 {
   return GREAT;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 143 "shell.l"
+#line 139 "shell.l"
 {
     return PIPE;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 147 "shell.l"
+#line 143 "shell.l"
 {
     return LESS;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 151 "shell.l"
+#line 147 "shell.l"
 {
     return AMPERSAND;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 154 "shell.l"
+#line 150 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -993,10 +989,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 161 "shell.l"
+#line 157 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1000 "lex.yy.cc"
+#line 996 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2013,4 +2009,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 161 "shell.l"
+#line 157 "shell.l"

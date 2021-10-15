@@ -50,7 +50,6 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
         str = str.substr(1, str.size() - 2);
     }
     str += "\nexit\n";
-    fprintf(stderr,"%s\n", str.c_str());
     int pout[2];
     int pin[2];
 
@@ -100,7 +99,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     int r = read(pout[0], buff, buffersize);
     close(pout[0]);
 
-    printf("%s",buff);
+    printf("buff: %s\n",buff);
     for (int i = r; i > 0; i--) {
     myunputc(buff[i]);
     }
