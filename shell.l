@@ -101,6 +101,7 @@ fprintf(stderr, "I made it tt2\n");
         c[0] = ch;
         c[1] = '\0';
         strcat(newStr, c);
+        fprintf(stderr, "s");
     }
 
     fprintf(stderr, "newster: %s\n", newStr);
