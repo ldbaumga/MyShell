@@ -103,7 +103,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     }
     close(pout[0]);
 
-    myunputc(c);
+    //myunputc(c);
 }
 }
 
