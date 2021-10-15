@@ -560,9 +560,9 @@ static const yytype_int8 yytranslate[] =
 static const yytype_uint8 yyrline[] =
 {
        0,    49,    49,    53,    54,    58,    64,    65,    68,    74,
-      79,    85,    86,    90,    96,   100,   101,   105,   116,   127,
-     138,   151,   163,   180,   184,   191,   192,   196,   205,   213,
-     214,   215,   225
+      79,    91,    92,    96,   102,   106,   107,   111,   122,   133,
+     144,   157,   169,   186,   190,   197,   198,   202,   211,   219,
+     220,   221,   231
 };
 #endif
 
@@ -1425,7 +1425,7 @@ yyreduce:
     break;
 
   case 13:
-#line 90 "shell.y"
+#line 96 "shell.y"
             {
     if (isatty(0)) {
         printf("   Yacc: backgorund true \n");
@@ -1436,7 +1436,7 @@ yyreduce:
     break;
 
   case 17:
-#line 105 "shell.y"
+#line 111 "shell.y"
              {
     if (isatty(0)) {
       printf("   Yacc: insert output \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1452,7 +1452,7 @@ yyreduce:
     break;
 
   case 18:
-#line 116 "shell.y"
+#line 122 "shell.y"
               {
     if (isatty(0)) {
       printf("   Yacc: insert input \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1468,7 +1468,7 @@ yyreduce:
     break;
 
   case 19:
-#line 127 "shell.y"
+#line 133 "shell.y"
                   {
     if (isatty(0)) {
       printf("   Yacc: insert error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1484,7 +1484,7 @@ yyreduce:
     break;
 
   case 20:
-#line 138 "shell.y"
+#line 144 "shell.y"
                   {
     if (isatty(0)) {
       printf("   Yacc: insert output and error \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1502,7 +1502,7 @@ yyreduce:
     break;
 
   case 21:
-#line 151 "shell.y"
+#line 157 "shell.y"
                     {
     if (isatty(0)) {
       printf("   Yacc: insert output and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1519,7 +1519,7 @@ yyreduce:
     break;
 
   case 22:
-#line 163 "shell.y"
+#line 169 "shell.y"
                        {
     if (isatty(0)) {
       printf("   Yacc: insert output and error and append \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1538,7 +1538,7 @@ yyreduce:
     break;
 
   case 23:
-#line 180 "shell.y"
+#line 186 "shell.y"
                         {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
@@ -1547,7 +1547,7 @@ yyreduce:
     break;
 
   case 24:
-#line 184 "shell.y"
+#line 190 "shell.y"
                  {
     Shell::_currentCommand.
     insertSimpleCommand( Command::_currentSimpleCommand );
@@ -1556,7 +1556,7 @@ yyreduce:
     break;
 
   case 27:
-#line 196 "shell.y"
+#line 202 "shell.y"
        {
   if (isatty(0)) {
     fprintf(stderr, "\n Goodbye!!\n\n");
@@ -1567,7 +1567,7 @@ yyreduce:
     break;
 
   case 28:
-#line 205 "shell.y"
+#line 211 "shell.y"
            {
   Command::_currentSimpleCommand = new SimpleCommand();
   std::string * str = new std::string("/usr/bin/printenv");
@@ -1577,7 +1577,7 @@ yyreduce:
     break;
 
   case 31:
-#line 215 "shell.y"
+#line 221 "shell.y"
          {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1589,7 +1589,7 @@ yyreduce:
     break;
 
   case 32:
-#line 225 "shell.y"
+#line 231 "shell.y"
         {
     if (isatty(0)) {
       printf("   Yacc: insert argument \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
@@ -1832,7 +1832,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 233 "shell.y"
+#line 239 "shell.y"
 
 
 void

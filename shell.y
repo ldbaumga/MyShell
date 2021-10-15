@@ -62,6 +62,7 @@ command_line:
     Shell::_currentCommand.execute();
   }
   | cd
+  | setenv
   | NEWLINE /*accepts empty cmd line*/ {
     Shell::_currentCommand.execute();
   }
