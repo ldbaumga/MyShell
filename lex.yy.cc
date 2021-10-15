@@ -861,6 +861,11 @@ YY_RULE_SETUP
     int defaultout = dup(1);
 
 
+    dup2(pin[0], 0);
+    dup2(pout[1], 1);
+
+
+
     int pid = fork();
 
     if(pid == -1) {
@@ -873,12 +878,8 @@ YY_RULE_SETUP
     arg[1] = NULL;
     arg[0] = (char *) "/proc/self/exe";
 
-    fprintf(stderr, "I made it\n");
 
-    dup2(pin[0], 0);
-    dup2(pout[1], 1);
-
-    execvp(arg[1], arg);
+        execvp(arg[1], arg);
     perror("execvp(subshell)");
     _exit(1);
     } else { //END CHILD
@@ -886,11 +887,6 @@ YY_RULE_SETUP
     write(pin[1], str.c_str(), str.size());
     write(pin[1], "\n", 1);
     write(pin[1], "exit\n", 5);
-fprintf(stderr, "I made it tt\n");
-
-    char c;
-
-fprintf(stderr, "I made it tt2\n");
 
     waitpid(pid, NULL, 0);
 
@@ -903,12 +899,9 @@ fprintf(stderr, "I made it tt2\n");
         c[0] = ch;
         c[1] = '\0';
         strcat(newStr, c);
-        fprintf(stderr, "s");
     }
 
-    fprintf(stderr, "newster: %s\n", newStr);
 
-fprintf(stderr, "I made it ttt\n");
     dup2(defaultin, 0);
     dup2(defaultout, 1);
     close(defaultin);
@@ -920,7 +913,7 @@ fprintf(stderr, "I made it ttt\n");
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 119 "shell.l"
+#line 112 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -931,63 +924,63 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 127 "shell.l"
+#line 120 "shell.l"
 {
     return GREATGREATAMP;
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 131 "shell.l"
+#line 124 "shell.l"
 {
     return GREATGREAT;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 135 "shell.l"
+#line 128 "shell.l"
 {
     return GREATAMP;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 139 "shell.l"
+#line 132 "shell.l"
 {
     return TWOGREAT;
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 144 "shell.l"
+#line 137 "shell.l"
 {
   return GREAT;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 148 "shell.l"
+#line 141 "shell.l"
 {
     return PIPE;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 152 "shell.l"
+#line 145 "shell.l"
 {
     return LESS;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 156 "shell.l"
+#line 149 "shell.l"
 {
     return AMPERSAND;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 159 "shell.l"
+#line 152 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -998,10 +991,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 166 "shell.l"
+#line 159 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1005 "lex.yy.cc"
+#line 998 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2018,4 +2011,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 166 "shell.l"
+#line 159 "shell.l"

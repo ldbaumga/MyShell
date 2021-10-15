@@ -105,7 +105,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     close(defaultin);
     close(defaultout);
 
-
+        myunputc('a');
     }
 }
 
