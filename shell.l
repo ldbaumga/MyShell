@@ -54,7 +54,7 @@ void myunputc(int c) {
     return CD;
 }
 
-$\(([^\n]*)\)|\'[^\n*]\' {\
+$\(([^\n]*)\)| {\
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
         str = str.substr(2, str.size() - 3);
@@ -165,11 +165,11 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
-/*  for (int i = 0; i < str.size(); i++) {
+  for (int i = 0; i < str.size(); i++) {
     if (str.at(i) == '\\') {
         str.erase(str.begin() + i);
     }
-  }*/
+  }
   yylval.cpp_string = new std::string(str);
   return WORD;
 }

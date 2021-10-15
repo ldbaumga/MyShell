@@ -13,6 +13,7 @@ out
 out2
 README
 shell-in
+shell.l
 shell-out
 sh-in
 sh-out
