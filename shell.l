@@ -84,14 +84,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     write(pin[1], str.c_str(), str.size());
     write(pin[1], "\n", 1);
     write(pin[1], "exit\n", 5);
-    dup2(defaultin, 0);
-    dup2(defaultout, 1);
-fprintf(stderr, "I made it tt\n");
-
-    dup2(defaultin, 0);
-    dup2(defaultout, 1);
-    close(defaultin);
-    close(defaultout);
+printf(stderr, "I made it tt\n");
 
     char c;
 
@@ -103,6 +96,11 @@ fprintf(stderr, "I made it tt2\n");
     }
 
 fprintf(stderr, "I made it ttt\n");
+    dup2(defaultin, 0);
+    dup2(defaultout, 1);
+    close(defaultin);
+    close(defaultout);
+
 
     }
 }
