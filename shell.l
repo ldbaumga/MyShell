@@ -55,36 +55,36 @@ void myunputc(int c) {
 }
 
 
-">>&" {
+[^\\]">>&" {
     return GREATGREATAMP;
 }
 
-">>" {
+[^\\]">>" {
     return GREATGREAT;
 }
 
-">&" {
+[^\\]">&" {
     return GREATAMP;
 }
 
-"2>" {
+[^\\]"2>" {
     return TWOGREAT;
 }
 
 
-">" {
+[^\\]">" {
   return GREAT;
 }
 
-"|" {
+[^\\]"|" {
     return PIPE;
 }
 
-"<" {
+[^\\]"<" {
     return LESS;
 }
 
-"&" {
+[^\\]"&" {
     return AMPERSAND;
 }
 
