@@ -61,15 +61,20 @@ command_line:
     }
     Shell::_currentCommand.execute();
   }
-  | CD WORD {
-    fprintf(stderr, "s");
-  }
+  | cd
   | NEWLINE /*accepts empty cmd line*/ {
     Shell::_currentCommand.execute();
   }
   | error NEWLINE{yyerrok;
     Shell::_currentCommand.clear();
     Shell::prompt();} /*error recovery*/
+  ;
+
+cd:
+  CD WORD
+  | CD {
+    fprintf(stderr, "S");
+  }
   ;
 
 pipe_list:
