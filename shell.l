@@ -50,7 +50,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
         str = str.substr(1, str.size() - 2);
     }
     str += "\nexit\n";
-
+    fprintf("%s\n", str->c_str());
     int pout[2];
     int pin[2];
 
@@ -84,7 +84,6 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     } else { //END CHILD
 
     write(pin[1], str.c_str(), str.size());
-    write(pin[1], "\n", 1);
     close(pin[1]);
 
     waitpid(pid, NULL, 0);
