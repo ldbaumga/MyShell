@@ -73,31 +73,19 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     args[1] = NULL;
 
     dup2(pin[0], 0);
-    close(pin[0]);
     dup2(pout[1], 1);
-    close(pout[0]);
-
 
     execvp(args[0], args);
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
     write(pin[1], str.c_str(), str.size());
-    close(pin[1]);
 
     waitpid(pid, NULL, 0);
-
-    dup2(defaultin, 0);
-    dup2(defaultout, 1);
-    close(defaultin);
-    close(defaultout);
-
-
 
     int buffersize = 1024;
     char * buff = new char[buffersize];
     int r = read(pout[0], buff, buffersize);
-    close(pout[0]);
 
     printf("buff: %s\n",buff);
     for (int i = r; i > 0; i--) {
