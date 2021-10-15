@@ -852,7 +852,7 @@ YY_RULE_SETUP
         str = str.substr(1, str.size() - 2);
     }
     str += "\nexit\n";
-    fprintf("%s\n", str->c_str());
+    fprintf("%s\n", str.c_str());
     int pout[2];
     int pin[2];
 
