@@ -55,15 +55,20 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     int pin[2];
 
     pipe(pin);
+    int subshellin = pin[0];
+    int writeme = pin[1];
+
     pipe(pout);
+    int readme = pout[0];
+    int subshellout = pout[1];
 
     int defaultin = dup(0);
     int defaultout = dup(1);
 
-    dup2(pin[0], 0);
-    dup2(pout[1], 1);
-    close(pin[0]);
-    close(pout[1]);
+    dup2(subshellin, 0);
+    dup2(subshellout, 1);
+    close(subshellin);
+    close(subshellout);
 
 
     int pid = fork();
@@ -82,16 +87,16 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
-
-    write(pin[1], str.c_str(), str.size());
-    close(pin[1]);
-
-    waitpid(pid, NULL, 0);
-
     dup2(defaultin, 0);
     dup2(defaultout, 1);
     close(defaultin);
     close(defaultout);
+
+
+    write(writeme, str.c_str(), str.size());
+    close(writeme);
+
+    waitpid(pid, NULL, 0);
 
     int buffersize = 1024;
     char * buff = new char[buffersize];
