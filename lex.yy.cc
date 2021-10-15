@@ -864,7 +864,7 @@ YY_RULE_SETUP
     dup2(pin[0], 0);
     dup2(pout[1], 1);
     close(pin[0]);
-    close(put[1]);
+    close(pout[1]);
 
 
     int pid = fork();
