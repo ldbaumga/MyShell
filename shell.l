@@ -97,13 +97,14 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     }
     close(pout[0]);
 
-    myunputc(c);
 
     dup2(defaultin, 0);
     dup2(defaultout, 1);
     close(defaultin);
     close(defaultout);
-    }
+
+    myunputc(c);
+}
 }
 
 \"([^\n]*)\" {
