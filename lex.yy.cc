@@ -900,8 +900,8 @@ YY_RULE_SETUP
 
     char c;
     while(read(pout[0], &c, 1)) {
-        if (c == "\n") {
-            c =" ";
+        if (c == '\n') {
+            c =' ';
         }
         fprintf(stderr, "%c", c);
     }
