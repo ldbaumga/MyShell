@@ -898,7 +898,7 @@ fprintf(stderr, "I made it tt2\n");
     newStr[0]='\0';
     char ch;
     int bytes;
-    while ((bytes = read(pipout[1], &ch, 1)) > 0) {
+    while ((bytes = read(pout[1], &ch, 1)) > 0) {
         char c[2];
         c[0] = ch;
         c[1] = '\0';
