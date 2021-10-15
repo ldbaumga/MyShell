@@ -95,7 +95,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     close(defaultin);
     close(defaultout);
 
-    std::string str = new std::string("");
+    std::string str;
     char c;
     read(pout[0], &c, 1);
     close(pout[0]);
