@@ -1410,7 +1410,7 @@ yyreduce:
 #line 74 "shell.y"
           {
     if (chdir((yyvsp[0].cpp_string)->c_str()) != 0) {
-        perror("Directory does not exist");
+        perror("cd: can't cd to $2");
         Shell::_currentCommand.clear();
     }
   }
