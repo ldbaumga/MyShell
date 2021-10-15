@@ -83,6 +83,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     } else { //END CHILD
     waitpid(pid, NULL, 0);
     write(pin[1], str.c_str(), str.size());
+    fprintf(stderr, "I made it\n");
+
 
 
     int buffersize = 1024;
