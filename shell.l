@@ -103,10 +103,9 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
             c =' ';
         }
         a.push_back(c);
-        fprintf(stderr, "%c", c);
     }
     close(pout[0]);
-
+    fprintf(stderr, "%s", a.c_str());
     //myunputc(c);
 }
 }
