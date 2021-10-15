@@ -81,6 +81,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
+    sleep(10);
     write(pin[1], str.c_str(), str.size());
     close(pin[1]);
 

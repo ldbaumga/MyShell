@@ -867,9 +867,6 @@ YY_RULE_SETUP
     close(pin[0]);
     close(pout[1]);
 
-    write(pin[1], str.c_str(), str.size());
-    close(pin[1]);
-
     int pid = fork();
 
     if(pid == -1) {
@@ -886,6 +883,9 @@ YY_RULE_SETUP
     perror("execvp(subshell)");
     exit(1);
     } else { //END CHILD
+    write(pin[1], str.c_str(), str.size());
+    close(pin[1]);
+
     waitpid(pid, NULL, 0);
 
     dup2(defaultin, 0);
