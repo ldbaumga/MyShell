@@ -886,7 +886,7 @@ YY_RULE_SETUP
     write(pin[1], str.c_str(), str.size());
     dup2(defaultin, 0);
     dup2(defaultout, 1);
-fprintf(stderr, "I made it\n");
+fprintf(stderr, "I made it tt\n");
 
 
     int buffersize = 1024;

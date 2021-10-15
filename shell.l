@@ -86,6 +86,10 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     dup2(defaultout, 1);
 fprintf(stderr, "I made it tt\n");
 
+    dup2(defaultin, 0);
+    dup2(defaultout, 1);
+    close(defaultin);
+    close(defaultout);
 
     int buffersize = 1024;
     char * buff = new char[buffersize];
