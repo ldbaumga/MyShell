@@ -55,36 +55,35 @@ void myunputc(int c) {
 }
 
 
-[^\\]">>&" {
+">>&" {
     return GREATGREATAMP;
 }
 
-[^\\]">>" {
+">>" {
     return GREATGREAT;
 }
 
-[^\\]">&" {
+">&" {
     return GREATAMP;
 }
 
-[^\\]"2>" {
+"2>" {
     return TWOGREAT;
 }
 
-
-[^\\]">" {
+">" {
   return GREAT;
 }
 
-[^\\]"|" {
+"|" {
     return PIPE;
 }
 
-[^\\]"<" {
+"<" {
     return LESS;
 }
 
-[^\\]"&" {
+"&" {
     return AMPERSAND;
 }
 
@@ -167,12 +166,14 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
 [^ \t\n][^ \t\n]*  {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
+  /*
   for (int i = 0; i < str.size(); i++) {
     if (str.at(i) == '\\') {
         str.erase(str.begin() + i);
         i++;
     }
   }
+  */
   yylval.cpp_string = new std::string(str);
   return WORD;
 }

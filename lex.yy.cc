@@ -1051,24 +1051,22 @@ YY_RULE_SETUP
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
-  /*
   for (int i = 0; i < str.size(); i++) {
     if (str.at(i) == '\\') {
         str.erase(str.begin() + i);
         i++;
     }
   }
-  */
   yylval.cpp_string = new std::string(str);
   return WORD;
 }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 181 "shell.l"
+#line 179 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1072 "lex.yy.cc"
+#line 1070 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2085,4 +2083,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 181 "shell.l"
+#line 179 "shell.l"
