@@ -1019,7 +1019,7 @@ YY_RULE_SETUP
   for (int i = 0; i < str.size(); i++) {
     if (str.at(i) == '\\') {
         str.erase(str.begin() + i);
-        i += 1;
+        i += 2;
     }
   }
   yylval.cpp_string = new std::string(str);
