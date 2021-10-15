@@ -66,12 +66,13 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     close(pout[1]);
 
     write(pin[1], str.c_str(), str.size());
+    close(pin[1]);
 
     int pid = fork();
 
     if(pid == -1) {
       perror("fork\n");
-      _exit(0);
+      exit(1);
     }
     //CHILD
     if (pid == 0) {
@@ -80,7 +81,8 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     args[1] = NULL;
 
     execvp(args[0], args);
-    _exit(0);
+    perror("execvp(subshell)");
+    exit(1);
     } else { //END CHILD
     waitpid(pid, NULL, 0);
 
@@ -94,7 +96,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     read(pout[0], buff, buffersize);
     close(pout[0]);
 
-    fprintf(stderr, "%s", buff);
+    fprintf(stderr, "%d, %s", rd, buff);
     }
 }
 
