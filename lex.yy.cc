@@ -886,14 +886,7 @@ YY_RULE_SETUP
     write(pin[1], str.c_str(), str.size());
     write(pin[1], "\n", 1);
     write(pin[1], "exit\n", 5);
-    dup2(defaultin, 0);
-    dup2(defaultout, 1);
-fprintf(stderr, "I made it tt\n");
-
-    dup2(defaultin, 0);
-    dup2(defaultout, 1);
-    close(defaultin);
-    close(defaultout);
+printf(stderr, "I made it tt\n");
 
     char c;
 
@@ -905,13 +898,18 @@ fprintf(stderr, "I made it tt2\n");
     }
 
 fprintf(stderr, "I made it ttt\n");
+    dup2(defaultin, 0);
+    dup2(defaultout, 1);
+    close(defaultin);
+    close(defaultout);
+
 
     }
 }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 110 "shell.l"
+#line 108 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -922,63 +920,63 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 118 "shell.l"
+#line 116 "shell.l"
 {
     return GREATGREATAMP;
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 122 "shell.l"
+#line 120 "shell.l"
 {
     return GREATGREAT;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 126 "shell.l"
+#line 124 "shell.l"
 {
     return GREATAMP;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 130 "shell.l"
+#line 128 "shell.l"
 {
     return TWOGREAT;
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 135 "shell.l"
+#line 133 "shell.l"
 {
   return GREAT;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 139 "shell.l"
+#line 137 "shell.l"
 {
     return PIPE;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 143 "shell.l"
+#line 141 "shell.l"
 {
     return LESS;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 147 "shell.l"
+#line 145 "shell.l"
 {
     return AMPERSAND;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 150 "shell.l"
+#line 148 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -989,10 +987,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 157 "shell.l"
+#line 155 "shell.l"
 ECHO;
 	YY_BREAK
-#line 996 "lex.yy.cc"
+#line 994 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2009,4 +2007,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 157 "shell.l"
+#line 155 "shell.l"

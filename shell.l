@@ -84,7 +84,7 @@ $\(([^\n]*)\)|\'[^\n*]\' {\
     write(pin[1], str.c_str(), str.size());
     write(pin[1], "\n", 1);
     write(pin[1], "exit\n", 5);
-printf(stderr, "I made it tt\n");
+fprintf(stderr, "I made it tt\n");
 
     char c;
 
