@@ -917,7 +917,10 @@ case 8:
 YY_RULE_SETUP
 #line 57 "shell.l"
 {
-    FILE * sourceFile = fopen(yytext, "r+");
+     std::string str = std::string(yytext);
+     str = str.substring(7, str.size());
+     fprintf(stderr, "%s\n", str.c_str());
+     FILE * sourceFile = fopen(yytext, "r+");
 
     if (!sourceFile) {
         perror("fopen");
@@ -934,63 +937,63 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 73 "shell.l"
+#line 76 "shell.l"
 {
     return GREATGREATAMP;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 77 "shell.l"
+#line 80 "shell.l"
 {
     return GREATGREAT;
 }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 81 "shell.l"
+#line 84 "shell.l"
 {
     return GREATAMP;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 85 "shell.l"
+#line 88 "shell.l"
 {
     return TWOGREAT;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 89 "shell.l"
+#line 92 "shell.l"
 {
   return GREAT;
 }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 93 "shell.l"
+#line 96 "shell.l"
 {
     return PIPE;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 97 "shell.l"
+#line 100 "shell.l"
 {
     return LESS;
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 101 "shell.l"
+#line 104 "shell.l"
 {
     return AMPERSAND;
 }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 105 "shell.l"
+#line 108 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -1062,7 +1065,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 174 "shell.l"
+#line 177 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1072,7 +1075,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 181 "shell.l"
+#line 184 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1090,10 +1093,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 195 "shell.l"
+#line 198 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1097 "lex.yy.cc"
+#line 1100 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2110,4 +2113,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 195 "shell.l"
+#line 198 "shell.l"
