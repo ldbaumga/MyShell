@@ -112,19 +112,6 @@ $\{[^ \}\n]*\} {
     return WORD;
 }
 
-[^ \\\t\n]*\\|(\\|[^ \\\\t\n])* {
-    std::string str = std::string(yytext);
-    for(int i = 0; i < str.size(); i++) {
-        if (str.at(i) == '\\') {
-            str.erase(str.begin() + i);
-        }
-    }
-    yylval.cpp_string = new std::string(str);
-    return WORD;
-}
-
-
-
 $\(([^\n]*)\)|\'([^\n]*)\' {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -199,6 +186,17 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
   str = str.substr(1, str.size() - 2);
   yylval.cpp_string = new std::string(str);
   return WORD;
+}
+
+[^ \\\t\n]*\\|(\\|[^ \\\\t\n])* {
+    std::string str = std::string(yytext);
+    for(int i = 0; i < str.size(); i++) {
+        if (str.at(i) == '\\') {
+            str.erase(str.begin() + i);
+        }
+    }
+    yylval.cpp_string = new std::string(str);
+    return WORD;
 }
 
 [^ \|>\t\n][^ \|>\t\n]*  {
