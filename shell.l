@@ -59,8 +59,7 @@ void myunputc(int c) {
 
     if (!sourceFile) {
         perror("fopen");
-        Shell::_currentCommand.clear();
-        Shell::prompt();
+        BEGIN(INITIAL);
     } else {
         fputc('\n', sourceFile);
         yypush_buffer_state(yy_create_buffer(sourceFile, YY_BUFF_SIZE));
@@ -69,7 +68,6 @@ void myunputc(int c) {
         yypop_buffer_state();
         fclose(sourceFile);
     }
- 
 }
 
 ">>&" {
