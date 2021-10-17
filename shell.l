@@ -109,9 +109,9 @@ $\{[^ \}\n]*\} {
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 2);
 
-    std::string env(getenv(str.c_str()));
-    cout << "env: " << env;
-    yylval.cpp_string = new std::string(env);
+    str = getenv(str.c_str());
+    fprintf(stderr, "str: %s", str.c_str());
+    yylval.cpp_string = new std::string(str);
     return WORD;
 }
 

@@ -1008,7 +1008,7 @@ YY_RULE_SETUP
     str = str.substr(2, str.size() - 2);
 
     std::string env(getenv(str.c_str()));
-    cout << "env: " << env << endl;
+    cout << "env: " << env;
     yylval.cpp_string = new std::string(env);
     return WORD;
 }
