@@ -1007,9 +1007,9 @@ YY_RULE_SETUP
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 2);
 
-    str = getenv(str.c_str());
+    //str = getenv(str.c_str());
 
-    yylval.cpp_string = new std::string(str);
+    yylval.cpp_string = new std::string( getenv(str.c_str()));
     return WORD;
 }
 	YY_BREAK
