@@ -168,7 +168,6 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
 
     char c;
     std::string a;
-    a.push_back('"');
     while(read(pout[0], &c, 1)) {
         if (c == '\n') {
             c =' ';
@@ -176,7 +175,6 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
         a.push_back(c);
     }
     close(pout[0]);
-    a.push_back('"');
     for ( int i = a.size() - 1; i >= 0; i--) {
         myunputc(a.at(i));
     }
