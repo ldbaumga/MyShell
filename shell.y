@@ -102,7 +102,7 @@ source:
   SOURCE WORD {
     FILE sourceFile = fopen(yytext, "r+");
 
-    if (sourceFile == -1) {
+    if (!sourceFile) {
         perror("fopen");
         Shell::_currentCommand.clear();
         Shell::prompt();
