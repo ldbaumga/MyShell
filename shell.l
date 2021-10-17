@@ -110,7 +110,7 @@ $\{[^ \}\n]*\} {
     str = str.substr(2, str.size() - 2);
 
     str = getenv(str.c_str());
-    //fprintf(stderr, "str: %s", str.c_str());
+    fprintf(stderr, "str: %s", str.c_str());
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
