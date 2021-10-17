@@ -920,7 +920,7 @@ YY_RULE_SETUP
      std::string str = std::string(yytext);
      str = str.substr(7, str.size());
      fprintf(stderr, "%s\n", str.c_str());
-     FILE * sourceFile = fopen(yytext, "r+");
+     FILE * sourceFile = fopen(str, "r+");
 
     if (!sourceFile) {
         perror("fopen");
