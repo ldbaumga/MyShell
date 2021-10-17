@@ -58,7 +58,7 @@ void myunputc(int c) {
      std::string str = std::string(yytext);
      str = str.substr(7, str.size());
      fprintf(stderr, "%s\n", str.c_str());
-     FILE * sourceFile = fopen(str->c_str(), "r+");
+     FILE * sourceFile = fopen(str.c_str(), "r+");
 
     if (!sourceFile) {
         perror("fopen");
