@@ -62,7 +62,7 @@ void myunputc(int c) {
         BEGIN(INITIAL);
     } else {
         fputc('\n', sourceFile);
-        yypush_buffer_state(yy_create_buffer(sourceFile, YY_BUFF_SIZE));
+        yypush_buffer_state(yy_create_buffer(sourceFile, YY_BUF_SIZE));
         BEGIN(INITIAL);
         yyparse();
         yypop_buffer_state();
