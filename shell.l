@@ -105,6 +105,16 @@ void myunputc(int c) {
     return AMPERSAND;
 }
 
+$\{[^ \}\n]*\} {
+    std::string str = std::string(yytext);
+    str = str.substr(2, str.size() - 2);
+
+    str = getenv(str);
+
+    yylval.cpp_string = new std::string(str);
+    return WORD;
+}
+
 $\(([^\n]*)\)|\'([^\n]*)\' {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
