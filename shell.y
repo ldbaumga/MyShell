@@ -64,7 +64,6 @@ command_line:
   | cd
   | setenv
   | unsetenv
-  | source
   | NEWLINE /*accepts empty cmd line*/ {
     Shell::_currentCommand.execute();
   }
@@ -95,24 +94,6 @@ setenv:
 unsetenv:
   UNSETENV WORD {
     unsetenv($2->c_str());
-  }
-  ;
-
-source:
-  SOURCE WORD {
-    FILE * sourceFile = fopen($2->c_str(), "r+");
-
-    if (!sourceFile) {
-        perror("fopen");
-        Shell::_currentCommand.clear();
-        Shell::prompt();
-    } else {
-        fputc('\n', sourceFile);
-        yypush_buffer_state(yy_create_buffer(sourceFile, 1024));
-        yyparse();
-        yypop_buffer_state();
-        fclose(sourceFile);
-    }
   }
   ;
 
