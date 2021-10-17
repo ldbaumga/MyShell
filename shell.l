@@ -111,7 +111,7 @@ $\{[^ \}\n]*\} {
 
     char * env = getenv(str.c_str());
 
-    yylval.cpp_string = new std::string(env);
+    yylval.cpp_string = new std::string(&env);
     return WORD;
 }
 
