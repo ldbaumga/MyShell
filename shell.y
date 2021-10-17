@@ -100,7 +100,20 @@ unsetenv:
 
 source:
   SOURCE WORD {
-    
+    FILE sourceFile = fopen(yytext, "r+");
+
+    if (sourceFile == -1) {
+        perror("fopen");
+        Shell::_currentCommand.clear();
+        Shell::prompt();
+    } else {
+        fputc('\n', in);
+        yypush_buffer_state(yy_create_buffer(in, 1024));
+        yyparse();
+        yypop_buffer_state();
+        fclose(sourceFile);
+        }
+    }
   }
   ;
 
