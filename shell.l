@@ -54,7 +54,7 @@ void myunputc(int c) {
     return CD;
 }
 
-"source" [^ \t\n][^ \t\n]* {
+"source"[^ \t\n][^ \t\n]* {
     FILE * sourceFile = fopen(yytext, "r+");
 
     if (!sourceFile) {
