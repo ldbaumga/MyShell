@@ -108,9 +108,7 @@ void myunputc(int c) {
 $\{[^ \}\n]*\} {
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 3);
-    fprintf(stderr, "str:%s", str.c_str());
-    fprintf(stderr, "str2: %s", getenv(str.c_str()));
-    fprintf(stderr, "str: %s", str.c_str());
+    str = getenv(str.c_str());
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
