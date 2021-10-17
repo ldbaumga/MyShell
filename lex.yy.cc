@@ -918,7 +918,7 @@ YY_RULE_SETUP
 #line 57 "shell.l"
 {
      std::string str = std::string(yytext);
-     str = str.substring(7, str.size());
+     str = str.substr(7, str.size());
      fprintf(stderr, "%s\n", str.c_str());
      FILE * sourceFile = fopen(yytext, "r+");
 
