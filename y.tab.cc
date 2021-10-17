@@ -1458,7 +1458,7 @@ yyreduce:
         Shell::_currentCommand.clear();
         Shell::prompt();
     } else {
-        fputc('\n', in);
+        fputc('\n', sourceFile);
         yypush_buffer_state(yy_create_buffer(in, 1024));
         yyparse();
         yypop_buffer_state();

@@ -108,7 +108,7 @@ source:
         Shell::prompt();
     } else {
         fputc('\n', sourceFile);
-        yypush_buffer_state(yy_create_buffer(in, 1024));
+        yypush_buffer_state(yy_create_buffer(sourceFile, 1024));
         yyparse();
         yypop_buffer_state();
         fclose(sourceFile);
