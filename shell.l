@@ -116,7 +116,7 @@ $\{[^ \}\n]*\} {
     std::string str = std::string(yytext);
     for(int i = 0; i < str.size(); i++) {
         if (str.at(i) == '\\') {
-            str.erase(i);
+            str.erase(str.begin() + i);
             i += 2;
         }
     }
