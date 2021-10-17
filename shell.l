@@ -55,7 +55,10 @@ void myunputc(int c) {
 }
 
 "source "([^ \t\n][^ \t\n]*) {
-    FILE * sourceFile = fopen(yytext, "r+");
+     std::string str = std::string(yytext);
+     str = str.substring(7, str.size());
+     fprintf(stderr, "%s\n", str.c_str());
+     FILE * sourceFile = fopen(yytext, "r+");
 
     if (!sourceFile) {
         perror("fopen");
