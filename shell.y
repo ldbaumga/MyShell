@@ -112,7 +112,6 @@ source:
         yyparse();
         yypop_buffer_state();
         fclose(sourceFile);
-        }
     }
   }
   ;
