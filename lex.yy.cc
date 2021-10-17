@@ -1193,7 +1193,7 @@ YY_RULE_SETUP
 #line 115 "shell.l"
 {
     std::string str = std::string(yytext);
-    for(int i = 0; i < str.size(), i++) {
+    for(int i = 0; i < str.size(); i++) {
         if (str.at(i) == '\\') {
             str.erase(i);
             i++;
