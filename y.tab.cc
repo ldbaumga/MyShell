@@ -1451,7 +1451,7 @@ yyreduce:
   case 16:
 #line 102 "shell.y"
               {
-    FILE sourceFile = fopen(yytext, "r+");
+    FILE sourceFile = fopen((yyvsp[0].cpp_string), "r+");
 
     if (!sourceFile) {
         perror("fopen");

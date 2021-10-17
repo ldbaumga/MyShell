@@ -100,7 +100,7 @@ unsetenv:
 
 source:
   SOURCE WORD {
-    FILE sourceFile = fopen($2, "r+");
+    FILE sourceFile = fopen($2->c_str(), "r+");
 
     if (!sourceFile) {
         perror("fopen");
