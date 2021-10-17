@@ -112,6 +112,20 @@ $\{[^ \}\n]*\} {
     return WORD;
 }
 
+[^ \\\t\n]*\\[^ \\\\t\n]* {
+    std::string str = std::string(yytext);
+    for(int i = 0; i < str.size(), i++) {
+        if (str.at(i) == '\\') {
+            str.errase(i);
+            i++;
+        }
+    }
+    yylval.cpp_string = new std::string(str);
+    return WORD;
+}
+
+
+
 $\(([^\n]*)\)|\'([^\n]*)\' {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -191,14 +205,6 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
 [^ \|>\t\n][^ \|>\t\n]*  {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
-  /*
-  for (int i = 0; i < str.size(); i++) {
-    if (str.at(i) == '\\') {
-        str.erase(str.begin() + i);
-        i++;
-    }
-  }
-  */
   yylval.cpp_string = new std::string(str);
   return WORD;
 }
