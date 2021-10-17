@@ -383,21 +383,21 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[142] =
     {   0,
-       18,   18,   23,   18,    2,    1,    2,   18,   18,   16,
-       18,   18,   15,   13,   18,   18,   18,   18,   18,   21,
-       18,   14,   18,   18,   18,   18,   21,   18,   18,    0,
-       18,   18,   18,   21,   18,   18,   18,   18,    0,   18,
-       18,   18,   21,   12,   11,   10,    0,   21,    7,   18,
-       18,   18,   18,   18,   18,   18,   20,   18,    0,   18,
-       21,   20,   18,   18,   18,    0,   18,   18,   18,   21,
-       18,   18,   18,   18,   21,   17,   18,   19,   18,    0,
-       18,   21,   19,   18,    9,   18,   18,   18,   21,   18,
-       18,   20,   18,   20,   18,   19,   18,    0,   18,   21,
+       20,   20,   23,   20,    2,    1,    2,   20,   20,   16,
+       20,   20,   15,   13,   20,   20,   20,   20,   20,   21,
+       20,   14,   20,   20,   20,   20,   21,   20,   20,    0,
+       19,   20,   20,   21,   20,   20,   20,   20,    0,   18,
+       20,   20,   21,   12,   11,   10,    0,   21,    7,   20,
+       20,   20,   20,   20,   20,   19,   19,   19,    0,   19,
+       21,   19,   20,   20,   20,    0,   18,   20,   20,   21,
+       20,   20,   20,   20,   21,   17,   18,   18,   18,    0,
+       18,   21,   18,   20,    9,   20,   20,   20,   21,   20,
+       20,   19,   20,   19,   18,   18,   18,    0,   18,   21,
 
-       19,   18,    0,   17,    0,   17,   21,   17,   18,   17,
-       19,   18,   19,    3,   18,   21,   18,   18,   19,   18,
-       19,   17,   18,   17,   17,   21,   21,   18,   21,   21,
-        5,   18,   21,   21,    0,   21,    4,    8,    6,    8,
+       18,   20,    0,   17,    0,   17,   21,   17,   20,   17,
+       18,   20,   18,    3,   20,   21,   20,   20,   18,   20,
+       18,   17,   20,   17,   17,   21,   21,   20,   21,   21,
+        5,   20,   21,   21,    0,   21,    4,    8,    6,    8,
         0
     } ;
 
@@ -1255,20 +1255,6 @@ YY_RULE_SETUP
 #line 115 "shell.l"
 {
     std::string str = std::string(yytext);
-    for(int i = 0; i < str.size(); i++) {
-        if (str.at(i) == '\\') {
-            str.erase(str.begin() + i);
-        }
-    }
-    yylval.cpp_string = new std::string(str);
-    return WORD;
-}
-	YY_BREAK
-case 19:
-YY_RULE_SETUP
-#line 128 "shell.l"
-{
-    std::string str = std::string(yytext);
     if (str.at(0) == '$') {
         str = str.substr(2, str.size() - 3);
     } else {
@@ -1336,9 +1322,9 @@ YY_RULE_SETUP
 }
 }
 	YY_BREAK
-case 20:
+case 19:
 YY_RULE_SETUP
-#line 197 "shell.l"
+#line 184 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1346,9 +1332,23 @@ YY_RULE_SETUP
   return WORD;
 }
 	YY_BREAK
+case 20:
+YY_RULE_SETUP
+#line 191 "shell.l"
+{
+    std::string str = std::string(yytext);
+    for(int i = 0; i < str.size(); i++) {
+        if (str.at(i) == '\\') {
+            str.erase(str.begin() + i);
+        }
+    }
+    yylval.cpp_string = new std::string(str);
+    return WORD;
+}
+	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 204 "shell.l"
+#line 202 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1358,7 +1358,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 210 "shell.l"
+#line 208 "shell.l"
 ECHO;
 	YY_BREAK
 #line 1365 "lex.yy.cc"
@@ -2378,4 +2378,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 210 "shell.l"
+#line 208 "shell.l"
