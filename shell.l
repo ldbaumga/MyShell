@@ -190,11 +190,11 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
 
 [^ \\\t\n]*(\\[^nt])((\\[^nt])|[\\\t\n])* {
     std::string str = std::string(yytext);
-    for(int i = 0; i < str.size(); i++) {
+    /*for(int i = 0; i < str.size(); i++) {
         if (str.at(i) == '\\') {
             str.erase(str.begin() + i);
         }
-    }
+    } */
     yylval.cpp_string = new std::string(str);
     return WORD;
 }

@@ -1369,7 +1369,6 @@ YY_RULE_SETUP
 
     char c;
     std::string a;
-    a.push_back('"');
     while(read(pout[0], &c, 1)) {
         if (c == '\n') {
             c =' ';
@@ -1377,7 +1376,6 @@ YY_RULE_SETUP
         a.push_back(c);
     }
     close(pout[0]);
-    a.push_back('"');
     for ( int i = a.size() - 1; i >= 0; i--) {
         myunputc(a.at(i));
     }
@@ -1386,7 +1384,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 186 "shell.l"
+#line 184 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1397,7 +1395,7 @@ YY_RULE_SETUP
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 193 "shell.l"
+#line 191 "shell.l"
 {
     std::string str = std::string(yytext);
     for(int i = 0; i < str.size(); i++) {
@@ -1411,7 +1409,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 204 "shell.l"
+#line 202 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1421,10 +1419,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 210 "shell.l"
+#line 208 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1428 "lex.yy.cc"
+#line 1426 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2441,4 +2439,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 210 "shell.l"
+#line 208 "shell.l"
