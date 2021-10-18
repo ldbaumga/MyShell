@@ -108,11 +108,29 @@ $\{[^ \}\n]*\} {
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 3);
 
+    if (str.size() == 1) {
+        if(str.at(0) == '$') {
+            str = getpid();
+       } else if (str.at(0) == '?') {
 
-    str = getenv(str.c_str());
+        } else if (str.at(0) == '!') {
+
+        } else if (str.at(0) == '_') {
+
+        }
+    } else {
+        if (strcmp(str, "SHELL") == 0) {
+
+        } else {
+            str = getenv(str.c_str());
+       }
+    }
+
     yylval.cpp_string = new std::string(str);
     return WORD;
+    perror("${}");
 }
+
 
 $\(([^\n]*)\)|\'([^\n]*)\' {
     std::string str = std::string(yytext);
