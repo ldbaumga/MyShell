@@ -1017,7 +1017,7 @@ YY_RULE_SETUP
 
         }
     } else {
-        if (strcmp(str, "SHELL") == 0) {
+        if (strcmp(str.c_str(), "SHELL") == 0) {
 
         } else {
             str = getenv(str.c_str());
