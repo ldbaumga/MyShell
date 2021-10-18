@@ -111,7 +111,7 @@ $\{[^ \}\n]*\} {
     if (str.size() == 1) {
         if(str.at(0) == '$') {
             str = getpid();
-            fprintf(stderr, "%d", str);
+            fprintf(stderr, "%s", str.c_str());
         } else if (str.at(0) == '?') {
             
         } else if (str.at(0) == '!') {
