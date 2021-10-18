@@ -108,9 +108,6 @@ $\{[^ \}\n]*\} {
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 3);
 
-    if (str == '$') {
-        fprintf(stderr, "yay");
-    }
 
     str = getenv(str.c_str());
     yylval.cpp_string = new std::string(str);
