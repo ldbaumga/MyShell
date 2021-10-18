@@ -139,7 +139,7 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
     }
 
     std::string exclamation ("${!}");
-    std::string excl = std::string(gentenv("!"));
+    std::string excl = std::string(getenv("!"));
 
     while(str.find("${!}") != std::string::npos) {
         str.replace(str.find(exclamation), exclamation.length(), excl);
