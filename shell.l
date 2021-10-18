@@ -106,8 +106,10 @@ void myunputc(int c) {
 
 $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
     std::string str = std::string(yytext);
-    str = str.substr(2, str.size() - 3);
-    int size = str.size();
+    //str = str.substr(2, str.size() - 3);
+    //int size = str.size();
+    //use setenv in command.cc to set all the symbols
+    /*
         if(str.at(0) == '$' && size == 1) {
             str = std::to_string(getpid());
         } else if (str.at(0) == '?' && size == 1) {
@@ -121,7 +123,10 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
         } else {
             str = getenv(str.c_str());
        }
+    */
+    while ((int found = str.find("${")) != str:npos) {
 
+    }
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
