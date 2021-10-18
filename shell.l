@@ -242,7 +242,7 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
   return WORD;
 }
 
-[^ \|>!?_$\t\n][^ \|>!?_$\t\n]*  {
+[^ \|>\t\n][^ \|>\t\n]*  {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
   yylval.cpp_string = new std::string(str);
