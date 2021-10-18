@@ -1061,7 +1061,7 @@ YY_RULE_SETUP
     std::string dollsign = std::to_string(getpid());
 
     while(str.find("${$}") != std::string::npos) {
-        str.replace(str.find(dollarsign, dollarsign.length(), dollsign);
+        str.replace(str.find(dollarsign, dollarsign.length(), dollsign));
     }
 
     std::string question ("${?}");
