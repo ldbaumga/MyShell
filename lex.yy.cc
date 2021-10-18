@@ -1058,28 +1058,28 @@ YY_RULE_SETUP
        }
     */
     std::string dollarsign ("${$}");
-    std::string dollsign = new std::to_string(getpid());
+    std::string dollsign = std::to_string(getpid());
 
     while(str.find("${$}") != std::string::npos) {
         str.replace(str.find(dollarsign, dollarsign.length(), dollsign);
     }
 
     std::string question ("${?}");
-    std::string quest = new std::string(getenv('?'));
+    std::string quest = new std::string(getenv("?"));
 
     while(str.find("${?}") != std::string::npos) {
         str.replace(str.find(question, question.length(), quest);
     }
 
     std::string exclamation ("${!}");
-    std::string excl = new std::string(gentenv('!'));
+    std::string excl = new std::string(gentenv("!"));
 
     while(str.find("${!}") != std::string::npos) {
         str.replace(str.find(exclamation, exclamation.length(), excl);
     }
 
     std::string underscore ("${_}");
-    std::string under = new std::string(getenv('_'));
+    std::string under = new std::string(getenv("_"));
 
     while(str.find("${_}") != std::string::npos) {
         str.replace(str.find(underscore, underscore.length(), under);
