@@ -110,7 +110,7 @@ $\{[^ \}\n]*\} {
 
     if (str.size() == 1) {
         if(str.at(0) == '$') {
-            str = getpid();
+            str = std::to_string(getpid());
             fprintf(stderr, "%d", getpid());
         } else if (str.at(0) == '?') {
             

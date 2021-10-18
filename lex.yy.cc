@@ -1009,7 +1009,7 @@ YY_RULE_SETUP
     if (str.size() == 1) {
         if(str.at(0) == '$') {
             str = getpid();
-            fprintf(stderr, "%s", getpid());
+            fprintf(stderr, "%d", getpid());
         } else if (str.at(0) == '?') {
             
         } else if (str.at(0) == '!') {
