@@ -1057,16 +1057,48 @@ YY_RULE_SETUP
             str = getenv(str.c_str());
        }
     */
-    while ((int found = str.find("${")) != str:npos) {
+    std::string dollarsign ("${$}");
+    std::string dollsign = new std::to_string(getpid());
 
+    while(str.find("${$}") != std::string::npos) {
+        str.replace(str.find(dollarsign, dollarsign.length(), dollsign);
     }
+
+    std::string question ("${?}");
+    std::string quest = new std::string(getenv('?'));
+
+    while(str.find("${?}") != std::string::npos) {
+        str.replace(str.find(question, question.length(), quest);
+    }
+
+    std::string exclamation ("${!}");
+    std::string excl = new std::string(gentenv('!'));
+
+    while(str.find("${!}") != std::string::npos) {
+        str.replace(str.find(exclamation, exclamation.length(), excl);
+    }
+
+    std::string underscore ("${_}");
+    std::string under = new std::string(getenv('_'));
+
+    while(str.find("${_}") != std::string::npos) {
+        str.replace(str.find(underscore, underscore.length(), under);
+    }
+
+    std::string shell ("${SHELL}");
+    std::string sh = new std::string(getenv("SHELL"));
+
+    while(str.find("${SHELL}") != std::string::npos) {
+        str.replace(str.find(shell, shell.length(), sh);
+    }
+
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 135 "shell.l"
+#line 167 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -1138,7 +1170,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 204 "shell.l"
+#line 236 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1148,7 +1180,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 211 "shell.l"
+#line 243 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1158,10 +1190,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 217 "shell.l"
+#line 249 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1165 "lex.yy.cc"
+#line 1197 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2178,4 +2210,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 217 "shell.l"
+#line 249 "shell.l"
