@@ -107,7 +107,7 @@ void myunputc(int c) {
 $\{[^ \}\n]*\} {
     std::string str = std::string(yytext);
     str = str.substr(2, str.size() - 3);
-    int size = str.size()
+    int size = str.size();
         if(str.at(0) == '$' && size == 1) {
             str = std::to_string(getpid());
         } else if (str.at(0) == '?' && size == 1) {
