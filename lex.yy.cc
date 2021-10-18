@@ -1061,35 +1061,35 @@ YY_RULE_SETUP
     std::string dollsign = std::to_string(getpid());
 
     while(str.find("${$}") != std::string::npos) {
-        str.replace(str.find(dollarsign, dollarsign.length(), dollsign));
+        str.replace(str.find(dollarsign), dollarsign.length(), dollsign));
     }
 
     std::string question ("${?}");
     std::string quest = new std::string(getenv("?"));
 
     while(str.find("${?}") != std::string::npos) {
-        str.replace(str.find(question, question.length(), quest);
+        str.replace(str.find(question), question.length(), quest);
     }
 
     std::string exclamation ("${!}");
     std::string excl = new std::string(gentenv("!"));
 
     while(str.find("${!}") != std::string::npos) {
-        str.replace(str.find(exclamation, exclamation.length(), excl);
+        str.replace(str.find(exclamation), exclamation.length(), excl);
     }
 
     std::string underscore ("${_}");
     std::string under = new std::string(getenv("_"));
 
     while(str.find("${_}") != std::string::npos) {
-        str.replace(str.find(underscore, underscore.length(), under);
+        str.replace(str.find(underscore), underscore.length(), under);
     }
 
     std::string shell ("${SHELL}");
     std::string sh = new std::string(getenv("SHELL"));
 
     while(str.find("${SHELL}") != std::string::npos) {
-        str.replace(str.find(shell, shell.length(), sh);
+        str.replace(str.find(shell), shell.length(), sh);
     }
 
     yylval.cpp_string = new std::string(str);
