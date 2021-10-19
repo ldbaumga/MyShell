@@ -1113,9 +1113,9 @@ YY_RULE_SETUP
     int found = str.find(start);
     int endfound = str.find(end);
     while (found != std::string::npos && endfound != std::string::npos) {
-        std::string replace = std::string(getenv(str.substr(found+2,
-        endfound - 1).c_str()));
-        str.replace(found, replace.length()+3, replace);
+        //std::string replace = std::string(getenv(str.substr(found+2,
+        //endfound - 1).c_str()));
+        str.replace(found, replace.length()+3,"SS");
         found = str.find(start);
         endfound = str.find(end);
     }

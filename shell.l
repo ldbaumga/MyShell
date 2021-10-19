@@ -176,13 +176,13 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
 */
     std::string start ("${");
     std::string end ("}");
-
+    std::string replace ("dddd");
     int found = str.find(start);
     int endfound = str.find(end);
     while (found != std::string::npos && endfound != std::string::npos) {
         //std::string replace = std::string(getenv(str.substr(found+2,
         //endfound - 1).c_str()));
-        str.replace(found, replace.length()+3,"SS");
+        str.replace(found, replace.length()+3,replace);
         found = str.find(start);
         endfound = str.find(end);
     }
