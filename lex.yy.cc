@@ -1107,10 +1107,12 @@ YY_RULE_SETUP
     std::string end ("}");
 
     found = str.find(start);
-    while (found != std::string::npos) {
-        std::string replace = str.substr(str.find(start) + 2, str.find(end));
-        str.replace(str.find(start)+2, str.find(end), replace);
+    int endfound = str.find(end);
+    while (found != std::string::npos && endfound != std::string::npos) {
+        std::string replace = str.substr(found, endfound);
+        str.replace(found + 2, endfound, replace);
         found = str.find(start);
+        endfound = str.find(end);
     }
 
     yylval.cpp_string = new std::string(str);
@@ -1119,7 +1121,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 188 "shell.l"
+#line 190 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -1191,7 +1193,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 257 "shell.l"
+#line 259 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1201,7 +1203,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 264 "shell.l"
+#line 266 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1211,10 +1213,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 270 "shell.l"
+#line 272 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1218 "lex.yy.cc"
+#line 1220 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2231,4 +2233,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 270 "shell.l"
+#line 272 "shell.l"
