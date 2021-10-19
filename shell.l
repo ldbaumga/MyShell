@@ -177,7 +177,7 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
     std::string start ("${");
     std::string end ("}");
 
-    found = str.find(start);
+    int found = str.find(start);
     int endfound = str.find(end);
     while (found != std::string::npos && endfound != std::string::npos) {
         std::string replace = std::string(getenv(str.substr(found,

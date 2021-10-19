@@ -1057,6 +1057,7 @@ YY_RULE_SETUP
             str = getenv(str.c_str());
        }
     */
+    /*
     std::string dollarsign ("${$}");
     std::string dollsign = std::to_string(getpid());
 
@@ -1085,7 +1086,7 @@ YY_RULE_SETUP
         str.replace(str.find(exclamation), exclamation.length(), excl);
         founde = str.find(exclamation);
     }
-/*
+
     std::string underscore ("${_}");
     std::string under = std::string(getenv("_"));
 
@@ -1105,26 +1106,27 @@ YY_RULE_SETUP
         str.replace(str.find(shell), shell.length(), sh);
         found = str.find(shell);
     }
-
+*/
     std::string start ("${");
     std::string end ("}");
 
     found = str.find(start);
     int endfound = str.find(end);
     while (found != std::string::npos && endfound != std::string::npos) {
-        std::string replace = str.substr(found, endfound);
+        std::string replace = std::string(getenv(str.substr(found,
+        endfound)).c_str());
         str.replace(found, replace.length()+3, replace);
         found = str.find(start);
         endfound = str.find(end);
     }
-*/
+
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 193 "shell.l"
+#line 195 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -1196,7 +1198,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 262 "shell.l"
+#line 264 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1206,7 +1208,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 269 "shell.l"
+#line 271 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1216,10 +1218,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 275 "shell.l"
+#line 277 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1223 "lex.yy.cc"
+#line 1225 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2236,4 +2238,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 275 "shell.l"
+#line 277 "shell.l"
