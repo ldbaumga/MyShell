@@ -1065,7 +1065,7 @@ YY_RULE_SETUP
         str.replace(str.find(dollarsign), dollarsign.length(), dollsign);
         found = str.find(dollarsign);
     }
-
+/*
     std::string question ("${?}");
     std::string quest = std::string(getenv("?"));
 
@@ -1075,7 +1075,7 @@ YY_RULE_SETUP
         found = str.find(question);
     }
 
-    /*
+
     std::string exclamation ("${!}");
     std::string excl = std::string(getenv("!"));
 
