@@ -174,10 +174,12 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
     std::string end ("}");
 
     found = str.find(start);
-    while (found != std::string::npos) {
-        std::string replace = str.substr(str.find(start) + 2, str.find(end));
-        str.replace(str.find(start)+2, str.find(end), replace);
+    int endfound = str.find(end);
+    while (found != std::string::npos && endfound != std::string::npos) {
+        std::string replace = str.substr(found, endfound);
+        str.replace(found + 2, endfound, replace);
         found = str.find(start);
+        endfound = str.find(end);
     }
 
     yylval.cpp_string = new std::string(str);
