@@ -1107,7 +1107,7 @@ YY_RULE_SETUP
         found = str.find(shell);
     }
 */
-    setenv("$", std::to_chars(getpid()));
+    setenv("$", std::to_string(getpid()));
     std::string start ("${");
     std::string end ("}");
 
