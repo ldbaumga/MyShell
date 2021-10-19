@@ -1075,7 +1075,7 @@ YY_RULE_SETUP
         str.replace(str.find(question), question.length(), quest);
         found = str.find(question);
     }
-/*
+
 
     std::string exclamation ("${!}");
     std::string excl = std::string(getenv("!"));
@@ -1085,7 +1085,7 @@ YY_RULE_SETUP
         str.replace(str.find(exclamation), exclamation.length(), excl);
         found = str.find(exclamation);
     }
-
+/*
     std::string underscore ("${_}");
     std::string under = std::string(getenv("_"));
 
