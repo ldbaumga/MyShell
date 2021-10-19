@@ -1110,7 +1110,7 @@ YY_RULE_SETUP
     while (found != std::string::npos) {
         std::string replace = str.substr(str.find(start) + 2,
         str.find(end));
-        str.replace(str.find(start), str.find(end), replace);
+        //str.replace(str.find(start), str.find(end), replace);
         found = str.find(start);
     }
 
