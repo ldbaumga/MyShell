@@ -128,29 +128,29 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
     std::string dollsign = std::to_string(getpid());
 
 
-    int found$ = str.find(dollarsign);
-    while(found$ != std::string::npos) {
+    int founddoll = str.find(dollarsign);
+    while(founddoll != std::string::npos) {
         str.replace(str.find(dollarsign), dollarsign.length(), dollsign);
-        found$ = str.find(dollarsign);
+        founddoll = str.find(dollarsign);
     }
 
     std::string question ("${?}");
     std::string quest = std::string(getenv("?"));
 
-    int found? = str.find(question);
-    while(found? != std::string::npos) {
+    int foundq = str.find(question);
+    while(foundq != std::string::npos) {
         str.replace(str.find(question), question.length(), quest);
-        found? = str.find(question);
+        foundq = str.find(question);
     }
 
 
     std::string exclamation ("${!}");
     std::string excl = std::string(getenv("!"));
 
-    int found! = str.find(exclamation);
-    while(found! != std::string::npos) {
+    int founde = str.find(exclamation);
+    while(founde != std::string::npos) {
         str.replace(str.find(exclamation), exclamation.length(), excl);
-        found! = str.find(exclamation);
+        founde = str.find(exclamation);
     }
 /*
     std::string underscore ("${_}");
