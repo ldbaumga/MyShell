@@ -132,13 +132,16 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
         str.replace(str.find(dollarsign), dollarsign.length(), dollsign);
         found = str.find(dollarsign);
     }
-    /*
+
     std::string question ("${?}");
     std::string quest = std::string(getenv("?"));
 
-    while(str.find("${?}") != std::string::npos) {
+    found = str.find(question);
+    while(found != std::string::npos) {
         str.replace(str.find(question), question.length(), quest);
+        found = str.find(question);
     }
+    /*
 
     std::string exclamation ("${!}");
     std::string excl = std::string(getenv("!"));

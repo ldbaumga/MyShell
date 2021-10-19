@@ -1062,7 +1062,7 @@ YY_RULE_SETUP
 
     int found = str.find(dollarsign);
     while(found != std::string::npos) {
-        str.replace(str.find(dollarsign), dollarsign.length(), "AAAAAA");
+        str.replace(str.find(dollarsign), dollarsign.length(), dollsign);
         found = str.find(dollarsign);
     }
     /*
