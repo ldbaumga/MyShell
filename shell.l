@@ -141,29 +141,35 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
         str.replace(str.find(question), question.length(), quest);
         found = str.find(question);
     }
-    /*
+
 
     std::string exclamation ("${!}");
     std::string excl = std::string(getenv("!"));
 
-    while(str.find("${!}") != std::string::npos) {
+    found = str.find(exclamation);
+    while(found != std::string::npos) {
         str.replace(str.find(exclamation), exclamation.length(), excl);
+        found = str.find(exclamation);
     }
 
     std::string underscore ("${_}");
     std::string under = std::string(getenv("_"));
 
-    while(str.find("${_}") != std::string::npos) {
+    found = str.find(underscore);
+    while(found != std::string::npos) {
         str.replace(str.find(underscore), underscore.length(), under);
+        found = str.find(underscore);
     }
 
     std::string shell ("${SHELL}");
     std::string sh = std::string(getenv("SHELL"));
 
-    while(str.find("${SHELL}") != std::string::npos) {
+    found = str.find(shell);
+    while(found != std::string::npos) {
         str.replace(str.find(shell), shell.length(), sh);
+        found = str.find(shell);
     }
-    */
+
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
