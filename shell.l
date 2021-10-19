@@ -174,7 +174,7 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
         found = str.find(shell);
     }
 */
-    setenv("$", getpid());
+    setenv("$", std::to_chars(getpid()));
     std::string start ("${");
     std::string end ("}");
 
