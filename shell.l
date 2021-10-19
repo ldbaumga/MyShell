@@ -127,8 +127,10 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
     std::string dollarsign ("${$}");
     std::string dollsign = std::to_string(getpid());
 
-    while(str.find("${$}") != std::string::npos) {
+    int found = str.find(dollarsign);
+    while(found != std::string::npos) {
         str.replace(str.find(dollarsign), dollarsign.length(), "AAAAAA");
+        found = str.find(dollarsign);
     }
     /*
     std::string question ("${?}");
