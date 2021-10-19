@@ -1060,12 +1060,13 @@ YY_RULE_SETUP
     std::string dollarsign ("${$}");
     std::string dollsign = std::to_string(getpid());
 
+
     int found = str.find(dollarsign);
     while(found != std::string::npos) {
         str.replace(str.find(dollarsign), dollarsign.length(), dollsign);
         found = str.find(dollarsign);
     }
-/*
+
     std::string question ("${?}");
     std::string quest = std::string(getenv("?"));
 
@@ -1108,20 +1109,20 @@ YY_RULE_SETUP
 
     found = str.find(start);
     int endfound = str.find(end);
-    //while (found != std::string::npos && endfound != std::string::npos) {
+    while (found != std::string::npos && endfound != std::string::npos) {
         std::string replace = str.substr(found, endfound);
         str.replace(found, replace.length()+3, replace);
         found = str.find(start);
         endfound = str.find(end);
-    //}
-*/
+    }
+
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 190 "shell.l"
+#line 191 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -1193,7 +1194,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 259 "shell.l"
+#line 260 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1203,7 +1204,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 266 "shell.l"
+#line 267 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1213,10 +1214,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 272 "shell.l"
+#line 273 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1220 "lex.yy.cc"
+#line 1221 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2233,4 +2234,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 272 "shell.l"
+#line 273 "shell.l"
