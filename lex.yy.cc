@@ -1093,7 +1093,7 @@ YY_RULE_SETUP
         str.replace(str.find(underscore), underscore.length(), under);
         found = str.find(underscore);
     }
-
+/*
     std::string shell ("${SHELL}");
     std::string sh = std::string(getenv("SHELL"));
 
@@ -1102,7 +1102,7 @@ YY_RULE_SETUP
         str.replace(str.find(shell), shell.length(), sh);
         found = str.find(shell);
     }
-/*
+
     std::string start ("${");
     std::string end ("}");
 
