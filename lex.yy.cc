@@ -1102,7 +1102,7 @@ YY_RULE_SETUP
         str.replace(str.find(shell), shell.length(), sh);
         found = str.find(shell);
     }
-
+/*
     std::string start ("${");
     std::string end ("}");
 
@@ -1114,7 +1114,7 @@ YY_RULE_SETUP
         found = str.find(start);
         endfound = str.find(end);
     //}
-
+*/
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
