@@ -124,6 +124,7 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
             str = getenv(str.c_str());
        }
     */
+    /*
     std::string dollarsign ("${$}");
     std::string dollsign = std::to_string(getpid());
 
@@ -152,7 +153,7 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
         str.replace(str.find(exclamation), exclamation.length(), excl);
         founde = str.find(exclamation);
     }
-/*
+
     std::string underscore ("${_}");
     std::string under = std::string(getenv("_"));
 
@@ -172,19 +173,20 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
         str.replace(str.find(shell), shell.length(), sh);
         found = str.find(shell);
     }
-
+*/
     std::string start ("${");
     std::string end ("}");
 
     found = str.find(start);
     int endfound = str.find(end);
     while (found != std::string::npos && endfound != std::string::npos) {
-        std::string replace = str.substr(found, endfound);
+        std::string replace = std::string(getenv(str.substr(found,
+        endfound)).c_str());
         str.replace(found, replace.length()+3, replace);
         found = str.find(start);
         endfound = str.find(end);
     }
-*/
+
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
