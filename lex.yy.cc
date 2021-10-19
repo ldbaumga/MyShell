@@ -1063,10 +1063,10 @@ YY_RULE_SETUP
 
     int found = str.find(dollarsign);
     while(found != std::string::npos) {
-        str.replace(str.find(dollarsign), dollarsign.length(), dollsign);
+        str.replace(str.find(dollarsign), dollarsign.length(), "A");
         found = str.find(dollarsign);
     }
-
+/*
     std::string question ("${?}");
     std::string quest = std::string(getenv("?"));
 
@@ -1115,7 +1115,7 @@ YY_RULE_SETUP
         found = str.find(start);
         endfound = str.find(end);
     }
-
+*/
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
