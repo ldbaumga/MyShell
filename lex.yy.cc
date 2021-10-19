@@ -1062,10 +1062,10 @@ YY_RULE_SETUP
 
     while(str.find("${$}") != std::string::npos) {
         fprintf(stderr, "%s\n", str.c_str());
-        str.replace(str.find(dollarsign), dollarsign.length(), dollsign);
+        str.replace(str.find(dollarsign), dollarsign.length(), "AAAA");
      fprintf(stderr, "%s\n", str.c_str());
     }
-
+    /*
     std::string question ("${?}");
     std::string quest = std::string(getenv("?"));
 
@@ -1093,7 +1093,7 @@ YY_RULE_SETUP
     while(str.find("${SHELL}") != std::string::npos) {
         str.replace(str.find(shell), shell.length(), sh);
     }
-
+    */
     yylval.cpp_string = new std::string(str);
     return WORD;
 }

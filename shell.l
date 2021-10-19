@@ -129,7 +129,7 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
 
     while(str.find("${$}") != std::string::npos) {
         fprintf(stderr, "%s\n", str.c_str());
-        str.replace(str.find(dollarsign), dollarsign.length(), "AAAA");
+        str.replace(str.find(dollarsign), dollarsign.length(), "AAAAAAA");
      fprintf(stderr, "%s\n", str.c_str());
     }
     /*
