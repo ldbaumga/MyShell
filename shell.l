@@ -152,7 +152,7 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
         str.replace(str.find(exclamation), exclamation.length(), excl);
         found = str.find(exclamation);
     }
-
+/*
     std::string underscore ("${_}");
     std::string under = std::string(getenv("_"));
 
@@ -162,7 +162,7 @@ $\{[^ \}\n]*\}([^\n]|$\{[^\{\n]\})* {
         found = str.find(underscore);
     }
 
-/*
+
 
     std::string shell ("${SHELL}");
     std::string sh = std::string(getenv("SHELL"));

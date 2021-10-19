@@ -1085,7 +1085,7 @@ YY_RULE_SETUP
         str.replace(str.find(exclamation), exclamation.length(), excl);
         found = str.find(exclamation);
     }
-/*
+
     std::string underscore ("${_}");
     std::string under = std::string(getenv("_"));
 
@@ -1094,6 +1094,8 @@ YY_RULE_SETUP
         str.replace(str.find(underscore), underscore.length(), under);
         found = str.find(underscore);
     }
+
+/*
 
     std::string shell ("${SHELL}");
     std::string sh = std::string(getenv("SHELL"));
@@ -1122,7 +1124,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 191 "shell.l"
+#line 193 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -1194,7 +1196,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 260 "shell.l"
+#line 262 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1204,7 +1206,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 267 "shell.l"
+#line 269 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1214,10 +1216,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 273 "shell.l"
+#line 275 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1221 "lex.yy.cc"
+#line 1223 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2234,4 +2236,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 273 "shell.l"
+#line 275 "shell.l"
