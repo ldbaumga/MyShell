@@ -104,7 +104,7 @@ void myunputc(int c) {
     return AMPERSAND;
 }
 
-"~"|((/[^ \t\n]*)|([^ \t\n]*)) {
+("~")((/[^ \t\n]*)|([^ \t\n]*)) {
     fprintf(stderr, "tilde");
 }
 
