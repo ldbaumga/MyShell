@@ -122,7 +122,7 @@ void myunputc(int c) {
         homedir = us->pw_dir;
     }
 
-    str = str.replace(1, str.find("/") -1, homedir);
+    str = str.replace(0, str.find("/") -1, homedir);
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
