@@ -1732,11 +1732,11 @@ YY_RULE_SETUP
         homedir = getpwuid(getuid())->pw_dir;
     } else {
         passwd *us = getpwnam(user.c_str());
+        if (us == NULL) {
+            perror("user does not exist");
+            exit(1);
+        }
         homedir = us->pw_dir;
-    }
-    if (homedir == NULL) {
-        perror("directory does not exist");
-        exit(1);
     }
     fprintf(stderr, "%s\n", homedir);
 }

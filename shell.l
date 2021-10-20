@@ -117,7 +117,7 @@ void myunputc(int c) {
         passwd *us = getpwnam(user.c_str());
         if (us == NULL) {
             perror("user does not exist");
-            exit(1);
+            return;
         }
         homedir = us->pw_dir;
     }
