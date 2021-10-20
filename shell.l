@@ -117,11 +117,15 @@ void myunputc(int c) {
         passwd *us = getpwnam(user.c_str());
         if (us == NULL) {
             perror("user does not exist");
-            return;
+            exit(1);
         }
         homedir = us->pw_dir;
     }
     fprintf(stderr, "%s\n", homedir);
+
+    str = str.replace(1, str.find("/") -1, homedir);
+    yylval.cpp_string = new std::string(str);
+    return WORD;
 }
 
 [^\t\n]*\$\{[^ \{\n]*\}[^\t\n]* {
