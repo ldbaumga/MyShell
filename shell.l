@@ -157,10 +157,10 @@ void myunputc(int c) {
     std::string underscore ("${_}");
     std::string under = std::string(getenv("_"));
 
-    found = str.find(underscore);
+    int foundu = str.find(underscore);
     while(found != std::string::npos) {
         str.replace(str.find(underscore), underscore.length(), under);
-        found = str.find(underscore);
+        foundu = str.find(underscore);
     }
 
 
@@ -168,10 +168,10 @@ void myunputc(int c) {
     std::string shell ("${SHELL}");
     std::string sh = std::string(getenv("SHELL"));
 
-    found = str.find(shell);
+    int founds = str.find(shell);
     while(found != std::string::npos) {
         str.replace(str.find(shell), shell.length(), sh);
-        found = str.find(shell);
+        founds = str.find(shell);
     }
 
     //setenv("$", std::to_string(getpid()).c_str(), 0);
