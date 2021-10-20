@@ -124,7 +124,7 @@ void myunputc(int c) {
             str = getenv(str.c_str());
        }
     */
-    /*
+
     std::string dollarsign ("${$}");
     std::string dollsign = std::to_string(getpid());
 
@@ -173,8 +173,8 @@ void myunputc(int c) {
         str.replace(str.find(shell), shell.length(), sh);
         found = str.find(shell);
     }
-*/
-    setenv("$", std::to_string(getpid()).c_str(), 0);
+
+    //setenv("$", std::to_string(getpid()).c_str(), 0);
     std::string start ("${");
     std::string end ("}");
 
