@@ -1208,7 +1208,7 @@ case 17:
 YY_RULE_SETUP
 #line 107 "shell.l"
 {
-    printf(stderr, "tilde");
+    fprintf(stderr, "tilde");
 }
 	YY_BREAK
 case 18:
