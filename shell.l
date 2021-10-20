@@ -109,7 +109,6 @@ void myunputc(int c) {
     std::string str = std::string(yytext);
 
     std::string user = str.substr(1, str.find("/") - 1);
-    //fprintf(stderr, "%s\n", user.c_str());
     const char *homedir;
     if (user.empty()) {
         homedir = getpwuid(getuid())->pw_dir;
@@ -122,7 +121,7 @@ void myunputc(int c) {
         homedir = us->pw_dir;
     }
 
-    str = str.replace(0, str.find("/") -1, homedir);
+    str = str.replace(0, str.find("/"), homedir);
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
