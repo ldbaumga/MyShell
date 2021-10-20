@@ -110,6 +110,9 @@ void myunputc(int c) {
 
     std::string user = str.substr(1, str.find("/") - 1);
     //fprintf(stderr, "%s\n", user.c_str());
+    //if (user.empty()) {
+    //    user = new std::string(
+    //}
     const char *homedir = getpwnam(user.c_str())->pw_dir;
     fprintf(stderr, "%s\n", homedir);
 }
