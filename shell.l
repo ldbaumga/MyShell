@@ -127,7 +127,21 @@ void myunputc(int c) {
 }
 
 [^\t\n]*\$\{[^ \{\n]*\}[^\t\n]* {
-    fprintf(stderr,"boof");
+    std::string str = std::string(yytext);
+
+    std::string start("${");
+    std::string end("}");
+
+    int findStart = str.find(start);
+    int findEnd = str.find(end);
+
+    while (findStart != std::string::npos && findEnd != std::string::npos) {
+        std::string inside = str.substr(findStart + 2, findEnd - 1);
+        fprintf(stderr, "%s\n", inside.c_str());
+
+        findStart = str.find(start);
+        findEnd = str.find(end);
+    }
 }
 
 $\(([^\n]*)\)|\'([^\n]*)\' {
