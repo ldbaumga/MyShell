@@ -105,7 +105,7 @@ void myunputc(int c) {
 }
 
 "~"|\/ {
-    printf(stderr, "tilde");
+    fprintf(stderr, "tilde");
 }
 
 [^\t\n]*$\{[^\{\n]\}[^\t\n]* {
