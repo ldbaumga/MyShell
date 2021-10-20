@@ -105,7 +105,10 @@ void myunputc(int c) {
 }
 
 ~((\/[^ \t\n]*)|([^ \t\n]*)) {
-    fprintf(stderr, "tilde");
+    std::string str = std::string(yytext);
+
+    std::string user = str.substr(1, str.find("\/"));
+    fprintf(stderr, "%s\n", user.c_str());
 }
 
 [^\t\n]*\$\{[^ \{\n]*\}[^\t\n]* {
