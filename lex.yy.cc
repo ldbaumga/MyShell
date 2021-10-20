@@ -1089,7 +1089,7 @@ YY_RULE_SETUP
             str = getenv(str.c_str());
        }
     */
-
+/*
     std::string dollarsign ("${$}");
     std::string dollsign = std::to_string(getpid());
 
@@ -1153,7 +1153,7 @@ YY_RULE_SETUP
         found = str.find(start);
         endfound = str.find(end);
     }
-
+*/
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
