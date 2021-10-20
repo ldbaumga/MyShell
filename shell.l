@@ -138,8 +138,8 @@ void myunputc(int c) {
     while (findStart != std::string::npos && findEnd != std::string::npos) {
         std::string inside = str.substr(findStart + 2, findEnd - 1);
 
+        fprintf(stderr, "%s\n", inside.c_str());
         std::string evn = std::string(getenv(inside.c_str()));
-        fprintf(stderr, "%s\n", evn.c_str());
 
         str = str.replace(findStart, findEnd, evn);
 
