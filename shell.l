@@ -158,7 +158,7 @@ void myunputc(int c) {
     std::string under = std::string(getenv("_"));
 
     int foundu = str.find(underscore);
-    while(found != std::string::npos) {
+    while(foundu != std::string::npos) {
         str.replace(str.find(underscore), underscore.length(), under);
         foundu = str.find(underscore);
     }
@@ -169,7 +169,7 @@ void myunputc(int c) {
     std::string sh = std::string(getenv("SHELL"));
 
     int founds = str.find(shell);
-    while(found != std::string::npos) {
+    while(founds != std::string::npos) {
         str.replace(str.find(shell), shell.length(), sh);
         founds = str.find(shell);
     }
