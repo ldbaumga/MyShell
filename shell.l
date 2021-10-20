@@ -124,7 +124,7 @@ $\{[^ \}\n]*\}|([^\n]|$\{[^\{\n]\})* {
             str = getenv(str.c_str());
        }
     */
-
+/*
     std::string dollarsign ("${$}");
     std::string dollsign = std::to_string(getpid());
 
@@ -188,7 +188,7 @@ $\{[^ \}\n]*\}|([^\n]|$\{[^\{\n]\})* {
         found = str.find(start);
         endfound = str.find(end);
     }
-
+*/
     yylval.cpp_string = new std::string(str);
     return WORD;
 }
