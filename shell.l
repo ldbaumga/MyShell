@@ -116,6 +116,10 @@ void myunputc(int c) {
     } else {
         homedir = getpwnam(user.c_str())->pw_dir;
     }
+    if (homedir == NULL) {
+        perror("directory does not exist");
+        exit(1);
+    }
     fprintf(stderr, "%s\n", homedir);
 }
 
