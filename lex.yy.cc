@@ -1731,7 +1731,8 @@ YY_RULE_SETUP
     if (user.empty()) {
         homedir = getpwuid(getuid())->pw_dir;
     } else {
-        homedir = getpwnam(user.c_str())->pw_dir;
+        passwd *us = getpwnam(user.c_str());
+        homedir = getpwnam(us)->pw_dir;
     }
     if (homedir == NULL) {
         perror("directory does not exist");
@@ -1742,14 +1743,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 126 "shell.l"
+#line 127 "shell.l"
 {
     fprintf(stderr,"boof");
 }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 130 "shell.l"
+#line 131 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -1821,7 +1822,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 199 "shell.l"
+#line 200 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1831,7 +1832,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 206 "shell.l"
+#line 207 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1841,10 +1842,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 212 "shell.l"
+#line 213 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1848 "lex.yy.cc"
+#line 1849 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2861,4 +2862,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 212 "shell.l"
+#line 213 "shell.l"

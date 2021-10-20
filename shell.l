@@ -115,7 +115,7 @@ void myunputc(int c) {
         homedir = getpwuid(getuid())->pw_dir;
     } else {
         passwd *us = getpwnam(user.c_str());
-        homedir = getpwnam(us)->pw_dir;
+        homedir = us->pw_dir;
     }
     if (homedir == NULL) {
         perror("directory does not exist");
