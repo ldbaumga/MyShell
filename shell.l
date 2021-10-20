@@ -104,6 +104,10 @@ void myunputc(int c) {
     return AMPERSAND;
 }
 
+[^\t\n]*$\{[^\{\n]\}[^\t\n]* {
+    fprintf(stderr,"boof");
+}
+
 $\(([^\n]*)\)|\'([^\n]*)\' {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -170,7 +174,7 @@ $\(([^\n]*)\)|\'([^\n]*)\' {
     for ( int i = a.size() - 1; i >= 0; i--) {
         myunputc(a.at(i));
     }
-}
+    }
 }
 
 \"[^\n\"]*\" {
