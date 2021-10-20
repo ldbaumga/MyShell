@@ -1724,7 +1724,7 @@ YY_RULE_SETUP
 {
     std::string str = std::string(yytext);
 
-    std::string user = str.substr(1, str.find("\/"));
+    std::string user = str.substr(1, str.find("/"));
     fprintf(stderr, "%s\n", user.c_str());
 }
 	YY_BREAK
