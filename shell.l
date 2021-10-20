@@ -104,6 +104,10 @@ void myunputc(int c) {
     return AMPERSAND;
 }
 
+"~"|\/ {
+    printf(stderr, "tilde");
+}
+
 [^\t\n]*$\{[^\{\n]\}[^\t\n]* {
     fprintf(stderr,"boof");
 }
