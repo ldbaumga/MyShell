@@ -107,7 +107,7 @@ void myunputc(int c) {
 ~((\/[^ \t\n]*)|([^ \t\n]*)) {
     std::string str = std::string(yytext);
 
-    std::string user = str.substr(1, str.find("\/"));
+    std::string user = str.substr(1, str.find("/"));
     fprintf(stderr, "%s\n", user.c_str());
 }
 
