@@ -104,7 +104,7 @@ void myunputc(int c) {
     return AMPERSAND;
 }
 
-([^\{\n]$\{[^ \}\n]*\})|([^\n]|$\{[^\{\n]\})* {
+$\{[^ \}\n]*\}|([^\n]|$\{[^\{\n]\})* {
     std::string str = std::string(yytext);
     //str = str.substr(2, str.size() - 3);
     //int size = str.size();
