@@ -108,7 +108,7 @@ void myunputc(int c) {
     fprintf(stderr, "tilde");
 }
 
-[^\t\n]*$\{[^\{\n]\}[^\t\n]* {
+[^\t\n]*\$\{[^ \{\n]*\}[^\t\n]* {
     fprintf(stderr,"boof");
 }
 
