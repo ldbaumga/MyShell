@@ -108,7 +108,9 @@ void myunputc(int c) {
     std::string str = std::string(yytext);
 
     std::string user = str.substr(1, str.find("/") - 1);
-    fprintf(stderr, "%s\n", user.c_str());
+    //fprintf(stderr, "%s\n", user.c_str());
+    const char *homedir = getpwuid(user.c_str());
+    fprintf(stderr, "%s\n", homedir);
 }
 
 [^\t\n]*\$\{[^ \{\n]*\}[^\t\n]* {
