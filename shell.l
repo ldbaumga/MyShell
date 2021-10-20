@@ -137,11 +137,17 @@ void myunputc(int c) {
 
     while (findStart != std::string::npos && findEnd != std::string::npos) {
         std::string inside = str.substr(findStart + 2, findEnd - 1);
-        fprintf(stderr, "%s\n", inside.c_str());
+
+        std::string evn = std::string(getenv(inside.c_str()));
+
+        str = str.replace(findStart, findEnd, evn);
 
         findStart = str.find(start);
         findEnd = str.find(end);
     }
+
+    yylval.cpp_string = new std::string(str);
+    return WORD;
 }
 
 $\(([^\n]*)\)|\'([^\n]*)\' {
