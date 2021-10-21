@@ -131,7 +131,7 @@ void myunputc(int c) {
 
     //move these to run on startup
     setenv("$", std::to_string(getpid()).c_str(), 0);
-    setenv("SHELL", &realpath("self/proc/exe", NULL), 0);
+    setenv("SHELL", realpath("self/proc/exe", NULL), 0);
 
     std::string start("${");
     std::string end("}");
