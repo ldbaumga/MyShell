@@ -23,7 +23,7 @@ void Shell::prompt() {
   if(isatty(0)) {
     //This prevents the prompt from being printed to a file
     if (getenv("PROMPT") != NULL) {
-        printf(getenv("PROMPT");
+        printf(getenv("PROMPT"));
     } else {
         printf("myshell>");
     }
