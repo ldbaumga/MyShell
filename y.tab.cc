@@ -1865,11 +1865,11 @@ yyerror(const char * s)
 }
 
 void
-expandWildcardsIfNecessary(char * arg)
+expandWildcardsIfNecessary(std::string * arg)
 {
-    if (strchr(arg, '*') == NULL && strchr(arg, '?') == NULL){
-        std::string str = new std::string(arg);
-        Command::_currentSimpleCommand->insertArgument(str);
+    char * c_arg = (char*) arg->c_str();
+    if (strchr(c_arg, '*') == NULL && strchr(c_arg, '?') == NULL){
+        Command::_currentSimpleCommand->insertArgument(arg);
         return;
     }
 /*
@@ -1880,8 +1880,6 @@ expandWildcardsIfNecessary(char * arg)
     for (int r = 0; r < arg->length(); r ++) {
         fprintf(stderr, "fund\n");
     }*/
-    Command::_currentSimpleCommand->insertArgument(arg);
-    return;
 }
 
 #if 0

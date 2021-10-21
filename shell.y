@@ -260,6 +260,7 @@ void
 expandWildcardsIfNecessary(std::string * arg)
 {
     char * c_arg = (char*) arg->c_str();
+    fprintf(stderr, "dafasf");
     if (strchr(c_arg, '*') == NULL && strchr(c_arg, '?') == NULL){
         Command::_currentSimpleCommand->insertArgument(arg);
         return;
