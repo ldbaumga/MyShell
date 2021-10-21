@@ -317,6 +317,8 @@ void Command::execute() {
         if (_background == false) {
             waitpid(pid, NULL, 0);
         } else {
+            int * code;
+            waitpid(-1, code, 0);
             std::string temp = std::to_string(pid);
             setenv("!", temp.c_str(), 1);
         }
