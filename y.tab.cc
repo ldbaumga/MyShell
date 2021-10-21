@@ -1876,10 +1876,8 @@ void expandWildcardsIfNecessary(std::string * arg) {
     std::string dot("\\.");
 
     for (int r = 0; r < arg->length(); r++) {
-        int found = arg->find(".");
-        while (found != std::string::npos) {
-            arg->replace(found, 1, dot);
-            found = arg->find(".");
+        if (arg->at(r) == ".") {
+            arg->replace(r, 2, dot);
         }
     }
 
