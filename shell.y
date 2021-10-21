@@ -268,7 +268,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
 
     for (int r = 0; r < arg->length(); r++) {
     //    if ((char)arg->at(r) == a) {
-            arg->replace(r, 2, dot2);
+            arg->replace(r, 2, "\\.");
     //    }
     }
 
