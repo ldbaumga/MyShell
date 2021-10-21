@@ -333,7 +333,7 @@ void Command::execute() {
     close(defaulterr);
 
     //set the envirement variable '_' to the last arg of the last command
-    int argSize = _simpleCommands.at(size)->_arguments.size();
+    //int argSize = _simpleCommands.at(size)->_arguments.size();
     //setenv("_", _simpleCommands.at(size)->_arguments.at(argSize)->c_str(), 0);
 
     // Clear to prepare for next command
