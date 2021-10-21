@@ -1783,7 +1783,8 @@ YY_RULE_SETUP
 
     //move these to run on startup
     setenv("$", std::to_string(getpid()).c_str(), 0);
-    fprintf(stderr, "%s\n", realpath("self/proc/exe");
+    char * args[1024]
+    fprintf(stderr, "%s\n", realpath("self/proc/exe", args);
     //setenv("SHELL", &realpath("self/proc/exe", NULL), 0);
 
     std::string start("${");
@@ -1815,7 +1816,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 164 "shell.l"
+#line 165 "shell.l"
 {
     std::string str = std::string(yytext);
     if (str.at(0) == '$') {
@@ -1887,7 +1888,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 233 "shell.l"
+#line 234 "shell.l"
 {
   std::string str = std::string(yytext);
   str = str.substr(1, str.size() - 2);
@@ -1897,7 +1898,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 240 "shell.l"
+#line 241 "shell.l"
 {
   /* Assume that file names have only alpha chars */
   std::string str = std::string(yytext);
@@ -1907,10 +1908,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 246 "shell.l"
+#line 247 "shell.l"
 ECHO;
 	YY_BREAK
-#line 1914 "lex.yy.cc"
+#line 1915 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2927,4 +2928,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 246 "shell.l"
+#line 247 "shell.l"
