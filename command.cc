@@ -316,6 +316,7 @@ void Command::execute() {
         //// PARENT ////
         if (_background == false) {
             waitpid(pid, NULL, 0);
+            setenv("!", getpid(), 0);
         }
         //// END PARENT ////
     } // End simpleCommand Loop
