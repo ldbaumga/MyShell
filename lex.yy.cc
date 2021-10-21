@@ -1787,7 +1787,7 @@ YY_RULE_SETUP
     char * path2 = realpath("./shell", path);
     std::string path3 = std::string(path);
     fprintf(stderr, "%s\n", path3.c_str());
-    setenv("SHELL", path, 0);
+    setenv("SHELL", path3.c_str(), 0);
 
     std::string start("${");
     std::string end("}");
