@@ -265,15 +265,26 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
-    std::string str = *arg;
-    const char * reg = str.c_str();
-    std::string dot(".");
-    const char dot2 = '.';
+    //std::string str = *arg;
+    //const char * reg = str.c_str();
+    const char dot = '.';
+    const char quest = '?';
+    const char star = '*';
 
     for (int r = 0; r < arg->length(); r++) {
-        if (arg->at(r) == dot2) {
+        if (arg->at(r) == dot) {
             arg->replace(r, 2, "\\.");
-            r++;
+            r += 2;
+        }
+
+        if (arg->at(r) == quest) {
+            arg->replace(r, 2, ".");
+            r += 2;
+        }
+
+        if (arg->at(r) == star) {
+            arg->replace(r, 2, ".*");
+            r += 2;
         }
     }
 
