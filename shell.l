@@ -133,6 +133,8 @@ void myunputc(int c) {
     setenv("$", std::to_string(getpid()).c_str(), 0);
     char  path[1024];
     realpath("./shell", path);
+    
+    fprintf(stderr, "%s\n", path);
     setenv("SHELL", path, 0);
 
     std::string start("${");
