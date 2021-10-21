@@ -271,9 +271,9 @@ void expandWildcardsIfNecessary(std::string * arg) {
     const char quest = '?';
     const char star = '*';
 
+    arg->insert(0, "^");
     for (int r = 0; r < arg->length(); r++) {
         if (arg->at(r) == dot) {
-            //arg->replace(r, 2, "\\.");
             arg->insert(r, "\\");
             r ++;
             continue;
@@ -281,7 +281,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
 
         if (arg->at(r) == quest) {
             arg->replace(r, 1, ".");
-            //r ++;
             continue;
         }
 
@@ -291,6 +290,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
             continue;
         }
     }
+    arg->insert(arg->length(), "$");
 
     Command::_currentSimpleCommand->insertArgument(arg);
     return;
