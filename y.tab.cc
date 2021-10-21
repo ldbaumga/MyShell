@@ -1864,9 +1864,7 @@ yyerror(const char * s)
   fprintf(stderr,"%s\n", s);
 }
 
-void
-expandWildcardsIfNecessary(std::string * arg)
-{
+void expandWildcardsIfNecessary(std::string * arg) {
     Command::_currentSimpleCommand->insertArgument(arg);
 }
 

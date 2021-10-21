@@ -40,6 +40,7 @@
 
 void yyerror(const char * s);
 void expandWildcardsIfNecessary(std::string * arg);
+void p ();
 int yylex();
 
 %}
@@ -258,6 +259,10 @@ yyerror(const char * s)
 
 void expandWildcardsIfNecessary(std::string * arg) {
     Command::_currentSimpleCommand->insertArgument(arg);
+}
+
+void p () {
+    fprintf(stderr, "look at me");
 }
 
 #if 0
