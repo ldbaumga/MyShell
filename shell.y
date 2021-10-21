@@ -265,7 +265,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
-    std::string str = &arg;
+    std::string str = *arg;
 
     for (int r = 0; r < arg->length(); r++) {
         if (arg->at(r) == ".") {

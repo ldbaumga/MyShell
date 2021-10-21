@@ -1872,7 +1872,8 @@ void expandWildcardsIfNecessary(std::string * arg) {
         Command::_currentSimpleCommand->insertArgument(arg);
         return;
     }
-    std::string dot2("\\.");
+
+    std::string str = &arg;
 
     for (int r = 0; r < arg->length(); r++) {
         if (arg->at(r) == ".") {
