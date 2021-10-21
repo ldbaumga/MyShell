@@ -39,7 +39,7 @@
 #include "shell.hh"
 
 void yyerror(const char * s);
-void expandWildcardsIfNecessary(char * arg);
+void expandWildcardsIfNecessary(std::string * arg);
 int yylex();
 
 %}
@@ -257,7 +257,7 @@ yyerror(const char * s)
 }
 
 void
-expandWildcardsIfNecessary(char * arg)
+expandWildcardsIfNecessary(std::string * arg)
 {
     std::string str(arg);
     if (str.find('*') == std::string::npos && str.find('?') == std::string::npos){
