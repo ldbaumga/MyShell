@@ -316,7 +316,8 @@ void Command::execute() {
         //// PARENT ////
         if (_background == false) {
             waitpid(pid, NULL, 0);
-            setenv("!", getpid(), 0);
+            std::string pid = std::to_string(getpid());
+            setenv("!", pid.c_str(), 0);
         }
         //// END PARENT ////
     } // End simpleCommand Loop
