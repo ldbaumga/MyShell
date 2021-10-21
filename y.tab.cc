@@ -195,7 +195,7 @@ int yyparse (void);
 #include "shell.hh"
 
 void yyerror(const char * s);
-void expandWildcardsIfNecessary(std::string * arg);
+void expandWildcardsIfNecessary(char * arg);
 int yylex();
 
 
@@ -1865,7 +1865,7 @@ yyerror(const char * s)
 }
 
 void
-expandWildcardsIfNecessary(std::string * arg)
+expandWildcardsIfNecessary(char * arg)
 {
     if (arg->find('*') == std::string::npos && arg->find('?') == std::string::npos){
         Command::_currentSimpleCommand->insertArgument(arg);
