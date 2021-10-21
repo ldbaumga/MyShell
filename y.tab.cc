@@ -1878,7 +1878,7 @@ expandWildcardsIfNecessary(std::string * arg)
     std::string dot ("\\.");
 
     for (int r = 0; r < arg->length(); r ++) {
-
+        fprintf(stderr, "fund\n");
     }
 }
 
