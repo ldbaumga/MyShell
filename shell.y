@@ -245,6 +245,7 @@ argument:
       printf("   Yacc: insert argument \"%s\"\n", $1->c_str());
     }
    //Command::_currentSimpleCommand->insertArgument( $1 );\
+   p();
    expandWildcardsIfNecessary($1);
  }
   ;
