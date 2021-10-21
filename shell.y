@@ -243,8 +243,8 @@ argument:
     if (isatty(0)) {
       printf("   Yacc: insert argument \"%s\"\n", $1->c_str());
     }
-   //Command::_currentSimpleCommand->insertArgument( $1 );\
-   expandWildcardsIfNecessary($1);
+   Command::_currentSimpleCommand->insertArgument( $1 );\
+   //expandWildcardsIfNecessary($1);
  }
   ;
 
