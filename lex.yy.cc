@@ -1784,7 +1784,7 @@ YY_RULE_SETUP
     //move these to run on startup
     setenv("$", std::to_string(getpid()).c_str(), 0);
     char  path[1024];
-    realpath("self/proc/exe", path);
+    realpath(".", path);
     fprintf(stderr, "%s\n", path);
     //setenv("SHELL", path, 0);
 
