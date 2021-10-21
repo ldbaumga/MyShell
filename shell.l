@@ -129,6 +129,7 @@ void myunputc(int c) {
 [^ \t\n]*\$\{[^ \{\n][^ \{\n]*\}[^ \t\n]* {
     std::string str = std::string(yytext);
 
+    //move these to run on startup
     setenv("$", std::to_string(getpid()).c_str(), 0);
 
     std::string start("${");

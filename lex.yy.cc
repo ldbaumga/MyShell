@@ -1781,7 +1781,7 @@ YY_RULE_SETUP
 {
     std::string str = std::string(yytext);
 
-    setenv("$", std::to_string(getpid()).c_str()), 0);
+    setenv("$", std::to_string(getpid()).c_str(), 0);
 
     std::string start("${");
     std::string end("}");
