@@ -319,7 +319,7 @@ void Command::execute() {
         } else {
             int * code;
             waitpid(-1, code, 0);
-            fprintf(stderr, "%d\n", code);
+            fprintf(stderr, "%n\n", code);
             //setenv("?", std::to_string(code).c_str(), 1);
             std::string temp = std::to_string(pid);
             setenv("!", temp.c_str(), 1);
