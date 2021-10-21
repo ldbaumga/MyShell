@@ -140,7 +140,7 @@ void myunputc(int c) {
 
         fprintf(stderr, "%s\n", inside.c_str());
 
-        fprintf(stderr, "%d, %d", str.find(start), str.find(end));
+        fprintf(stderr, "%s, %s", str.find(start), str.find(end));
         fprintf(stderr, "%s\n", str.c_str());
         std::string evn = std::string(getenv(inside.c_str()));
 
