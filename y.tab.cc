@@ -1868,7 +1868,7 @@ void
 expandWildcardsIfNecessary(char * arg)
 {
     std::string str(arg);
-    if (arg->find('*') == std::string::npos && arg->find('?') == std::string::npos){
+    if (str.find('*') == std::string::npos && str.find('?') == std::string::npos){
         Command::_currentSimpleCommand->insertArgument(arg);
         return;
     }
