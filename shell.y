@@ -271,6 +271,8 @@ expandWildcardsIfNecessary(std::string * arg)
     for (int r = 0; r < arg->length(); r ++) {
         fprintf(stderr, "fund\n");
     }*/
+    Command::_currentSimpleCommand->insertArgument(arg);
+    return;
 }
 
 #if 0
