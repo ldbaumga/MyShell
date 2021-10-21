@@ -39,7 +39,6 @@
 #include "shell.hh"
 
 void yyerror(const char * s);
-void expandWildcardsIfNecessary(char * arg);
 int yylex();
 
 %}
@@ -243,8 +242,7 @@ argument:
     if (isatty(0)) {
       printf("   Yacc: insert argument \"%s\"\n", $1->c_str());
     }
-   //Command::_currentSimpleCommand->insertArgument( $1 );\
-   expandWildcardsIfNecessary($1);
+   Command::_currentSimpleCommand->insertArgument( $1 );\
  }
   ;
 
@@ -254,25 +252,6 @@ void
 yyerror(const char * s)
 {
   fprintf(stderr,"%s\n", s);
-}
-
-void
-expandWildcardsIfNecessary(std::string * arg)
-{
-    char * c_arg = (char*) arg->c_str();
-    fprintf(stderr, "dafasf");
-    if (strchr(c_arg, '*') == NULL && strchr(c_arg, '?') == NULL){
-        Command::_currentSimpleCommand->insertArgument(arg);
-        return;
-    }
-/*
-    std::string star(".*");
-    std::string question (".");
-    std::string dot ("\\.");
-
-    for (int r = 0; r < arg->length(); r ++) {
-        fprintf(stderr, "fund\n");
-    }*/
 }
 
 #if 0
