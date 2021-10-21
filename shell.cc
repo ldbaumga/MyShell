@@ -22,7 +22,11 @@ int yyparse(void);
 void Shell::prompt() {
   if(isatty(0)) {
     //This prevents the prompt from being printed to a file
-    printf("myshell>");
+    if (getenv("PROMPT") != NULL) {
+        printf(getenv("PROMPT");
+    } else {
+        printf("myshell>");
+    }
     fflush(stdout);
   }
 }
