@@ -316,7 +316,6 @@ void Command::execute() {
         //// PARENT ////
         if (_background == false) {
             waitpid(pid, NULL, 0);
-            setenv("?", "0", 0);
         } else {
             std::string pid = std::to_string(getpid());
             setenv("!", pid.c_str(), 0);
