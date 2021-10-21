@@ -310,7 +310,8 @@ void expandWildcardsIfNecessary(std::string * arg) {
     struct dirent * ent;
     while ((ent = readdir(dir)) != NULL) {
         if (regexec(ent->d_name, expbuf) == 0) {
-            Command::_currentSimpleCommand->insertArgument(strdup(ent->d_name));
+            std::string * str = new std::string(strdup(ent->d_name));
+            Command::_currentSimpleCommand->insertArgument(str);
         }
     }
     closedir(dir);
