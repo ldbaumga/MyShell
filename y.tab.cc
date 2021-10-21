@@ -1916,7 +1916,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
 
     struct dirent * ent;
-    while ((ent = readir(dir)) != NULL) {
+    while ((ent = readdir(dir)) != NULL) {
         if (regexec(ent->d_name, expbuf) == 0) {
             Command::_currentSimpleCommand->insertArgument(strdup(ent->d_name);
         }
