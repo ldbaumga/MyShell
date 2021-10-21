@@ -260,7 +260,8 @@ void
 expandWildcardsIfNecessary(char * arg)
 {
     if (strchr(arg, '*') == NULL && strchr(arg, '?') == NULL){
-        Command::_currentSimpleCommand->insertArgument(arg);
+        Command::_currentSimpleCommand->insertArgument(new std::string
+        *(arg));
         return;
     }
 /*
