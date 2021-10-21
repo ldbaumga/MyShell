@@ -332,6 +332,9 @@ void Command::execute() {
     close(defaultout);
     close(defaulterr);
 
+    //set the envirement variable '_' to the last arg of the last command
+    setenv("_", _simpleCommands.last()->_arguments.last()->c_str(), 0);
+
     // Clear to prepare for next command
     clear();
 
