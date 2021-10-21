@@ -1873,7 +1873,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
-    std::string * dot(".");
     std::string dot2("\\.");
 
     for (int r = 0; r < arg->length(); r++) {
