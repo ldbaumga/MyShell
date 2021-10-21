@@ -195,7 +195,7 @@ int yyparse (void);
 #include "shell.hh"
 
 void yyerror(const char * s);
-void expandWildcardsIfNecessary(std::string * arg);
+void expandWildcardsIfNecessary(char * arg);
 void p ();
 int yylex();
 
@@ -1865,8 +1865,7 @@ yyerror(const char * s)
   fprintf(stderr,"%s\n", s);
 }
 
-void expandWildcardsIfNecessary(std::string * arg) {
-    printf("adfadfaf\n");
+void expandWildcardsIfNecessary(char * arg) {
     Command::_currentSimpleCommand->insertArgument(arg);
 }
 
