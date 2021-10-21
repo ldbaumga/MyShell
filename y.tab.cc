@@ -1876,7 +1876,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     std::string dot2("\\.");
 
     for (int r = 0; r < arg->length(); r++) {
-        if (arg->at(r) == (std::string *) ".") {
+        if (arg->at(r) == a) {
             arg->replace(r, 2, dot2);
         }
     }
