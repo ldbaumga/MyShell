@@ -1867,9 +1867,7 @@ yyerror(const char * s)
 void
 expandWildcardsIfNecessary(std::string * arg)
 {
-    exit(0);
     Command::_currentSimpleCommand->insertArgument(arg);
-    return;
 }
 
 #if 0
