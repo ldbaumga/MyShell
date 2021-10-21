@@ -269,7 +269,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
 
     for (int r = 0; r < arg->length(); r++) {
         char ch = str.at(r);
-        if (ch == ".") {
+        if (str.at(r).compare(".") == 0) {
             arg->replace(r, 2, "\\.");
         }
     }
