@@ -39,7 +39,7 @@
 #include "shell.hh"
 
 void yyerror(const char * s);
-void expandWildcardsIfNecessary(char * arg);
+void expandWildcardsIfNecessary(std::string * arg);
 void p ();
 int yylex();
 
@@ -258,9 +258,8 @@ yyerror(const char * s)
   fprintf(stderr,"%s\n", s);
 }
 
-void expandWildcardsIfNecessary(char * arg) {
-    std::string * a = new std::string(arg);
-    Command::_currentSimpleCommand->insertArgument(a);
+void expandWildcardsIfNecessary(std::string * arg) {
+    Command::_currentSimpleCommand->insertArgument(arg);
 }
 
 void p () {
