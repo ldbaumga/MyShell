@@ -1915,11 +1915,13 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
-
-
-
-    Command::_currentSimpleCommand->insertArgument(arg);
-    return;
+    struct dirent * ent;
+    while ((ent = readir(dir)) != NULL) {
+        if (regexec(ent->d_name, expbuf) == 0) {
+            Command::_currentSimpleCommand->insertArgument(strdup(ent->d_name);
+        }
+    }
+    closedir(dir);
 }
 
 void p () {
