@@ -136,7 +136,8 @@ void myunputc(int c) {
     int findEnd = str.find(end);
 
     while (findStart != std::string::npos && findEnd != std::string::npos) {
-        std::string inside = str.substr(str.find(start) + 2, findEnd);
+        std::string inside = str.substr(str.find(start) + 2, findEnd
+        - findStart);
 
         fprintf(stderr, "%s\n", inside.c_str());
 
