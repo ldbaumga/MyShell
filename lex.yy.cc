@@ -1757,7 +1757,7 @@ YY_RULE_SETUP
 
     while (findStart != std::string::npos && findEnd != std::string::npos) {
         std::string inside = str.substr(str.find(start) + 2, findEnd
-        - findStart - 1);
+        - findStart - 2);
 
         fprintf(stderr, "%s\n", inside.c_str());
 
