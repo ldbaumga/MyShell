@@ -1868,9 +1868,8 @@ void
 expandWildcardsIfNecessary(char * arg)
 {
     if (strchr(arg, '*') == NULL && strchr(arg, '?') == NULL){
-        std::string str(arg);
-        std::string str2 = new std::string(str);
-        Command::_currentSimpleCommand->insertArgument(str2);
+        std::string str = new std::string(arg);
+        Command::_currentSimpleCommand->insertArgument(str);
         return;
     }
 /*
