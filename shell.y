@@ -266,6 +266,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
 
     std::string str = *arg;
+    std::string dot(".");
 
     for (int r = 0; r < arg->length(); r++) {
         char ch = str.at(r);
