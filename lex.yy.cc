@@ -1766,7 +1766,7 @@ YY_RULE_SETUP
         //    findEnd = str.length();
         //}
 
-        str = str.replace(str.find(start), findEnd + 1, evn);
+        str = str.replace(findStart, findEnd -findStart + 1, evn);
 
         findStart = str.find(start);
         findEnd = str.find(end);

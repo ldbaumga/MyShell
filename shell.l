@@ -126,7 +126,7 @@ void myunputc(int c) {
     return WORD;
 }
 
-[^\t\n]*\$\{[^ \{\n]*\}[^\t\n]* {
+[^ \t\n]*\$\{[^ \{\n][^ \{\n]*\}[^ \t\n]* {
     std::string str = std::string(yytext);
 
     std::string start("${");
