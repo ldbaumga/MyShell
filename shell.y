@@ -259,7 +259,11 @@ yyerror(const char * s)
 }
 
 void expandWildcardsIfNecessary(std::string * arg) {
+    if (arg->find("?") == std::string::npos
+        && arg->find("*") == std::string::npos) {
+
     Command::_currentSimpleCommand->insertArgument(arg);
+    }
 }
 
 void p () {

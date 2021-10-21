@@ -1618,7 +1618,7 @@ yyreduce:
       printf("   Yacc: insert argument \"%s\"\n", (yyvsp[0].cpp_string)->c_str());
     }
    //Command::_currentSimpleCommand->insertArgument( $1 );
-   p();
+   //p();
    expandWildcardsIfNecessary((yyvsp[0].cpp_string));
  }
 #line 1625 "y.tab.cc"
