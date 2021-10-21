@@ -308,7 +308,7 @@ void Command::execute() {
             simpCmds[size] = NULL;
             execvp(simpCmds[0], simpCmds);
 
-            perror("xecvp");
+            perror("execvp");
             _exit(1);
         }
         //// END CHILD ////
