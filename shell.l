@@ -134,8 +134,8 @@ void myunputc(int c) {
     char  path[1024];
     char * path2 = realpath("./shell", path);
     
-    fprintf(stderr, "%s\n", path2);
-    setenv("SHELL", *path2, 0);
+    fprintf(stderr, "%s\n", path);
+    setenv("SHELL", path, 0);
 
     std::string start("${");
     std::string end("}");
