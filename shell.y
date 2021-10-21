@@ -265,9 +265,9 @@ expandWildcardsIfNecessary(std::string * arg)
         return;
     }
 
-    std::string star(".*");
-    std::string question (".");
-    std::string dot ("\.");
+    std::string star('.*');
+    std::string question ('.');
+    std::string dot ('\.');
 
     for (int r = 0; r < arg->length(); r ++) {
 
