@@ -1762,11 +1762,11 @@ YY_RULE_SETUP
 
         std::string evn = std::string(getenv(inside.c_str()));
 
-        if (str.find(end) == str.length()) {
-            findEnd = str.length();
-        }
+        //if (str.find(end) == str.length()) {
+        //    findEnd = str.length();
+        //}
 
-        str = str.replace(str.find(start), findEnd, evn);
+        str = str.replace(str.find(start), findEnd + 1, evn);
 
         findStart = str.find(start);
         findEnd = str.find(end);
