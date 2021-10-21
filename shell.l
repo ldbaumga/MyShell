@@ -144,8 +144,8 @@ void myunputc(int c) {
         fprintf(stderr, "%s\n", str.c_str());
         std::string evn = std::string(getenv(inside.c_str()));
 
-        if (str.find(end) == str.end()) {
-            findEnd = str.end();
+        if (str.find(end) == str.length()) {
+            findEnd = str.length();
         }
 
         str = str.replace(str.find(start), findEnd, evn);
