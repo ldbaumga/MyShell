@@ -258,6 +258,7 @@ yyerror(const char * s)
 }
 
 void expandWildcardsIfNecessary(std::string * arg) {
+    printf("adfadfaf\n");
     Command::_currentSimpleCommand->insertArgument(arg);
 }
 
