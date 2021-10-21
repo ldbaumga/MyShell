@@ -1859,7 +1859,7 @@ yyreturn:
 
 
 void
-yyerror(const c`har * s)
+yyerror(const char * s)
 {
   fprintf(stderr,"%s\n", s);
 }
