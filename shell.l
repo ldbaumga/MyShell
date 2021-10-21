@@ -139,6 +139,8 @@ void myunputc(int c) {
         std::string inside = str.substr(str.find(start) + 2, str.find(end) - 2);
 
         fprintf(stderr, "%s\n", inside.c_str());
+
+        fprintf(stderr, "%s\n", str.c_str());
         std::string evn = std::string(getenv(inside.c_str()));
 
         str = str.replace(str.find(start), str.find(end)+1, evn);
