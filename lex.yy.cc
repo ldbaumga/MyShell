@@ -1756,13 +1756,13 @@ YY_RULE_SETUP
     int findEnd = str.find(end);
 
     while (findStart != std::string::npos && findEnd != std::string::npos) {
-        std::string inside = str.substr(findStart + 2, findEnd - 2);
+        std::string inside = str.substr(findStart + 2, findEnd - 1);
         fprintf(stderr, "%d, %d", findStart, findEnd);
 
         fprintf(stderr, "%s\n", inside.c_str());
         std::string evn = std::string(getenv(inside.c_str()));
 
-        str.replace(findStart, findEnd, evn);
+        str = str.replace(str.find(start), str.find(end), evn);
 
         findStart = str.find(start);
         findEnd = str.find(end);
