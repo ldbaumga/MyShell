@@ -280,7 +280,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
 
         if (arg->at(r) == quest) {
-            arg->replace(r, 1, ".");
+            arg->replace(r-1, 1, ".");
             r ++;
             continue;
         }
