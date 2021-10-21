@@ -307,9 +307,11 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
+    regmatch_t match;
+
     struct dirent * ent;
     while ((ent = readdir(dir)) != NULL) {
-        if (regexec(ent->d_name, expbuf) == 0) {
+        if (regexec(&re, ent->d_name, 1, &match, 0) == 0) {
             std::string * str = new std::string(strdup(ent->d_name));
             Command::_currentSimpleCommand->insertArgument(str);
         }
