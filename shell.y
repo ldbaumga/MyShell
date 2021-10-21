@@ -274,17 +274,20 @@ void expandWildcardsIfNecessary(std::string * arg) {
     for (int r = 0; r < arg->length(); r++) {
         if (arg->at(r) == dot) {
             arg->replace(r, 2, "\\.");
-            r += 2;
+            r ++;
+            continue;
         }
 
         if (arg->at(r) == quest) {
             arg->replace(r, 1, ".");
-            r += 2;
+            r ++;
+            continue;
         }
 
         if (arg->at(r) == star) {
             arg->replace(r, 2, ".*");
-            r += 2;
+            r ++;
+            continue;
         }
     }
 
