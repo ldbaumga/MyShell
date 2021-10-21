@@ -17,6 +17,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <regex.h>
+#include <dirent.h>
 #if __cplusplus > 199711L
 #define register      // Deprecated in C++11 so remove the keyword
 #endif
