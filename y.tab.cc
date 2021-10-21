@@ -1871,14 +1871,14 @@ expandWildcardsIfNecessary(std::string * arg)
         Command::_currentSimpleCommand->insertArgument(arg);
         return;
     }
-
+/*
     std::string star(".*");
     std::string question (".");
     std::string dot ("\\.");
 
     for (int r = 0; r < arg->length(); r ++) {
         fprintf(stderr, "fund\n");
-    }
+    }*/
 }
 
 #if 0
