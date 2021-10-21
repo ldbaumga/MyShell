@@ -1867,8 +1867,7 @@ yyerror(const char * s)
 void
 expandWildcardsIfNecessary(std::string * arg)
 {
-    std::string str(arg);
-    if (str.find('*') == std::string::npos && str.find('?') == std::string::npos){
+    if (arg->find('*') == std::string::npos && arg->find('?') == std::string::npos){
         Command::_currentSimpleCommand->insertArgument(str);
         return;
     }
