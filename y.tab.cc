@@ -1881,6 +1881,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
 
     Command::_currentSimpleCommand->insertArgument(arg);
+    return;
 }
 
 void p () {
