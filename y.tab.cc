@@ -1881,9 +1881,9 @@ void expandWildcardsIfNecessary(std::string * arg) {
 
     for (int r = 0; r < arg->length(); r++) {
         if (arg->at(r) == dot) {
-            //arg->replace(r, 2, "\\.");
+            arg->replace(r, 2, "\\.");
             arg->insert(r, "\\");
-            //r ++;
+            r ++;
             continue;
         }
 
@@ -1895,7 +1895,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
 
         if (arg->at(r) == star) {
             arg->replace(r, 2, ".*");
-            //r ++;
+            r ++;
             continue;
         }
     }
