@@ -1902,7 +1902,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
     arg->insert(arg->length(), "$");
 
-    printf("DD");
+    /*
     regex_t re;
     int result = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
     if (result != 0) {
@@ -1925,6 +1925,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }
     closedir(dir);
+    */
 }
 
 void p () {
