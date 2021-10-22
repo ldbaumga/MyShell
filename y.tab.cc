@@ -1914,7 +1914,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         perror("opendir");
         return;
     }
-
+    printf("DD");
     regmatch_t match;
 
     struct dirent * ent;

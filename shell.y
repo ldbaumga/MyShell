@@ -294,6 +294,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
     arg->insert(arg->length(), "$");
 
+    printf("DD");
     regex_t re;
     int result = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
     if (result != 0) {
@@ -306,7 +307,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
         perror("opendir");
         return;
     }
-    printf("DD");
     regmatch_t match;
 
     struct dirent * ent;
