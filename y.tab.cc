@@ -1885,7 +1885,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
             found = arg->find("/", found + 1);
         }
         std::string path = arg->substr(0, found);
-        dir = opendir(realpath(path.c_str()), NULL);
+        dir = opendir(realpath(path.c_str(), NULL));
         arg->erase(0, found +1);
     } else {
         dir = opendir(strdup("."));
