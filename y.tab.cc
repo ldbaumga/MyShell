@@ -1887,12 +1887,9 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
         path = arg->substr(0, found);
         char * fullpath = realpath(path.c_str(), NULL);
-        printf("%s\n", path.c_str());
-        printf("%s\n", fullpath);
         dir = opendir(path.c_str());
-        //arg->erase(0, found +1);
+        arg->erase(0, found +1);
         path = path + "/";
-        printf("%s\n", arg->c_str());
     } else {
         path = "";
         dir = opendir(strdup("."));
@@ -1929,7 +1926,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }
     arg->insert(arg->length(), "$");
-    printf("%s", arg->c_str());
     std::vector<std::string> strs;
 
     regex_t re;
