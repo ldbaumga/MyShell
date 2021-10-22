@@ -325,8 +325,8 @@ void expandWildcardsIfNecessary(std::string * arg) {
     regfree(&re);
 
     std::sort (strs.begin(), strs.end());
-    for (std::string s in strs) {
-        std::string * str = new std::string(s);
+    for (int i = 0; i < strs.size(); i++) {
+        std::string * str = new std::string(s[i]);
         Command::_currentSimpleCommand->insertArgument(str);
     }
 }
