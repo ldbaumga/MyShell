@@ -1908,7 +1908,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
         fprintf(stderr, "Bad regex, BAD!\n");
         exit(-1);
     }
-/*
     DIR * dir = opendir(".");
     if (dir = NULL) {
         perror("opendir");
@@ -1916,6 +1915,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
     regmatch_t match;
 
+/*
     struct dirent * ent;
     while ((ent = readdir(dir)) != NULL) {
         if (regexec(&re, ent->d_name, 1, &match, 0) == 0) {

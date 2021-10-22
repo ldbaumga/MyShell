@@ -307,7 +307,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
     regmatch_t match;
 
-/*
     struct dirent * ent;
     while ((ent = readdir(dir)) != NULL) {
         if (regexec(&re, ent->d_name, 1, &match, 0) == 0) {
@@ -316,7 +315,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }
     closedir(dir);
-    */
 }
 
 void p () {
