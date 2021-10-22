@@ -305,10 +305,12 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
-    if (arg->find("/") != std::string::npos) {
+    DIR * dir;
 
+    if (arg->find("/") != std::string::npos) {
+        
     } else {
-        DIR * dir = opendir(strdup("."));
+        dir = opendir(strdup("."));
     }
     if (dir == NULL) {
         perror("opendir");

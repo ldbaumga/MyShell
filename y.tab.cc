@@ -1913,7 +1913,11 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
-    DIR * dir = opendir(strdup("."));
+    if (arg->find("/") != std::string::npos) {
+
+    } else {
+        DIR * dir = opendir(strdup("."));
+    }
     if (dir == NULL) {
         perror("opendir");
         return;
