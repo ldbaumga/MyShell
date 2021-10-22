@@ -1925,7 +1925,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }*/
     ent = readdir(dir);
-    //fprintf(stderr, "%s\n", ent->d_name);
+    fprintf(stderr, "%s\n", ent->d_name);
     closedir(dir);
     regfree(&re);
 }
