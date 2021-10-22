@@ -1934,8 +1934,10 @@ void expandWildcardsIfNecessary(std::string * arg) {
 
     std::sort (strs.begin(), strs.end());
     for (int i = 0; i < strs.size(); i++) {
-        std::string * str = new std::string(strs[i]);
-        Command::_currentSimpleCommand->insertArgument(str);
+        if (strs[i].compare(".") != 0 || strs[i].compare("..") != 0) {
+            std::string * str = new std::string(strs[i]);
+            Command::_currentSimpleCommand->insertArgument(str);
+        }
     }
 }
 
