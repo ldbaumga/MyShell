@@ -321,7 +321,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }
     arg->insert(arg->length(), "$");
-
+    printf("%s", arg->c_str());
     std::vector<std::string> strs;
 
     regex_t re;

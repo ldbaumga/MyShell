@@ -1892,6 +1892,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         dir = opendir(path.c_str());
         arg->erase(0, found +1);
         path = path + "/";
+        printf("%s\n", arg->c_str());
     } else {
         path = "";
         dir = opendir(strdup("."));
