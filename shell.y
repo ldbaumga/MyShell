@@ -315,9 +315,9 @@ void expandWildcardsIfNecessary(std::string * arg) {
     while ((ent = readdir(dir)) != NULL) {
         int result = regexec(&re, ent->d_name, 1, &match, 0);
         if (result == 0) {
-            std::string * str = new std::string(strdup(ent->d_name));
+            //std::string * str = new std::string(strdup(ent->d_name));
             //Command::_currentSimpleCommand->insertArgument(str);
-            strs.push_back(str);
+            strs.push_back(strdup(ent->d_name));
         }
     }
     closedir(dir);
