@@ -1902,7 +1902,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
     arg->insert(arg->length(), "$");
 
-    std::string strs[];
+    std::vector<string> strs;
 
     regex_t re;
     int expbuf = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
@@ -1924,6 +1924,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         if (result == 0) {
             std::string * str = new std::string(strdup(ent->d_name));
             //Command::_currentSimpleCommand->insertArgument(str);
+            strs.push_back(str);
         }
     }
     closedir(dir);
