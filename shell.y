@@ -308,7 +308,11 @@ void expandWildcardsIfNecessary(std::string * arg) {
     DIR * dir;
 
     if (arg->find("/") != std::string::npos) {
-        
+        int found = arg->find("/");
+        while (arg->find("/", found + 1) != std::string::npos) {
+            found = arg->find("/", found + 1);
+        }
+        std::string path = arg->substr(0, found + 1);
     } else {
         dir = opendir(strdup("."));
     }
