@@ -1901,7 +1901,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }
     arg->insert(arg->length(), "$");
-    fprintf(stderr, "dadf");
 
     regex_t re;
     int expbuf = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
@@ -1918,6 +1917,8 @@ void expandWildcardsIfNecessary(std::string * arg) {
 
     struct dirent * ent;
     while ((ent = readdir(dir)) != NULL) {
+
+    fprintf(stderr, "dadf");
         if (regexec(&re, ent->d_name, 1, NULL, 0) == 0) {
             std::string * str = new std::string(strdup(ent->d_name));
             Command::_currentSimpleCommand->insertArgument(str);
