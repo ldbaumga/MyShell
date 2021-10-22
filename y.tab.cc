@@ -1887,6 +1887,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         std::string path = arg->substr(0, found + 1);
         printf("%s\n", path.c_str());
         dir = opendir(path.c_str());
+        printf("%s\n", arg->c_str());
     } else {
         dir = opendir(strdup("."));
     }
