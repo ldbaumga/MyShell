@@ -1910,7 +1910,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
 
     DIR * dir = opendir(strdup("."));
-    if (dir = NULL) {
+    if (dir == NULL) {
         perror("opendir");
         return;
     }
