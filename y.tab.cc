@@ -1877,6 +1877,25 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
+    DIR * dir;
+
+    if (arg->find("/") != std::string::npos) {
+        int found = arg->find("/");
+        while (arg->find("/", found + 1) != std::string::npos) {
+            found = arg->find("/", found + 1);
+        }
+        std::string path = arg->substr(0, found + 1);
+        printf("%s\n", path.c_str());
+        dir = opendir(path.c_str());
+    } else {
+        dir = opendir(strdup("."));
+    }
+    if (dir == NULL) {
+        perror("opendir");
+        return;
+    }
+
+
     //std::string str = *arg;
     //const char * reg = str.c_str();
     const char dot = '.';
@@ -1910,24 +1929,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
     int expbuf = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
     if (expbuf != 0) {
         fprintf(stderr, "Bad regex, BAD!\n");
-        return;
-    }
-
-    DIR * dir;
-
-    if (arg->find("/") != std::string::npos) {
-        int found = arg->find("/");
-        while (arg->find("/", found + 1) != std::string::npos) {
-            found = arg->find("/", found + 1);
-        }
-        std::string path = arg->substr(0, found + 1);
-        printf("%s\n", path.c_str());
-        dir = opendir(path.c_str());
-    } else {
-        dir = opendir(strdup("."));
-    }
-    if (dir == NULL) {
-        perror("opendir");
         return;
     }
 
