@@ -1924,7 +1924,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
             Command::_currentSimpleCommand->insertArgument(str);
         }
     }*/
-    //ent = readdir(dir);
+    ent = readdir(dir);
     //fprintf(stderr, "%s\n", ent->d_name);
     closedir(dir);
     regfree(&re);

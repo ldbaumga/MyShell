@@ -301,7 +301,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     }
 
-    DIR * dir = opendir(".");
+    DIR * dir = opendir(strdup("."));
     if (dir = NULL) {
         perror("opendir");
         return;
