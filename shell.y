@@ -295,26 +295,27 @@ void expandWildcardsIfNecessary(std::string * arg) {
     arg->insert(arg->length(), "$");
 
     regex_t re;
-    int result = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
-    if (result != 0) {
+    int expbuf = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
+    if (expbuf != 0) {
         fprintf(stderr, "Bad regex, BAD!\n");
-        exit(-1);
+        return;
     }
+
     DIR * dir = opendir(".");
     if (dir = NULL) {
         perror("opendir");
         return;
     }
-    regmatch_t match;
 
     struct dirent * ent;
     while ((ent = readdir(dir)) != NULL) {
-        if (regexec(&re, ent->d_name, 1, &match, 0) == 0) {
+        if (regexec(&re, ent->d_name, 1, NULL, 0) == 0) {
             std::string * str = new std::string(strdup(ent->d_name));
             Command::_currentSimpleCommand->insertArgument(str);
         }
     }
     closedir(dir);
+    regfree(&re);
 }
 
 void p () {
