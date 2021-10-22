@@ -317,10 +317,6 @@ void Command::execute() {
         if (_background == false) {
             waitpid(pid, NULL, 0);
         } else {
-            int * code;
-            wait(code);
-            fprintf(stderr, "%n\n", code);
-            //setenv("?", std::to_string(code).c_str(), 1);
             std::string temp = std::to_string(pid);
             setenv("!", temp.c_str(), 1);
         }

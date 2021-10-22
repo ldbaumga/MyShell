@@ -1901,7 +1901,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }
     arg->insert(arg->length(), "$");
-
+/*
     regex_t re;
     int expbuf = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
     if (expbuf != 0) {
@@ -1925,7 +1925,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }
     closedir(dir);
-    regfree(&re);
+    regfree(&re);*/
 }
 
 void p () {
