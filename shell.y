@@ -322,6 +322,12 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
     closedir(dir);
     regfree(&re);
+
+    std::sort (strs.begin(), strs.end());
+    for (std::string s in strs) {
+        std::string * str = new std::string(s);
+        Command::_currentSimpleCommand->insertArgument(str);
+    }
 }
 
 void p () {
