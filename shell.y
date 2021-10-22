@@ -335,7 +335,10 @@ void expandWildcardsIfNecessary(std::string * arg) {
         if (result == 0) {
             //std::string * str = new std::string(strdup(ent->d_name));
             //Command::_currentSimpleCommand->insertArgument(str);
-            strs.push_back(path + "/" + strdup(ent->d_name));
+            if (path != NULL) {
+                strs.push_back(path + "/" + strdup(ent->d_name));
+            } else {
+                strs.push_back(strdup(ent->d_name));
         }
     }
     closedir(dir);
