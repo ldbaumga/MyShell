@@ -1902,7 +1902,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
     }
     arg->insert(arg->length(), "$");
 
-    std::vector<string> strs;
+    std::vector<std::string> strs;
 
     regex_t re;
     int expbuf = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
