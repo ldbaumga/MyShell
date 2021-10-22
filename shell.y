@@ -340,11 +340,17 @@ void expandWildcardsIfNecessary(std::string * arg) {
     closedir(dir);
     regfree(&re);
 
+    if (str.size() == 0) {
+        fprintf("No Match.\n");
+        return;
+    } else {
+
     std::sort (strs.begin(), strs.end());
     for (int i = 2; i < strs.size(); i++) {
         std::string * str = new std::string(strs[i]);
         printf("%s", str->c_str());
         Command::_currentSimpleCommand->insertArgument(str);
+    }
     }
 }
 
