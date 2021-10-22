@@ -342,7 +342,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
 
     if (strs.size() == 0) {
         fprintf(stderr, "No Match.\n");
-        Shell::_currentSimpleCommand->clear();
+        Shell::_currentCommand->clear();
         return;
     } else {
 
