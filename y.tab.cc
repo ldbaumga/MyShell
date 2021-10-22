@@ -1948,8 +1948,8 @@ void expandWildcardsIfNecessary(std::string * arg) {
     closedir(dir);
     regfree(&re);
 
-    if (str.size() == 0) {
-        fprintf("No Match.\n");
+    if (strs.size() == 0) {
+        fprintf(stderr, "No Match.\n");
         return;
     } else {
 
