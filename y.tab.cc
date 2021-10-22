@@ -1933,11 +1933,9 @@ void expandWildcardsIfNecessary(std::string * arg) {
     regfree(&re);
 
     std::sort (strs.begin(), strs.end());
-    for (int i = 0; i < strs.size(); i++) {
-        if (strs[i].compare(".") != 0 || strs[i].compare("..") != 0) {
-            std::string * str = new std::string(strs[i]);
-            Command::_currentSimpleCommand->insertArgument(str);
-        }
+    for (int i = 2; i < strs.size(); i++) {
+        std::string * str = new std::string(strs[i]);
+        Command::_currentSimpleCommand->insertArgument(str);
     }
 }
 
