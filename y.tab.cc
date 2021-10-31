@@ -1951,7 +1951,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     } else {
     std::sort (strs.begin(), strs.end());
-    if (strcmp(strs[0], ".") == 0) {
+    if (strcmp(strs[0].c_str(), ".") == 0) {
         fprintf(stderr, "look at me");
     }
     for (int i = 0; i < strs.size(); i++) {
