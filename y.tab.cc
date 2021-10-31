@@ -1970,3 +1970,5 @@ void p () {
 main()
 {
   yyparse();
+}
+#endif
