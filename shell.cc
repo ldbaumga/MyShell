@@ -46,7 +46,7 @@ void shellrc(void) {
     Shell::_srcCmd = false;
 }
 */
-int main() {
+int main(int argc, char **argv) {
   //Ctrl-C signal handler
   struct sigaction sa;
   sa.sa_handler = disp;
@@ -70,7 +70,7 @@ int main() {
 //  shellrc();
 
   char absPath[256];
-  realpath("shell", absPath);
+  realpath(argv[0], absPath);
   setenv("SHELL", absPath, 1);
 
   Shell::prompt();
