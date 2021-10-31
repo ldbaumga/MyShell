@@ -31,6 +31,21 @@ void Shell::prompt() {
   }
 }
 
+void shellrc(void) {
+    std::string source = ".shellrc";
+    FILE * in = fopen(source.c_str(), "r");
+
+    if (!in) {
+        return;
+    }
+    yypush_buffer_state(yy_create_buffer(in, YY_BUF_SIZE));
+    Shell::_srcCmd = true;
+    yyparse();
+    yypop_buffer_state();
+    fclose(in);
+    Shell::_srcCmd = false;
+}
+
 int main() {
   //Ctrl-C signal handler
   struct sigaction sa;
@@ -51,6 +66,12 @@ int main() {
     perror("sigaction");
     exit(2);
   }
+
+  shellrc();
+
+  char absPath[256];
+  realpath(argv[0], absPath);
+  setenv("SHELL", absPath, 1);
 
   Shell::prompt();
   yyparse();
