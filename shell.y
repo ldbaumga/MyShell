@@ -344,10 +344,10 @@ void expandWildcardsIfNecessary(std::string * arg) {
     } else {
     std::sort (strs.begin(), strs.end());
     if (strcmp(strs[0].c_str(), ".") == 0) {
-        strs.erase(0);
+        strs.erase(strs.begin());
     }
     if (strcmp(strs[0].c_str(), "..") == 0) {
-        strs.erase(0);
+        strs.erase(strs.begin());
     }
     for (int i = 0; i < strs.size(); i++) {
         //fprintf(stderr, "%s\n", strs[i].c_str());
