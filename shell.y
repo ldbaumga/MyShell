@@ -318,7 +318,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
     }
     arg->insert(arg->length(), "$");
-    fprintf(stderr, "%s\n", arg->c_str());
+    //fprintf(stderr, "%s\n", arg->c_str());
     std::vector<std::string> strs;
     regex_t re;
     int expbuf = regcomp(&re, arg->c_str(), REG_EXTENDED|REG_NOSUB);
