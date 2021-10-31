@@ -1951,13 +1951,13 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     } else {
     std::sort (strs.begin(), strs.end());
+    if (strcmp(strs[0], ".") == 0) {
+        fprintf(stderr, "look at me");
+    }
     for (int i = 0; i < strs.size(); i++) {
         //fprintf(stderr, "%s\n", strs[i].c_str());
-        if (strcmp(strs[i].c_str(), ".") != 0 || strcmp(strs[i].c_str(), "..")
-        != 0) {
-            std::string * str = new std::string(strs[i]);
-            Command::_currentSimpleCommand->insertArgument(str);
-        }
+        std::string * str = new std::string(strs[i]);
+        Command::_currentSimpleCommand->insertArgument(str);
     }
     }
 }
