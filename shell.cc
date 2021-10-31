@@ -70,7 +70,7 @@ int main() {
 //  shellrc();
 
   char absPath[256];
-  realpath(argv[0], absPath);
+  realpath("shell", absPath);
   setenv("SHELL", absPath, 1);
 
   Shell::prompt();
