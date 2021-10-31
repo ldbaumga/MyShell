@@ -1954,8 +1954,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         return;
     } else {
     std::sort (strs.begin(), strs.end());
-   for (int i = 0; i < strs.size(); i++) {
-        //fprintf(stderr, "%s\n", strs[i].c_str());
+    for (int i = 0; i < strs.size(); i++) {
         std::string * str = new std::string(strs[i]);
         Command::_currentSimpleCommand->insertArgument(str);
     }
