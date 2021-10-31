@@ -331,8 +331,6 @@ void expandWildcardsIfNecessary(std::string * arg) {
     while ((ent = readdir(dir)) != NULL) {
         int result = regexec(&re, ent->d_name, 1, &match, 0);
         if (result == 0) {
-            //std::string * str = new std::string(strdup(ent->d_name));
-            //Command::_currentSimpleCommand->insertArgument(str);
             strs.push_back(path + strdup(ent->d_name));
         }
     }
@@ -344,7 +342,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         Shell::_currentCommand.clear();
         return;
     } else {
-
+    fprintf(stderr, "%s\n", strs[0].c_str());
     std::sort (strs.begin(), strs.end());
     for (int i = 2; i < strs.size(); i++) {
         std::string * str = new std::string(strs[i]);
