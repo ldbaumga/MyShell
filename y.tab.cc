@@ -1954,6 +1954,9 @@ void expandWildcardsIfNecessary(std::string * arg) {
     if (strcmp(strs[0].c_str(), ".") == 0) {
         fprintf(stderr, "look at me");
     }
+    if (strcmp(strs[0].c_str(), "..") == 0) {
+        fprintf(stderr, "look at me");
+    }
     for (int i = 0; i < strs.size(); i++) {
         //fprintf(stderr, "%s\n", strs[i].c_str());
         std::string * str = new std::string(strs[i]);
