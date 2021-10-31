@@ -30,7 +30,7 @@ void Shell::prompt() {
     fflush(stdout);
   }
 }
-
+/*
 void shellrc(void) {
     std::string source = ".shellrc";
     FILE * in = fopen(source.c_str(), "r");
@@ -45,7 +45,7 @@ void shellrc(void) {
     fclose(in);
     Shell::_srcCmd = false;
 }
-
+*/
 int main() {
   //Ctrl-C signal handler
   struct sigaction sa;
@@ -67,7 +67,7 @@ int main() {
     exit(2);
   }
 
-  shellrc();
+//  shellrc();
 
   char absPath[256];
   realpath(argv[0], absPath);
