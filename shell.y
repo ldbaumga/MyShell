@@ -312,7 +312,7 @@ void expandWildcardsIfNecessary(std::string * arg) {
         }
 
         if (arg->at(r) == star) {
-            arg->replace(r, 2, ".*");
+            arg->replace(r, 1, ".*");
             r ++;
             continue;
         }
