@@ -1939,7 +1939,8 @@ void expandWildcardsIfNecessary(std::string * arg) {
     while ((ent = readdir(dir)) != NULL) {
         int result = regexec(&re, ent->d_name, 1, &match, 0);
         if (result == 0) {
-            if (strcmp(ent->d_name, ".") != 0 || strcmp(ent->d_name, "..")) {
+            if ((strcmp(ent->d_name, ".") != 0) || (strcmp(ent->d_name, "..")
+            != 0)) {
                 strs.push_back(path + strdup(ent->d_name));
             }
         }
