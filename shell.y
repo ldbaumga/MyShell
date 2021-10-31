@@ -345,8 +345,10 @@ void expandWildcardsIfNecessary(std::string * arg) {
     std::sort (strs.begin(), strs.end());
     for (int i = 0; i < strs.size(); i++) {
         //fprintf(stderr, "%s\n", strs[i].c_str());
-        std::string * str = new std::string(strs[i]);
-        Command::_currentSimpleCommand->insertArgument(str);
+        if (strs[i].c_str() != "." || strs[i].c_str() != "..") {
+            std::string * str = new std::string(strs[i]);
+            Command::_currentSimpleCommand->insertArgument(str);
+        }
     }
     }
 }
@@ -359,5 +361,3 @@ void p () {
 main()
 {
   yyparse();
-}
-#endif
