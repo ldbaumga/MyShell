@@ -309,7 +309,7 @@ void Command::execute() {
             execvp(simpCmds[0], simpCmds);
 
             perror("execvp");
-            _exit(1);
+            //_exit(1);
         }
         //// END CHILD ////
 
