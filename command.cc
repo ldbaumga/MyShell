@@ -315,7 +315,10 @@ void Command::execute() {
 
         //// PARENT ////
         if (_background == false) {
-            waitpid(pid, NULL, 0);
+            int stat
+            waitpid(pid, stat, 0);
+            std::string status = std::to_string(WEXITSTATUS(stat));
+            setenv("?", status.c_str(), 1);
         } else {
             std::string temp = std::to_string(pid);
             setenv("!", temp.c_str(), 1);
