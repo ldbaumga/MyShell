@@ -319,6 +319,9 @@ void Command::execute() {
             waitpid(pid, &stat, 0);
             std::string status = std::to_string(WEXITSTATUS(stat));
             setenv("?", status.c_str(), 1);
+            if (stat != 0 && getenv("ON_ERROR") != NULL) {
+                fprintf(stderr, "%s", getenv("ON_ERROR");
+            }
         } else {
             std::string temp = std::to_string(pid);
             setenv("!", temp.c_str(), 1);
