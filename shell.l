@@ -35,9 +35,6 @@ void myunputc(int c) {
   /* Discard spaces and tabs */
 }
 
-"exit" {
-    return EXIT;
-}
 
 "printenv" {
     return PRINTENV;
