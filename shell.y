@@ -214,6 +214,15 @@ arg_list:
   | argument
   ;
 
+exit:
+  EXIT {
+  if (isatty(0)) {
+    fprintf(stderr, "\n Goodbye!!\n\n");
+  }
+  exit(0);
+  }
+  ;
+
 printenv:
   PRINTENV {
   Command::_currentSimpleCommand = new SimpleCommand();
@@ -223,7 +232,8 @@ printenv:
   ;
 
 command_word:
-  printenv
+  exit
+  | printenv
   | WORD {
     if (isatty(0)) {
       printf("   Yacc: insert command \"%s\"\n", $1->c_str());
