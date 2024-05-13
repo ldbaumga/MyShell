@@ -1,24 +1,22 @@
-\
+README
+_
 a
 b
 bgfile
 err1
 err2
-file1.cc
 file-list-1
 file-list-2
+file1.cc
 files
 hello world
 out1
 out2
-README
-shell-in
-shell.l
-shell-out
 sh-in
 sh-out
-testall
-testall.out
+shell-in
+shell-out
+shell.l
 test_append_output
 test_background
 test_cd1
@@ -62,3 +60,5 @@ test_wildcards5
 test_wildcards6
 test_wildcards7
 test_zombie
+testall
+testall.out
